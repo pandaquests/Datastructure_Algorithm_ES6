@@ -1,0 +1,198 @@
+\documentclass{book}
+\usepackage{blindtext}
+\usepackage{scrlfile}
+% Taken from Lena Herrmann at 
+% http://lenaherrmann.net/2010/05/20/javascript-syntax-highlighting-in-the-latex-listings-package
+\usepackage{listings}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+	\BeforeClosingMainAux{% siehe KOMA-Script-Anleitung
+	\addcontentsline{toc}{part}{Zeichnungen}
+	\addcontentsline{toc}{chapter}{Zeichnung - Zylinderhalterung}\stepcounter{page}
+	\addcontentsline{toc}{chapter}{Zeichnung - Gestell}\stepcounter{page}
+	\addcontentsline{toc}{chapter}{Zeichnung - Zylinder}\stepcounter{page}
+	\addcontentsline{toc}{chapter}{Zeichnung - Ventilblöcke}\stepcounter{page}
+	\addcontentsline{toc}{chapter}{Zeichnung - Podest}\stepcounter{page}
+	\addcontentsline{toc}{chapter}{Zeichnung - Gesamtaufbau}\stepcounter{page}
+}
+
+\begin{document}
+
+\tableofcontents
+asdfwef
+%\blinddocument
+\chapter{Algorithmen und Datenstrukturen in ES6+}
+\section{Warum in ES6+}
+- ES is eating the world
+
+- meaningful understanding
+
+- I spent most of my professional life writing in JS and I think I know most about it
+
+Und, um sicher zu sein, dass ich nicht versehentlich ein Beispiel für etwas
+erzeugt, was gar nicht der Problemfall ist, wird der Problemfall jetzt
+erzwungen:
+\clearpage
+
+% Num, um zu beweisen, dass wir beim Problemfall sind.
+\addcontentsline{toc}{chapter}{Das kommt nie an}
+asldf jlwefjlwkejf 
+\addcontentsline{toc}{chapter}{Das kommt nie an}
+\chapter{Entwicklungsumgebung}
+JS ist eine interpretierte Sprache. Sie läuft auf einer JS Engine. Die JS Engine läuft auf jeden Browser. Man kann direkt im Browser den Code ausführen.
+
+Sobald man den Browser aber neu lädt ist unser Code weg. Besser ist es den Code entweder in nodejs auszuführen.
+
+File speichern und mit node [filename] ausführen
+\chapter{JavaScript Paradigmen}
+JS ist eine sog. Multiparadigmen Programmiersprache. JS ist imperativ, objektorientiert und funktional. 
+\section{Objekte und Object-Orientiertes Programmieren}
+\section{Funktionales Programmieren}
+\chapter{JavaScript Konstrukte}
+\section{Entscheidungskonstrukte}
+In JS gibt es if Statements, ternary und switch statement.
+if
+if else
+if else if 
+ternary operator
+
+Return 
+
+statement vs. expression
+switch
+
+\section{Wiederholungen}
+for loop, while loop, symbol iterator; Generator; yields
+
+\section{Funktionen}
+\section{Scope}
+
+\chapter{Datenstrukturen}
+\section{Array}
+JS hat im Vergleich zu Java oder C/C++ nur sehr wenige Datenstrukturen. Eines ihrer wichtigsten Datenstrukturen ist der Array. Der Unterschied zu JSs Arrays im Vergleich zu anderen Programmiersprachen ist, dass Arrays in JS keine fixe Länge haben. Durch das Hinzufügen und Entfernen von Elementen verändert sich die Array-Länge dynamisch mit. Bei der Initialisierung muss man dem Array dadurch auch keine bestimmte Länge mitgeben werden.
+
+Arrays können in JS auf zwei Arten erstellt werden: Mit dem Array Konstruktor oder mit Array Literal:
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArrayConstructor = new Array();
+var myArrayLiteral = [];
+\end{lstlisting}
+
+Der Array Konstruktur wird mit `new` eingeleitet und darauf folgt `Array()`. Beim Array Literal wird nur eine eckige Klammer benötigt. Beide Möglichkeiten erstellen einen Array. Jedoch wird angeraten zur Erstellung eines Arrays das Array Literal zu nehmen. Nicht nur ist er kürzer und auch schneller, er ist auch syntaktisch eindeutiger. Denn mit dem Array Konstruktur kann man auch die Länge des Arrays definieren als auch initialisieren. Die Syntax von beiden Konstrukten sind sich ähnlich, sodass es zu Verwirrung kommen kann, wenn man den Array mit Zahlen initialisiert:
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArrayLength = new Array(3);
+var myArrayInit = new Array(3,2,1);
+\end{lstlisting}
+
+Die Länge eines Arrays wird als Zahl (hier: 3) in den Konstruktur reingeschrieben. Damit hat das Array in unserem Beispiel eine Länge von 3, die man mit `length` überprüfen kann. Die (hier 3) Elemente sind noch `undefined`, da sie noch nicht initialisiert sind. Bei der Initialisierung gibt man die Elemente ebenfalls in den Konstruktur mit ein, jeweils getrennt durch einen Komma. 
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArrayLength = new Array(3);
+console.log(myArrayLength); 
+// [undefined, undefined, undefined]
+console.log(myArrayLenth.length); 
+// 3
+
+var myArrayInit = new Array(3,2,1);
+console.log(myArrayInit); 
+// [3, 2, 1]
+console.log(myArrayInit.length); 
+// 3
+\end{lstlisting}
+
+JS ist nicht static typed. D.h. ein Array kann Elemente nicht nur eines Typen gleichzeitig aufnehmen, sondern auch verschiedene. Ein Array in JS kann damit auch Zahlen, Strings, Bool und Objekte gleichzeitig aufnehmen:
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, "42", true, "hi", {"hello": "world"}];
+\end{lstlisting}
+
+Array manipulieren: Hinzufügen, entfernen (des letzten pop, des ersten shift), Zugriff die Elemente. 
+
+- advantages of JS arrays: don't have fixed length; adding and removing is fairly easy (with push, pop, splice, split)
+- arrays are only objects- values are converted to Strings- is slower than in other JS- creating an Array with Array literal or constructor - go with the array literal because it's faster and is more clear. Array constructor can be weird....e.g.: new Array(10); // creates new array of size 10 new Array(10, 9,8,7,6); // creates new array with the elements 10, 9, 8, etc.- different objects, e.g. strings, int, bool can be in one array- accessing array elements- writing into array- can grow dynamicallly beyond the specified size- creating arrays from strings with split()- Assign array to another, shallow copy- How to copy array- searching for an value, indexOf(), return the first element, lastIndexOf(), returns the last element- exists value, includes()- return string from an array: toString(), join()- creating new arrays from existing ones: concat(), splice()- mutator functions: shift(), push(), pop(), - reordering reverse(), sort(); (sort doesn't work well with numbers!)- adding and removeing elements from the middle of an array: splice()- iterator functions: forEach, every(), some(), map(), filter(), reduce(), reduceRight(), flat(), flatMap()- multidimensional Array
+
+
+\section{Liste}
+\section{Stack}
+\section{Queue}
+\section{Dequeue}
+\section{Priority Queue}
+\section{LinkedList}
+\section{Zirkulare LinkedList}
+\section{Zweifach verknüpfte LinkedList}
+\section{Dictionary}
+\section{Hashing}
+\section{HashMap}
+\section{MapTree}
+\section{LinkedMap}
+\section{Sets}
+\section{Binäre Bäume}
+\section{Graphen}
+\section{AVL Tree}
+
+\chapter{Algorithmen}
+Sortier Algorithmen und Such Algorithmen
+\section{Breitensuche}
+\section{Tiefensuche}
+\section{Bubble Sort}
+\section{Selection Sort}
+\section{Shellsort}
+\section{Mergesort}
+\section{Quicksort}
+\section{Sequential Suche}
+\section{Binäres Suchen}
+\section{Suchen nach Minimum und Maximum}
+\section{Rucksackproblem}
+\section{Greedy Algorithm}
+
+\medskip
+\begin{lstlisting}[caption=My Javascript Example]
+Name.prototype = {
+  methodName: function(params){
+    var doubleQuoteString = "some text";
+    var singleQuoteString = 'some more text';
+    // this is a comment
+    if(this.confirmed != null && typeof(this.confirmed) == Boolean && this.confirmed == true){
+      document.createElement('h3');
+      $('#system').append("This looks great");
+      return false;
+    } else {
+      throw new Error;
+    }
+  }
+}
+\end{lstlisting}
+laskd flwkejf wlekjf ew
+\end{document}
