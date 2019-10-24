@@ -14,22 +14,22 @@
 \contentsline {chapter}{\numberline {5}Datenstrukturen}{11}% 
 \contentsline {section}{\numberline {5.1}Array}{11}% 
 \contentsline {section}{\numberline {5.2}Liste}{13}% 
-\contentsline {section}{\numberline {5.3}Stack}{13}% 
-\contentsline {section}{\numberline {5.4}Queue}{13}% 
-\contentsline {section}{\numberline {5.5}Dequeue}{13}% 
-\contentsline {section}{\numberline {5.6}Priority Queue}{13}% 
-\contentsline {section}{\numberline {5.7}LinkedList}{13}% 
-\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{13}% 
-\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{13}% 
-\contentsline {section}{\numberline {5.10}Dictionary}{13}% 
-\contentsline {section}{\numberline {5.11}Hashing}{13}% 
-\contentsline {section}{\numberline {5.12}HashMap}{13}% 
-\contentsline {section}{\numberline {5.13}MapTree}{13}% 
-\contentsline {section}{\numberline {5.14}LinkedMap}{13}% 
-\contentsline {section}{\numberline {5.15}Sets}{13}% 
-\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{13}% 
-\contentsline {section}{\numberline {5.17}Graphen}{13}% 
-\contentsline {section}{\numberline {5.18}AVL Tree}{13}% 
+\contentsline {section}{\numberline {5.3}Stack}{14}% 
+\contentsline {section}{\numberline {5.4}Queue}{14}% 
+\contentsline {section}{\numberline {5.5}Dequeue}{14}% 
+\contentsline {section}{\numberline {5.6}Priority Queue}{14}% 
+\contentsline {section}{\numberline {5.7}LinkedList}{14}% 
+\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{14}% 
+\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{14}% 
+\contentsline {section}{\numberline {5.10}Dictionary}{14}% 
+\contentsline {section}{\numberline {5.11}Hashing}{14}% 
+\contentsline {section}{\numberline {5.12}HashMap}{14}% 
+\contentsline {section}{\numberline {5.13}MapTree}{14}% 
+\contentsline {section}{\numberline {5.14}LinkedMap}{14}% 
+\contentsline {section}{\numberline {5.15}Sets}{14}% 
+\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{14}% 
+\contentsline {section}{\numberline {5.17}Graphen}{14}% 
+\contentsline {section}{\numberline {5.18}AVL Tree}{14}% 
 \contentsline {chapter}{\numberline {6}Algorithmen}{15}% 
 \contentsline {section}{\numberline {6.1}Breitensuche}{15}% 
 \contentsline {section}{\numberline {6.2}Tiefensuche}{15}% 

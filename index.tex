@@ -140,13 +140,31 @@ var myArray = [1, "42", true, "hi", {"hello": "world"}];
 
 Intern werden die Elemente in einen String gecastet. Dadurch sind Arrays in JS langsamer als in anderen Sprachen. 
 
-Man kann 
-Array manipulieren: Hinzufügen, entfernen (des letzten pop, des ersten shift), Zugriff die Elemente. Subarray erstellen: splice (mit mutation), slice (ohne). Kopieren von Arrays (slice(0)), usw..... dieser Abschnitt eng in Abstimmmung mit der Implementierung der komplexen Datenstrukturen machen.
+JS Arrays bieten bereits viele Funktionen zur Manipulationen von 
+Array manipulieren: Hinzufügen (push, unshift), entfernen (des letzten pop, des ersten shift), Zugriff die Elemente. Subarray erstellen: splice (mit mutation), slice (ohne). Kopieren von Arrays (slice(0)), usw..... dieser Abschnitt eng in Abstimmmung mit der Implementierung der komplexen Datenstrukturen machen.
 
 - arrays are only objects- values are converted to Strings- is slower than in other JS- creating an Array with Array literal or constructor - go with the array literal because it's faster and is more clear. Array constructor can be weird....e.g.: new Array(10); // creates new array of size 10 new Array(10, 9,8,7,6); // creates new array with the elements 10, 9, 8, etc.- different objects, e.g. strings, int, bool can be in one array- accessing array elements- writing into array- can grow dynamicallly beyond the specified size- creating arrays from strings with split()- Assign array to another, shallow copy- How to copy array- searching for an value, indexOf(), return the first element, lastIndexOf(), returns the last element- exists value, includes()- return string from an array: toString(), join()- creating new arrays from existing ones: concat(), splice()- mutator functions: shift(), push(), pop(), - reordering reverse(), sort(); (sort doesn't work well with numbers!)- adding and removeing elements from the middle of an array: splice()- iterator functions: forEach, every(), some(), map(), filter(), reduce(), reduceRight(), flat(), flatMap()- multidimensional Array
 
-
 \section{Liste}
+asldfjlkewjf
+Lists are convenient if the order doesn't matter or if you don't have to search for a certain item
+implement a listlistSize (property) Number of elements in list
+pos (property) Current position in list
+length (property) Returns the number of elements in list
+clear (function) Clears all elements from list
+toString (function) Returns string representation of list
+getElement (function) Returns element at current position
+insert (function) Inserts new element after existing element
+append (function) Adds new element to end of list
+remove (function) Removes element from list
+front (function) Sets current position to first element of list
+end (function) Sets current position to last element of list
+prev (function) Moves current position back one element
+next (function) Moves current position forward one element
+currPos (function) Returns the current position in list
+moveTo (function) Moves the current position to specified position
+
+While writing also test your impelmentation with console.assert()
 \section{Stack}
 \section{Queue}
 \section{Dequeue}
