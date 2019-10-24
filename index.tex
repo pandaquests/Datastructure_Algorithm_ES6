@@ -138,9 +138,11 @@ JS ist nicht static typed. D.h. ein Array kann Elemente nicht nur eines Typen gl
 var myArray = [1, "42", true, "hi", {"hello": "world"}];
 \end{lstlisting}
 
-Array manipulieren: Hinzufügen, entfernen (des letzten pop, des ersten shift), Zugriff die Elemente. 
+Intern werden die Elemente in einen String gecastet. Dadurch sind Arrays in JS langsamer als in anderen Sprachen. 
 
-- advantages of JS arrays: don't have fixed length; adding and removing is fairly easy (with push, pop, splice, split)
+Man kann 
+Array manipulieren: Hinzufügen, entfernen (des letzten pop, des ersten shift), Zugriff die Elemente. Subarray erstellen: splice (mit mutation), slice (ohne). Kopieren von Arrays (slice(0)), usw..... dieser Abschnitt eng in Abstimmmung mit der Implementierung der komplexen Datenstrukturen machen.
+
 - arrays are only objects- values are converted to Strings- is slower than in other JS- creating an Array with Array literal or constructor - go with the array literal because it's faster and is more clear. Array constructor can be weird....e.g.: new Array(10); // creates new array of size 10 new Array(10, 9,8,7,6); // creates new array with the elements 10, 9, 8, etc.- different objects, e.g. strings, int, bool can be in one array- accessing array elements- writing into array- can grow dynamicallly beyond the specified size- creating arrays from strings with split()- Assign array to another, shallow copy- How to copy array- searching for an value, indexOf(), return the first element, lastIndexOf(), returns the last element- exists value, includes()- return string from an array: toString(), join()- creating new arrays from existing ones: concat(), splice()- mutator functions: shift(), push(), pop(), - reordering reverse(), sort(); (sort doesn't work well with numbers!)- adding and removeing elements from the middle of an array: splice()- iterator functions: forEach, every(), some(), map(), filter(), reduce(), reduceRight(), flat(), flatMap()- multidimensional Array
 
 
