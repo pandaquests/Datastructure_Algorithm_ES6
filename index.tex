@@ -9,7 +9,7 @@
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
 \lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywords={typeof, new, true, false, catch, function, return, null, undefined, catch, switch, var, let, const, if, in, while, do, else, case, break, push, pop, shift, unshift},
   keywordstyle=\color{blue}\bfseries,
   ndkeywords={class, export, boolean, throw, implements, import, this},
   ndkeywordstyle=\color{darkgray}\bfseries,
@@ -36,9 +36,9 @@
    tabsize=2,
    breaklines=true,
    showtabs=false,
-   captionpos=b
+   captionpos=b,
 }
-
+	
 	\BeforeClosingMainAux{% siehe KOMA-Script-Anleitung
 	\addcontentsline{toc}{part}{Zeichnungen}
 	\addcontentsline{toc}{chapter}{Zeichnung - Zylinderhalterung}\stepcounter{page}
@@ -71,6 +71,12 @@ erzwungen:
 \addcontentsline{toc}{chapter}{Das kommt nie an}
 asldf jlwefjlwkejf 
 \addcontentsline{toc}{chapter}{Das kommt nie an}
+\section{Nicht behandelte Themen}
+- Promises
+- async/await
+- webAPI
+- Browser spezifische Unterschiede
+
 \chapter{Entwicklungsumgebung}
 JS ist eine interpretierte Sprache. Sie läuft auf einer JS Engine. Die JS Engine läuft auf jeden Browser. Man kann direkt im Browser den Code ausführen.
 
@@ -99,10 +105,11 @@ for loop, while loop, symbol iterator; Generator; yields
 
 \section{Funktionen}
 \section{Scope}
+\section{Closures}
 
 \chapter{Datenstrukturen}
 \section{Array}
-JS hat im Vergleich zu Java oder C/C++ nur sehr wenige Datenstrukturen. Eines ihrer wichtigsten Datenstrukturen ist der Array. Der Unterschied zu JSs Arrays im Vergleich zu anderen Programmiersprachen ist, dass Arrays in JS keine fixe Länge haben. Durch das Hinzufügen und Entfernen von Elementen verändert sich die Array-Länge dynamisch mit. Bei der Initialisierung muss man dem Array dadurch auch keine bestimmte Länge mitgeben werden.
+JS hat im Vergleich zu Java oder C/C++ nur sehr wenige Datenstrukturen. Eines ihrer wichtigsten Datenstrukturen ist der Array. Das Array werden wir später dazu benutzen, um alle anderen komplexeren Datenstrukturen zu implementieren. Der Unterschied zu JSs Arrays im Vergleich zu anderen Programmiersprachen ist, dass Arrays in JS keine fixe Länge haben. Durch das Hinzufügen und Entfernen von Elementen verändert sich die Array-Länge dynamisch mit. Bei der Initialisierung muss man dem Array dadurch auch keine bestimmte Länge mitgeben werden.
 
 Arrays können in JS auf zwei Arten erstellt werden: Mit dem Array Konstruktor oder mit Array Literal:
 \begin{lstlisting}[caption=Array Konstruktor]
@@ -110,14 +117,14 @@ var myArrayConstructor = new Array();
 var myArrayLiteral = [];
 \end{lstlisting}
 
-Der Array Konstruktur wird mit `new` eingeleitet und darauf folgt `Array()`. Beim Array Literal wird nur eine eckige Klammer benötigt. Beide Möglichkeiten erstellen einen Array. Jedoch wird angeraten zur Erstellung eines Arrays das Array Literal zu nehmen. Nicht nur ist er kürzer und auch schneller, er ist auch syntaktisch eindeutiger. Denn mit dem Array Konstruktur kann man auch die Länge des Arrays definieren als auch initialisieren. Die Syntax von beiden Konstrukten sind sich ähnlich, sodass es zu Verwirrung kommen kann, wenn man den Array mit Zahlen initialisiert:
+Der Array Konstruktur wird mit \lstinline|new| eingeleitet und darauf folgt \lstinline|Array()|. Beim Array Literal wird nur eine eckige Klammer \lstinline|[]| benötigt. Beide Möglichkeiten erstellen einen Array. Jedoch wird angeraten zur Erstellung eines Arrays das Array Literal zu nehmen. Nicht nur ist er kürzer und auch schneller, er ist auch syntaktisch eindeutiger. Denn mit dem Array Konstruktur kann man auch die Länge des Arrays definieren als auch initialisieren. Die Syntax von beiden Konstrukten sind sich ähnlich, sodass es zu Verwirrung kommen kann, wenn man den Array mit Zahlen initialisiert:
 
 \begin{lstlisting}[caption=Array Konstruktor]
 var myArrayLength = new Array(3);
 var myArrayInit = new Array(3,2,1);
 \end{lstlisting}
 
-Die Länge eines Arrays wird als Zahl (hier: 3) in den Konstruktur reingeschrieben. Damit hat das Array in unserem Beispiel eine Länge von 3, die man mit `length` überprüfen kann. Die (hier 3) Elemente sind noch `undefined`, da sie noch nicht initialisiert sind. Bei der Initialisierung gibt man die Elemente ebenfalls in den Konstruktur mit ein, jeweils getrennt durch einen Komma. 
+Die Länge eines Arrays wird als Zahl (hier: 3) in den Konstruktur reingeschrieben. Damit hat das Array in unserem Beispiel eine Länge von 3, die man mit \lstinline|length| überprüfen kann. Die (hier 3) Elemente sind noch \lstinline|undefined|, da sie noch nicht initialisiert sind. Bei der Initialisierung gibt man die Elemente ebenfalls in den Konstruktur mit ein, jeweils getrennt durch einen Komma. 
 \begin{lstlisting}[caption=Array Konstruktor]
 var myArrayLength = new Array(3);
 console.log(myArrayLength); 
@@ -138,9 +145,92 @@ JS ist nicht static typed. D.h. ein Array kann Elemente nicht nur eines Typen gl
 var myArray = [1, "42", true, "hi", {"hello": "world"}];
 \end{lstlisting}
 
-Intern werden die Elemente in einen String gecastet. Dadurch sind Arrays in JS langsamer als in anderen Sprachen. 
+Intern werden die Elemente in einen String gecastet. Dadurch sind Arrays in JS langsamer als in anderen Sprachen. Um auf ein Array-Element zuzugreifen benutzen wir die eckige Klammer \lstinline|[]|. Ein Array ist Index basiert und fängt mit \lstinline|0| an. Um auf das zweite Element in einen Array zuzugreifen, schreiben wir also \lstinline|myArray[1]|:
 
-JS Arrays bieten bereits viele Funktionen zur Manipulationen von 
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, "42", true, "hi", {"hello": "world"}];
+console.log(myArray[1]);
+// "42"
+\end{lstlisting}
+
+JS bieten viele Funktionen zur Manipulationen von Arrays an.
+Zum Hinzufügen am Ende wird \lstinline|push()| benutzt. Um ein Element am Anfang des Arrays hinzuzufügen, wird \lstinline|unshift()| verwendet:
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 2, 3];
+myArray.push(4);
+console.log(myArray); 
+// [1, 2, 3, 4]
+
+myArray.unshift(0);
+console.log(myArray); 
+// [0, 1, 2, 3, 4]
+\end{lstlisting}
+
+Für das Entfernen am Ende des Arrays gibt es \lstinline|pop()|. Die Funktion \lstinline|pop()| entfernt das letzte Element und gibt das entfernte Element zurück. Für das Entfernen am Anfang des Arrays verwendet man \lstinline|shift()|. 
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [0, 1, 2, 3, 4];
+console.log(myArray.pop());
+// 4
+console.log(myArray); 
+// [0, 1, 2, 3]
+
+console.log(myArray.shift());
+// 0
+console.log(myArray); 
+// [1, 2, 3]
+\end{lstlisting}
+
+Um Elemente hinzuzufügen, zu ersetzen oder zu entfernen, die sich in der Mitte des Arrays befinden, verwendet man \lstinline|splice()|. \lstinline|splice()| nimmt als ersten Parameter den Index, an den das neue Element man hinzufügen will. Als zweiten Parameter wieviele Elemente danach ersetzt wird. Alle darauffolgenden Paramter die hinzuzufügenden Elemente.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 3, 4];
+myArray.splice(1,0,2); 
+// adds a new element, 2, at index 1
+
+myArray.splice(3,0,5,6,7); 
+// adds new elements, 5,6, and 7, at index 3
+
+myArray.splice(5, 1); 
+// removes one element at index 5
+
+myArray.splice(2, 3); 
+// removes 3 elements starting at index 2
+
+myArray.splice(3, 1, 99); 
+// replaces one element at index 3 with the new element 99
+
+myArray.splice(3, 2, 42); 
+// replaces 2 elements starting at index 3 with the new element 42
+
+myArray.splice(999,0,2); 
+// if the index (first parameter) is larger than the array length, then it will just adds a new element to the end
+\end{lstlisting}
+
+Die Funktionen \lstinline|push(), unshift(), pop(), shift(), splice()|, verändert den originären Array. Es gibt auch Funktionen, die das Original nicht ändert, sondern stattdessen einen neuen Array zurückliefert.
+
+Die \lstinline|map((currentValue, index, array) => {})| Methode geht durch die Elemente durch und wendet dabei eine ihr mitgegebene Methode auf einzeln jeden Element im Array an. Die ihr mitgegebene Methode nimmt als erstes Argument das aktuelle Element auf. Das zweite Element ist das momentane Index im Array. Das dritte Argument das ursprüngliche Array. Das Ergebnis ist wieder ein Array mit derselben Länge, wie das ursprüngliche Array.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 2, 3, 4];
+function multiplyBy2 = item => item * 2;
+var doubleArray = myArray.map(multiplyBy2);
+console.log(doubleArray);
+// [2, 4, 6, 8]
+\end{lstlisting}
+
+Die \lstinline|filter()| Methode 
+\lstinline|reduce()|
+\lstinline|flat()|
+\lstinline|flatMap()|
+\lstinline|every()|
+\lstinline|some()|
+Die \lstinline|slice()| Methode 
+\lstinline|concat()|
+
+Array kopieren. 
+
 Array manipulieren: Hinzufügen (push, unshift), entfernen (des letzten pop, des ersten shift), Zugriff die Elemente. Subarray erstellen: splice (mit mutation), slice (ohne). Kopieren von Arrays (slice(0)), usw..... dieser Abschnitt eng in Abstimmmung mit der Implementierung der komplexen Datenstrukturen machen.
 
 - arrays are only objects- values are converted to Strings- is slower than in other JS- creating an Array with Array literal or constructor - go with the array literal because it's faster and is more clear. Array constructor can be weird....e.g.: new Array(10); // creates new array of size 10 new Array(10, 9,8,7,6); // creates new array with the elements 10, 9, 8, etc.- different objects, e.g. strings, int, bool can be in one array- accessing array elements- writing into array- can grow dynamicallly beyond the specified size- creating arrays from strings with split()- Assign array to another, shallow copy- How to copy array- searching for an value, indexOf(), return the first element, lastIndexOf(), returns the last element- exists value, includes()- return string from an array: toString(), join()- creating new arrays from existing ones: concat(), splice()- mutator functions: shift(), push(), pop(), - reordering reverse(), sort(); (sort doesn't work well with numbers!)- adding and removeing elements from the middle of an array: splice()- iterator functions: forEach, every(), some(), map(), filter(), reduce(), reduceRight(), flat(), flatMap()- multidimensional Array

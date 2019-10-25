@@ -2,6 +2,7 @@
 \contentsline {section}{\numberline {1.1}Warum in ES6+}{3}% 
 \contentsline {chapter}{Das kommt nie an}{4}% 
 \contentsline {chapter}{Das kommt nie an}{4}% 
+\contentsline {section}{\numberline {1.2}Nicht behandelte Themen}{4}% 
 \contentsline {chapter}{\numberline {2}Entwicklungsumgebung}{5}% 
 \contentsline {chapter}{\numberline {3}JavaScript Paradigmen}{7}% 
 \contentsline {section}{\numberline {3.1}Objekte und Object-Orientiertes Programmieren}{7}% 
@@ -11,42 +12,43 @@
 \contentsline {section}{\numberline {4.2}Wiederholungen}{9}% 
 \contentsline {section}{\numberline {4.3}Funktionen}{9}% 
 \contentsline {section}{\numberline {4.4}Scope}{9}% 
+\contentsline {section}{\numberline {4.5}Closures}{9}% 
 \contentsline {chapter}{\numberline {5}Datenstrukturen}{11}% 
 \contentsline {section}{\numberline {5.1}Array}{11}% 
-\contentsline {section}{\numberline {5.2}Liste}{13}% 
-\contentsline {section}{\numberline {5.3}Stack}{14}% 
-\contentsline {section}{\numberline {5.4}Queue}{14}% 
-\contentsline {section}{\numberline {5.5}Dequeue}{14}% 
-\contentsline {section}{\numberline {5.6}Priority Queue}{14}% 
-\contentsline {section}{\numberline {5.7}LinkedList}{14}% 
-\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{14}% 
-\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{14}% 
-\contentsline {section}{\numberline {5.10}Dictionary}{14}% 
-\contentsline {section}{\numberline {5.11}Hashing}{14}% 
-\contentsline {section}{\numberline {5.12}HashMap}{14}% 
-\contentsline {section}{\numberline {5.13}MapTree}{14}% 
-\contentsline {section}{\numberline {5.14}LinkedMap}{14}% 
-\contentsline {section}{\numberline {5.15}Sets}{14}% 
-\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{14}% 
-\contentsline {section}{\numberline {5.17}Graphen}{14}% 
-\contentsline {section}{\numberline {5.18}AVL Tree}{14}% 
-\contentsline {chapter}{\numberline {6}Algorithmen}{15}% 
-\contentsline {section}{\numberline {6.1}Breitensuche}{15}% 
-\contentsline {section}{\numberline {6.2}Tiefensuche}{15}% 
-\contentsline {section}{\numberline {6.3}Bubble Sort}{15}% 
-\contentsline {section}{\numberline {6.4}Selection Sort}{15}% 
-\contentsline {section}{\numberline {6.5}Shellsort}{15}% 
-\contentsline {section}{\numberline {6.6}Mergesort}{15}% 
-\contentsline {section}{\numberline {6.7}Quicksort}{15}% 
-\contentsline {section}{\numberline {6.8}Sequential Suche}{15}% 
-\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{15}% 
-\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{15}% 
-\contentsline {section}{\numberline {6.11}Rucksackproblem}{15}% 
-\contentsline {section}{\numberline {6.12}Greedy Algorithm}{15}% 
-\protect \contentsline {part}{Zeichnungen}{17}% 
-\protect \contentsline {chapter}{Zeichnung - Zylinderhalterung}{17}% 
-\protect \contentsline {chapter}{Zeichnung - Gestell}{18}% 
-\protect \contentsline {chapter}{Zeichnung - Zylinder}{19}% 
-\protect \contentsline {chapter}{Zeichnung - Ventilbl\IeC {\"o}cke}{20}% 
-\protect \contentsline {chapter}{Zeichnung - Podest}{21}% 
-\protect \contentsline {chapter}{Zeichnung - Gesamtaufbau}{22}% 
+\contentsline {section}{\numberline {5.2}Liste}{14}% 
+\contentsline {section}{\numberline {5.3}Stack}{15}% 
+\contentsline {section}{\numberline {5.4}Queue}{15}% 
+\contentsline {section}{\numberline {5.5}Dequeue}{15}% 
+\contentsline {section}{\numberline {5.6}Priority Queue}{15}% 
+\contentsline {section}{\numberline {5.7}LinkedList}{15}% 
+\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{15}% 
+\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{15}% 
+\contentsline {section}{\numberline {5.10}Dictionary}{15}% 
+\contentsline {section}{\numberline {5.11}Hashing}{15}% 
+\contentsline {section}{\numberline {5.12}HashMap}{15}% 
+\contentsline {section}{\numberline {5.13}MapTree}{15}% 
+\contentsline {section}{\numberline {5.14}LinkedMap}{15}% 
+\contentsline {section}{\numberline {5.15}Sets}{15}% 
+\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{15}% 
+\contentsline {section}{\numberline {5.17}Graphen}{15}% 
+\contentsline {section}{\numberline {5.18}AVL Tree}{15}% 
+\contentsline {chapter}{\numberline {6}Algorithmen}{17}% 
+\contentsline {section}{\numberline {6.1}Breitensuche}{17}% 
+\contentsline {section}{\numberline {6.2}Tiefensuche}{17}% 
+\contentsline {section}{\numberline {6.3}Bubble Sort}{17}% 
+\contentsline {section}{\numberline {6.4}Selection Sort}{17}% 
+\contentsline {section}{\numberline {6.5}Shellsort}{17}% 
+\contentsline {section}{\numberline {6.6}Mergesort}{17}% 
+\contentsline {section}{\numberline {6.7}Quicksort}{17}% 
+\contentsline {section}{\numberline {6.8}Sequential Suche}{17}% 
+\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{17}% 
+\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{17}% 
+\contentsline {section}{\numberline {6.11}Rucksackproblem}{17}% 
+\contentsline {section}{\numberline {6.12}Greedy Algorithm}{17}% 
+\protect \contentsline {part}{Zeichnungen}{19}% 
+\protect \contentsline {chapter}{Zeichnung - Zylinderhalterung}{19}% 
+\protect \contentsline {chapter}{Zeichnung - Gestell}{20}% 
+\protect \contentsline {chapter}{Zeichnung - Zylinder}{21}% 
+\protect \contentsline {chapter}{Zeichnung - Ventilbl\IeC {\"o}cke}{22}% 
+\protect \contentsline {chapter}{Zeichnung - Podest}{23}% 
+\protect \contentsline {chapter}{Zeichnung - Gesamtaufbau}{24}% 
