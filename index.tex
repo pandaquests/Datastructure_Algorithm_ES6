@@ -599,7 +599,9 @@ console.log(binary_search(arr, 3));
 	\item Es wird nach dem Index des original Arrays gefragt
 	
 	Ein neues Array zu erstellen und darauf den Index zu ermitteln bedeutet, dass man den Index des neuen Arrays zurück gibt.
-	\item Selbst wenn es möglich sein sollte das original Array in Stücke zu teilen und dennoch die original Index beizubehalten, ist die Auswahl der Indexe falsch, denn \lstinline|currentIndex| wurde bereits geprüft. Es ist daher unsinnig, dass dieser Index noch im Subarray erscheint. Man müsste also \lstinline|currentIndex + 1| für \lstinline|currentKey < key| bzw. \lstinline|curentIndex| (\lstinline|currentIndex| selbst wird also nicht betrachtet) für \lstinline|currentKey > key| wählen.
+	\item \lstinline|currentIndex| nicht nochmal überprüfen
+	
+	Selbst wenn es möglich sein sollte das original Array in Stücke so zu teilen dass dennoch die original Index beizubehalten, ist die Auswahl der Indexe falsch, denn \lstinline|currentIndex| wurde bereits geprüft. Es ist daher unsinnig, dass dieser Index noch im Subarray erscheint. Man müsste also \lstinline|currentIndex + 1| für \lstinline|currentKey < key| bzw. \lstinline|curentIndex| (\lstinline|currentIndex| selbst wird also nicht betrachtet) für \lstinline|currentKey > key| wählen.
 \end{itemize}
 \paragraph{Lösung}
 
@@ -607,18 +609,23 @@ console.log(binary_search(arr, 3));
 \begin{lstlisting}[caption=My Javascript Example]
 //a is sorted array
 let binary_search = function(a, key) {
-	let newA = a;
-	let currentIndex;
-	while(newA.length !== 0) {
-		currentIndex = newA.length / 2;
-		const currentKey = newA[currentIndex];
-		
+	if (a.length === 0) {
+		return -1;
+	}
+	if (a.length === 1) {
+		return a[0] === key ? 0 : -1;
+	}
+	let startIndex = 0;
+	let endIndex = a.length - 1;
+	while(startIndex <= endIndex) {
+		const currentIndex = (startIndex + endIndex) / 2 | 0;
+		const currentKey = a[currentIndex];
 		if (currentKey === key) {
 			return currentIndex;
 		} else if (currentKey < key) {
-			newA = newA.slice(currentIndex);
+			startIndex = currentIndex + 1;
 		} else {
-			newA = newA.slice(0, currentIndex + 1);
+			endIndex = currentIndex - 1;
 		}
 	}
 	return -1;

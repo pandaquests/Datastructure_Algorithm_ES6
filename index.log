@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.25)  27 OCT 2019 00:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.25)  27 OCT 2019 00:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1042,10 +1042,10 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
  [26] [27]
 (./index.aux) ) 
 Here is how much of TeX's memory you used:
- 29847 strings out of 494485
- 616542 string characters out of 6175792
+ 29849 strings out of 494485
+ 616570 string characters out of 6175792
  983471 words of memory out of 5000000
- 33116 multiletter control sequences out of 15000+600000
+ 33118 multiletter control sequences out of 15000+600000
  538745 words of font info for 47 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  78i,10n,105p,836b,1677s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1060,7 +1060,7 @@ nts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmtt8.pfb>
-Output written on index.pdf (27 pages, 187648 bytes).
+Output written on index.pdf (27 pages, 188102 bytes).
 PDF statistics:
  175 PDF objects out of 1000 (max. 8388607)
  109 compressed objects within 2 object streams
