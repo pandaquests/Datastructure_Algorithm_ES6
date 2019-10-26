@@ -106,6 +106,7 @@ for loop, while loop, symbol iterator; Generator; yields
 \section{Funktionen}
 \section{Scope}
 \section{Closures}
+\section{Call by Reference vs. Call by Value}
 
 \chapter{Datenstrukturen}
 \section{Array}
@@ -208,9 +209,63 @@ myArray.splice(999,0,2);
 // if the index (first parameter) is larger than the array length, then it will just adds a new element to the end
 \end{lstlisting}
 
-Die Funktionen \lstinline|push(), unshift(), pop(), shift(), splice()|, verändert den originären Array. Es gibt auch Funktionen, die das Original nicht ändert, sondern stattdessen einen neuen Array zurückliefert.
+Die Elemente in einen Array kann man mit \lstinline|sort()| sortieren. \lstinline|sort()| nimmt eine Methode auf, die zwei Elemente miteinander vergleicht und entweder eine positive oder negative Zahl zurückgibt oder \lstinline|0|. Eine negative Zahl steht dafür, dass die Zahl kleiner ist. Eine positive Zahl steht dafür, dass die Zahl größer ist. Eine \lstinline|0| steht dafür, dass beide Zahlen gleich sind.
 
-Die \lstinline|map((currentValue, index, array) => {})| Methode geht durch die Elemente durch und wendet dabei eine ihr mitgegebene Methode auf einzeln jeden Element im Array an. Die ihr mitgegebene Methode nimmt als erstes Argument das aktuelle Element auf. Das zweite Element ist das momentane Index im Array. Das dritte Argument das ursprüngliche Array. Das Ergebnis ist wieder ein Array mit derselben Länge, wie das ursprüngliche Array.
+Beim Sortieren von Strings ist keine Funktion notwendig. Jedoch kann man eine mitgeben bei der überprüft wird, ob ein String größer ist als ein anderer String. Wenn man jedoch bei der Sortierung von Zahlen sich auf die Default \lstinline|sort()| Funktion verlässt, dann können die Zahlen falsch sortiert werden:
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 5, 1001, 8, 4];
+myArray.sort((a,b) => a - b);
+console.log(myArray);
+// [1, 4, 5, 8, 1001]
+
+var myArray = [1, 5, 1001, 8, 4];
+myArray.sort();
+console.log(myArray);
+// [1, 1001, 4, 5, 8]
+
+var myArray = ["a", "c", "xxx", "bd"];
+myArray.sort();
+console.log(myArray);
+// ["a", "bd", "c", "xxx"]
+
+var myArray = ["a", "c", "xxx", "bd"];
+myArray.sort((a, b) => a > b ? 1 : -1);
+console.log(myArray);
+// ["a", "bd", "c", "xxx"]
+\end{lstlisting}
+
+Man kann die \lstinline|sort()| Methode auch benutzen, um ein Array absteigend zu sortieren. Dazu kehrt man das Vorzeichen der mitzugebenden Funktion um:
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 5, 1001, 8, 4];
+myArray.sort((a,b) => b - a);
+console.log(myArray);
+// [1001, 8, 5, 4, 1]
+
+var myArray = ["a", "c", "xxx", "bd"];
+myArray.sort((a, b) => (a > b ? -1 : 1));
+console.log(myArray);
+// ["xxx", "c", "bd", "a"]
+\end{lstlisting}
+
+Alternativ kann man zur Umkehrung des Arrays auch die \lstinline|reverse()| Funktion benutzen. Diese ist sogar etwas schneller als nur die Sort Funktion mit der Methode und dem umgekehrten Vorzeichen von oben zu benutzen.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 5, 1001, 8, 4];
+myArray.sort((a,b) => a - b).reverse();
+console.log(myArray);
+// [1001, 8, 5, 4, 1]
+
+var myArray = ["a", "c", "xxx", "bd"];
+myArray.sort().reverse();
+console.log(myArray);
+// ["xxx", "c", "bd", "a"]
+\end{lstlisting}
+
+Die Funktionen \lstinline|push(), unshift(), pop(), shift(), splice()|, usw. verändern den originären Array. Es gibt auch Funktionen, die das Original nicht ändert, sondern stattdessen einen neuen Array zurückliefert.
+
+Die \lstinline|map()| Methode geht durch die Elemente durch und wendet dabei eine ihr mitgegebene Methode \lstinline|(currentValue, index, array) => {}| auf jedes einzelne Element im Array an. Die ihr mitgegebene Methode nimmt als erstes Argument das aktuelle Element auf. Das zweite Element ist das momentane Index im Array. Das dritte Argument das ursprüngliche Array. Das Ergebnis ist wieder ein Array mit derselben Länge, wie das ursprüngliche Array:
 
 \begin{lstlisting}[caption=Array Konstruktor]
 var myArray = [1, 2, 3, 4];
@@ -220,16 +275,69 @@ console.log(doubleArray);
 // [2, 4, 6, 8]
 \end{lstlisting}
 
-Die \lstinline|filter()| Methode 
-\lstinline|reduce()|
-\lstinline|flat()|
-\lstinline|flatMap()|
+Die \lstinline|filter()| Methode nimmt ebenfalls eine Funktion als Argument auf und wendet sie auf alle Elemente im Array an. Nur wenn die Auswertung dieser Funktion auf das aktuelle Element \lstinline|truthy| zurückgibt, wird dieses Element auch Teil des später zurückgegebenen Arrays. Die ihr übergebene Methode \lstinline|(currentValue, index, array) => {}| hat als erstes Argument das aktuelle Element. Das zweite Argument ist der aktuelle Index. Das dritte Argument das original Array auf das die \lstinline|filter()| Methode angewendet wird. Nur das erste Argument ist verpflichtend. Die restlichen sind optional. Beispielhaft ist unten die \lstinline|filter()| Methode zum Filtern von nur geraden Zahlen gezeigt:
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 2, 3, 4, 5, 6];
+function isEven = item => item % 2 ;
+var onlyEven = myArray.map(isEven);
+console.log(onlyEven);
+// [2, 4, 6]
+\end{lstlisting}
+
+Die \lstinline|reduce()| Methode unterscheidet sich von \lstinline|map()| und \lstinline|filter()| dadurch, dass nicht immer ein Array zurück gegeben werden muss. Stattdessen reduziert die Methode das Array auf einen einzigen Wert. Dieser Wert kann eine Zahl oder auch ein Array sein. Als erstes Argument kann sie eine Methode nehmen. Als zweites Argument nimmt sie einen initial Wert an. Das zweite Argument ist nur optional. Die Methode, die sie aufnimmt, \lstinline|(acc, item, index, array) => {}| hat als erstes Argument einen Akkumulator, der den kumulierten Wert enthält und der am Ende das Ergebnis darstellt. Das zweite Argument ist der aktuelle Wert. Das dritte Argument der Index und das vierte das original Array. Nur die ersten beiden Argumente sind verpflichtend.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 2, 3];
+var sum = (acc, item) => acc + item;
+var sumOfArray = myArray.reduce(sum, 0);
+// 6
+\end{lstlisting}
+
+Die Methode \lstinline|flat()|\footnote{noch im Experiment Status, d.h. es wurde noch nicht von allen JS Engines implementiert} wird auf Arrays angewendet, die selbst wiederum Arrays enthalten. Sie erstellt ein neues Arrays mit allen Unterarrays. Dabei kann optional bestimmt werden bis zu welcher Ebene die Unterarrays aufgelöst werden. Die \lstinline|flat()| Methode nimmt optional nur einen numerischen Wert an. Dieser legt fest bis zu welcher Ebene die Unterarrays aufgelöst werden.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 2, 3, [4, 5, 6]];
+console.log(myArray.flat());
+// [1, 2, 3, 4, 5, 6]
+
+var myArray = [1, 2, 3, [4, [5, 6]]];
+console.log(myArray.flat());
+// [1, 2, 3, 4, [5, 6]]
+
+var myArray = [1, 2, 3, [4, [5, 6]]];
+console.log(myArray.flat(2));
+// [1, 2, 3, 4, 5, 6]
+
+\end{lstlisting}
+
+Die \lstinline|flat()| Methode wird auch genutzt, um leere Elemente in Arrays zu entfernen
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 2, 3, , ,6];
+console.log(myArray.flat());
+// [1, 2, 3, 6]
+\end{lstlisting}
+
+Die Methode \lstinline|flatMap()| \footnote{noch im Experimentier Status, d.h. nicht alle Browser haben es implementiert} ist identisch zum Aufruf einer \lstinline|map()| Methode gefolgt vom Aufruf einer \lstinline|flat()| Methode. Die Methode wendet eine ihr mitgegebene Funktion auf alle Elemente an und flacht sie anschießend ab. Die ihr mitgegebene Funktion \lstinline|(item, index, array) => {}| nimmt als erstes Argument das aktuelle Element. Das zweite Argument der Index und das dritte Argument das Original Array.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = [1, 2, 3];
+var duplicate = item => [item, item];
+console.log(myArray.flatMap(duplicate));
+// [1, 1, 2, 2, 3, 3]
+\end{lstlisting}
+
+
 \lstinline|every()|
 \lstinline|some()|
 Die \lstinline|slice()| Methode 
 \lstinline|concat()|
 
 Array kopieren. 
+
+Element im Array finden
+
+Strings in einen Array umwandeln
 
 Array manipulieren: Hinzufügen (push, unshift), entfernen (des letzten pop, des ersten shift), Zugriff die Elemente. Subarray erstellen: splice (mit mutation), slice (ohne). Kopieren von Arrays (slice(0)), usw..... dieser Abschnitt eng in Abstimmmung mit der Implementierung der komplexen Datenstrukturen machen.
 
