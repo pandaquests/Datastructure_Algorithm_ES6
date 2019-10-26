@@ -38,23 +38,14 @@
    showtabs=false,
    captionpos=b,
 }
-	
-	\BeforeClosingMainAux{% siehe KOMA-Script-Anleitung
-	\addcontentsline{toc}{part}{Zeichnungen}
-	\addcontentsline{toc}{chapter}{Zeichnung - Zylinderhalterung}\stepcounter{page}
-	\addcontentsline{toc}{chapter}{Zeichnung - Gestell}\stepcounter{page}
-	\addcontentsline{toc}{chapter}{Zeichnung - Zylinder}\stepcounter{page}
-	\addcontentsline{toc}{chapter}{Zeichnung - Ventilblöcke}\stepcounter{page}
-	\addcontentsline{toc}{chapter}{Zeichnung - Podest}\stepcounter{page}
-	\addcontentsline{toc}{chapter}{Zeichnung - Gesamtaufbau}\stepcounter{page}
-}
+
+\renewcommand{\contentsname}{Inhalt}
 
 \begin{document}
-
 \tableofcontents
-asdfwef
 %\blinddocument
 \chapter{Algorithmen und Datenstrukturen in ES6+}
+Dieses Buch ist noch in Bearbeitung....
 \section{Warum in ES6+}
 - ES is eating the world
 
@@ -62,15 +53,6 @@ asdfwef
 
 - I spent most of my professional life writing in JS and I think I know most about it
 
-Und, um sicher zu sein, dass ich nicht versehentlich ein Beispiel für etwas
-erzeugt, was gar nicht der Problemfall ist, wird der Problemfall jetzt
-erzwungen:
-\clearpage
-
-% Num, um zu beweisen, dass wir beim Problemfall sind.
-\addcontentsline{toc}{chapter}{Das kommt nie an}
-asldf jlwefjlwkejf 
-\addcontentsline{toc}{chapter}{Das kommt nie an}
 \section{Nicht behandelte Themen}
 - Promises
 - async/await
@@ -327,11 +309,21 @@ console.log(myArray.flatMap(duplicate));
 // [1, 1, 2, 2, 3, 3]
 \end{lstlisting}
 
+Die Funktion \lstinline|concat()| vereint zwei Arrays und liefert das vereinigte Array als neues Array wieder zurück:
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray1 = ["a", "b", "c", "x"];
+var myArray2 = ["d", "e", "f"];
+var newArray = myArray1.concat(myArray2);
+console.log(newArray);
+// ["a", "b", "c", "x", "d", "e", "f"]
+\end{lstlisting}
+
+
+
+Die \lstinline|slice()| Methode 
 
 \lstinline|every()|
 \lstinline|some()|
-Die \lstinline|slice()| Methode 
-\lstinline|concat()|
 
 Array kopieren. 
 
