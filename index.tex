@@ -596,8 +596,8 @@ let binarySearch = function(a, key) {
 	
 	\item Es wird nach dem Index des original Arrays gefragt
 	
-	Ein neues Array zu erstellen und darauf den Index zu ermitteln bedeutet, dass man den Index des neuen Arrays zurück gibt.
-	\item \lstinline|currentIndex| nicht nochmal überprüfen
+	Ein neues Array zu erstellen und darauf den Index zu ermitteln bedeutet, dass man den Index des neuen Arrays zurück gibt. Gesucht ist aber der Index des gegebenen Arrays
+	\item \lstinline|currentIndex| nicht wiederholt überprüfen
 	
 	Selbst wenn es möglich sein sollte das original Array in Stücke so zu teilen dass dennoch die original Index beizubehalten, ist die Auswahl der Indexe falsch, denn \lstinline|currentIndex| wurde bereits geprüft. Es ist daher unsinnig, dass dieser Index noch im Subarray erscheint. Man müsste also \lstinline|currentIndex + 1| für \lstinline|currentKey < key| bzw. \lstinline|curentIndex| (\lstinline|currentIndex| selbst wird also nicht betrachtet) für \lstinline|currentKey > key| wählen.
 \end{itemize}
