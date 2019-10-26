@@ -567,7 +567,7 @@ Gegeben ist folgender Array, wenn der Key 47 ist, dann soll die Binäre Suche 2 
 \paragraph{Typische Fehler}
 \begin{lstlisting}[caption=My Javascript Example]
 //a is sorted array
-let binary_search = function(a, key) {
+let binarySearch = function(a, key) {
 	let newA = a;
 	let currentIndex;
 	while(newA.length !== 0) {
@@ -584,8 +584,6 @@ let binary_search = function(a, key) {
 	}
 	return -1;
 };
-const arr = [1,2,3,7,8,10,33];
-console.log(binary_search(arr, 3));
 \end{lstlisting}
 
 \begin{itemize} 
@@ -608,7 +606,7 @@ console.log(binary_search(arr, 3));
 
 \begin{lstlisting}[caption=My Javascript Example]
 //a is sorted array
-let binary_search = function(a, key) {
+let binarySearch = function(a, key) {
 	if (a.length === 0) {
 		return -1;
 	}
