@@ -39,12 +39,61 @@
    captionpos=b,
 }
 
+\usepackage{amsthm}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[most]{tcolorbox}
+\usepackage{lipsum}% just to generate text for the example
+
+\newmdtheoremenv[
+hidealllines=true,
+leftline=true,
+innertopmargin=0pt,
+innerbottommargin=0pt,
+linewidth=4pt,
+linecolor=gray!40,
+innerrightmargin=0pt,
+innertopmargin=-6pt,
+]{examplei}{Aufgabe}
+
+\newtcolorbox{exampleii}{
+	freelance,
+	breakable,
+	width=\dimexpr\textwidth+28pt\relax,
+	before=\par\vspace{\bigskipamount}\noindent,
+	enlarge left by=-14pt,
+	overlay unbroken and first={
+		\node[
+		anchor=north east,
+		inner xsep=8pt,
+		xshift=8pt,
+		rounded corners=5pt,
+		font=\bfseries,
+		fill=white] at ([xshift=-0.2cm]frame.north west) (tit) {\strut Example:};
+		\draw[
+		line width=3pt,
+		rounded corners=5pt,gray
+		] ([xshift=4pt]frame.north west) -- ([xshift=4pt]frame.south west);
+	},
+	overlay middle and last={
+		\draw[
+		line width=3pt,
+		rounded corners=5pt,gray
+		] ([xshift=4pt]frame.north west) -- ([xshift=4pt]frame.south west);
+	},
+	frame code={},
+	interior code={},
+	top=0pt,
+	bottom=0pt
+}
+
 \renewcommand{\contentsname}{Inhalt}
+\renewcommand{\chaptername}{Kapitel}
 
 \begin{document}
 \tableofcontents
 %\blinddocument
 \chapter{Algorithmen und Datenstrukturen in ES6+}
+
 Dieses Buch ist noch in Bearbeitung....
 \section{Warum in ES6+}
 - ES is eating the world
@@ -67,7 +116,7 @@ Sobald man den Browser aber neu lädt ist unser Code weg. Besser ist es den Code
 File speichern und mit node [filename] ausführen
 \chapter{JavaScript Paradigmen}
 JS ist eine sog. Multiparadigmen Programmiersprache. JS ist imperativ, objektorientiert und funktional. 
-\section{Objekte und Object-Orientiertes Programmieren}
+\section{Object-Orientiertes Programmieren}
 \section{Funktionales Programmieren}
 \chapter{JavaScript Konstrukte}
 \section{Entscheidungskonstrukte}
@@ -83,12 +132,13 @@ statement vs. expression
 switch
 
 \section{Wiederholungen}
-for loop, while loop, symbol iterator; Generator; yields
+for loop, while loop, do while loop, symbol iterator; Generator; yields, for of 
 
 \section{Funktionen}
 \section{Scope}
 \section{Closures}
 \section{Call by Reference vs. Call by Value}
+\section{Truthy und falsy}
 
 \chapter{Datenstrukturen}
 \section{Array}
@@ -276,6 +326,8 @@ var sumOfArray = myArray.reduce(sum, 0);
 // 6
 \end{lstlisting}
 
+Die \lstinline|reduce()| Funktion geht im Array von links nach rechts. Mit der \lstinline|reduceRight()| geht die Funktion von rechts nach links.
+
 Die Methode \lstinline|flat()|\footnote{noch im Experiment Status, d.h. es wurde noch nicht von allen JS Engines implementiert} wird auf Arrays angewendet, die selbst wiederum Arrays enthalten. Sie erstellt ein neues Arrays mit allen Unterarrays. Dabei kann optional bestimmt werden bis zu welcher Ebene die Unterarrays aufgelöst werden. Die \lstinline|flat()| Methode nimmt optional nur einen numerischen Wert an. Dieser legt fest bis zu welcher Ebene die Unterarrays aufgelöst werden.
 
 \begin{lstlisting}[caption=Array Konstruktor]
@@ -318,27 +370,123 @@ console.log(newArray);
 // ["a", "b", "c", "x", "d", "e", "f"]
 \end{lstlisting}
 
+Eine andere Möglichkeit ist es den Rest/Spread Operator zu verwenden:
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray1 = ["a", "b", "c", "x"];
+var myArray2 = ["d", "e", "f"];
+var newArray = [...myArray1, ...myArray2];
+console.log(newArray);
+// ["a", "b", "c", "x", "d", "e", "f"]
+\end{lstlisting}
 
+Die \lstinline|slice()| Methode erstellt eine (flache) Kopie des Arrays und gibt diese Kopie als neues Array zurück. Die Methode nimmt zwei Argumente auf. Das erste Argument beschreibt ab welchem Index die Kopie erstellt wird. Das zweite optionale Argument beschreibt bis zu welchem (exklusve) Index das Array kopiert wird. Wird für das zweite Argument kein Wert gegeben, dann kopiert er bis zum Arrayende:
 
-Die \lstinline|slice()| Methode 
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = ["a", "b", "c", "x"];
+var newArray = myArray.slice(0);
+console.log(newArray);
+// ["a", "b", "c", "x"]
+\end{lstlisting}
 
-\lstinline|every()|
-\lstinline|some()|
+Eine flache Kopie deshalb, weil die Funktion die Elemente als Referenz in das neue Array schreibt. D.h. jede Änderung im original Array hat Auswirkung auf das neue Array. Dies gilt jedoch nicht für \lstinline|Number|, \lstinline|String|, \lstinline|boolean|, \lstinline|null|, \lstinline|undefined|, \lstinline|symbol|, sondern für \lstinline|object|, \lstinline|Array|, \lstinline|function|:
 
-Array kopieren. 
+\begin{lstlisting}[caption=Array Konstruktor]
+// Using slice, create newCar from myCar.
+var myHonda = { color: 'red', wheels: 4, engine: { cylinders: 4, size: 2.2 } };
+var myCar = [myHonda, 2, 'cherry condition', 'purchased 1997'];
+var newCar = myCar.slice(0, 2);
+console.log(newCar);
+// Display the values of myCar, newCar, and the color of myHonda
+//  referenced from both arrays.
+console.log('myCar[0].color = ' + myCar[0].color);
+console.log('newCar[0].color = ' + newCar[0].color);
 
-Element im Array finden
+// Change the color of myHonda.
+myHonda.color = 'purple';
+console.log('The new color of my Honda is ' + myHonda.color);
 
-Strings in einen Array umwandeln
+// Display the color of myHonda referenced from both arrays.
+console.log('myCar[0].color = ' + myCar[0].color);
+console.log('newCar[0].color = ' + newCar[0].color);
+\end{lstlisting}
 
-Array manipulieren: Hinzufügen (push, unshift), entfernen (des letzten pop, des ersten shift), Zugriff die Elemente. Subarray erstellen: splice (mit mutation), slice (ohne). Kopieren von Arrays (slice(0)), usw..... dieser Abschnitt eng in Abstimmmung mit der Implementierung der komplexen Datenstrukturen machen.
+Eine weitere Möglichkeit den Array zu kopieren ist mit Hilfe des Rest/Spread-Operators:
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = ["a", "b", "c", "x"];
+var newArray = [...myArray];
+console.log(newArray);
+// ["a", "b", "c", "x"]
+\end{lstlisting}
 
-- arrays are only objects- values are converted to Strings- is slower than in other JS- creating an Array with Array literal or constructor - go with the array literal because it's faster and is more clear. Array constructor can be weird....e.g.: new Array(10); // creates new array of size 10 new Array(10, 9,8,7,6); // creates new array with the elements 10, 9, 8, etc.- different objects, e.g. strings, int, bool can be in one array- accessing array elements- writing into array- can grow dynamicallly beyond the specified size- creating arrays from strings with split()- Assign array to another, shallow copy- How to copy array- searching for an value, indexOf(), return the first element, lastIndexOf(), returns the last element- exists value, includes()- return string from an array: toString(), join()- creating new arrays from existing ones: concat(), splice()- mutator functions: shift(), push(), pop(), - reordering reverse(), sort(); (sort doesn't work well with numbers!)- adding and removeing elements from the middle of an array: splice()- iterator functions: forEach, every(), some(), map(), filter(), reduce(), reduceRight(), flat(), flatMap()- multidimensional Array
+Der Unterschied zwischen beiden Möglichkeiten ist, dass \lstinline|slice()| eine flache Kopie und der Rest/Spread Operator eine tiefen Kopie erstellt:
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = ["a", "b", "c", "x"];
+var newArrayShallow = myArray.slice(0);
+var newArrayDeep = [...myArray];
+console.log(myArray === newArrayShallow);
+// true --> it's pointing to the same memory space
+
+console.log(myArray === newArrayDeep);
+// false --> it's pointing to a new memory space
+\end{lstlisting}
+
+Es muss aber hier erwähnt werden, dass der Rest/Spread Operator nur eine Ebene tief kopiert. Bei mehrdimensionalen Arrays muss man andere Methoden wählen. Unten sind Methoden aufgelistet mit der man eine tiefen Kopie, also einen Klon, erstellen kann:
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray = ["a", "b", "c", "x"];
+
+var clonedArray1 = JSON.parse(JSON.stringify(myArray))
+var clonedArray2 = [].concat(myArray);
+var clonedArray2 = Array.from(myArray);
+\end{lstlisting}
+
+Wie im vorherigen Kapitel angesprochen gibt es die Möglichkeit durch ein Array mit einer Schleife zu iterieren. Die Arrays in JS bieten eigene Funktionen zum Iterieren an. Die \lstinline|forEach()| Funktion nimmt eine Methode und geht durch alle Elemente durch und wendet auf jedes einzelene ELement die Methode an. Die Funktion kann, im Gegensatz zum \lstinline|for|, \lstinline|while|, \lstinline|do while|, usw. Schleifen nicht unterbrochen werden - außer durch das Werfen einer Ausnahme (was aber nicht empfohlen wird). Die \lstinline|forEach()| Funktion liefert kein Ergebnis zurück.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+
+\end{lstlisting}
+Will man vorher abbrechen so kann man entweder die \lstinline|every()| oder \lstinline|some()| verwenden. Die \lstinline|every()| nimmt eine Funktion auf und überprüft sie für alle Elemente. Sobald bei der Überprüfung bei eines der Elemente \lstinline|falsy| zurück gegeben wird, bricht sie ab. Bei der \lstinline|some()| wird die Iteration abgebrochen sobald bei der Auswertung \lstinline|truthy| zurückgegeben wird.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+
+\end{lstlisting}
+
+Oft will man ein Element im Array finden. Dazu kann man wieder Schleifen benutzen oder die Built-in Funktionen verwenden. 
+
+Will man nur feststellen, ob ein Element auch im Array vorhanden ist, so kann man \lstinline|includes()| verwenden. Dieses gibt entweder \lstinline|true| oder \lstinline|false| zurück, wenn das Element im Array gefunden bzw. nicht gefunden wurde.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+
+\end{lstlisting}
+
+Eine Möglichkeit herauszufinden, an welcher Position das gesuchte Element sich befindet, bietet \lstinline|indexOf()|. Diese nimmmt eine Funktion auf und liefert den ersten Index des Elements, bei der die mitgegebene Funktion \lstinline|truthy| zurückliefert. \lstinline|lastIndexOf()| macht genau das Gegenteil: sie gibt den Index des zu letzt gefundenen Elements zurück. Falls keines der Elemente den Bedingungen entspricht, liefert \lstinline|indexOf()| und \lstinline|lastIndexOf()| \lstinline|-1| zurück.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+
+\end{lstlisting}
+
+Will man einen \lstinline|String|in einen Array umwandeln, so kann man wieder den Rest/Spread-Operator verwenden. Dabei wird jedes einzelne Zeichen, inklusive Leerzeichen, Komma, Sonderzeichen usw., als eigenes Element in ein neues Array gepackt und zurückgegeben.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myString = "hello, world";
+var myArray = [...myString];
+console.log(myArray);
+// ["h", "e", "l", "l", "o", ",", " ", "w", "o", "r", "l", "d"]
+\end{lstlisting}
+
+Mit \lstinline|split()| kann man festlegen ab wann man die Elemente in einen Array übergeben will. Die Funktion nimmt einen \lstinline|String| als Prädikat auf. Will man z.B. beim obigen Beispiel nur die Wörter in den Array geben, die durch einen Komma getrennt sind, so gibt man das als String in die Funktion ein:
+\begin{lstlisting}[caption=Array Konstruktor]
+var myString = "hello, world";
+var myArray = myString.split(",")
+console.log(myArray);
+// ["hello", " world"]
+\end{lstlisting}
 
 \section{Liste}
-asldfjlkewjf
 Lists are convenient if the order doesn't matter or if you don't have to search for a certain item
-implement a listlistSize (property) Number of elements in list
+implement a fasfwe
+listlistSize (property) Number of elements in list
 pos (property) Current position in list
 length (property) Returns the number of elements in list
 clear (function) Clears all elements from list
@@ -356,6 +504,7 @@ moveTo (function) Moves the current position to specified position
 
 While writing also test your impelmentation with console.assert()
 \section{Stack}
+
 \section{Queue}
 \section{Dequeue}
 \section{Priority Queue}
@@ -386,6 +535,95 @@ Sortier Algorithmen und Such Algorithmen
 \section{Suchen nach Minimum und Maximum}
 \section{Rucksackproblem}
 \section{Greedy Algorithm}
+\chapter{übungen}
+\section{Binäres Suchen}
+\begin{examplei}
+Gegeben ist ein Array mit ganzen Zahlen. Gib den Index des gegebenen Keys. Falls kein Ergebnis gefunden wurde, gib \lstinline|-1| zurück.
+
+Beispiel:
+Gegeben ist folgender Array, wenn der Key 47 ist, dann soll die Binäre Suche 2 zurückgeben.
+
+
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index     & 0 & 1 & 2 & 3 & 4 & 5  & 6  & 7  & 8  & 9 \\ 
+		\hline
+		Key & 23 & 31 & 47	  & 65 & 69 & 73 & 75 & 89 & 91 & 93 \\
+		\hline
+	\end{tabular}
+
+\end{examplei}
+{\bf Stichwörter:} Array, Binary Search, Suche
+\paragraph{Vorgehensweise}
+\begin{enumerate} 
+	\item Betrachte das Array von Anfang bis Ende
+	\item Berechne den Index der in der Mitte liegt
+	\item Wenn der Mitte Index genau auf den Key zeigt, dann gib den diesen Index zurück
+	\item Wenn das Element an der Mitte Index kleiner ist als der Key, dann betrachte nur das Subarray von der Mitte Index bis zum Ende
+	\item Wenn das Element an der Mitte Index größer ist als der Key, dann betrachte nur das Subarray von der Mitte Index bis zum Anfang
+	\item Wiederhole die obigen Schritte solange bis das Subarray leer ist
+\end{enumerate}
+
+\paragraph{Typische Fehler}
+\begin{lstlisting}[caption=My Javascript Example]
+//a is sorted array
+let binary_search = function(a, key) {
+	let newA = a;
+	let currentIndex;
+	while(newA.length !== 0) {
+		currentIndex = newA.length / 2;
+		const currentKey = newA[currentIndex];
+	
+		if (currentKey === key) {
+			return currentIndex;
+		} else if (currentKey < key) {
+			newA = newA.slice(currentIndex);
+		} else {
+			newA = newA.slice(0, currentIndex + 1);
+		}
+	}
+	return -1;
+};
+const arr = [1,2,3,7,8,10,33];
+console.log(binary_search(arr, 3));
+\end{lstlisting}
+
+\begin{itemize} 
+	\item Ein Array ist index basiert beginned bei 0
+	
+	Das weißt wahrscheinlich jeder bisher. Jedoch wird die Implikationen dessen sehr oft vergessen. Um auf den Index \lstinline|currentIndex| zu kommen muss die \lstinline|(arr.length - 1) / 2| genommen werden.
+	\item Array Index sind immer ganze Zahlen
+	
+	Auch dies sollte mittlerweile bekannt sein. Doch wie im obigen Fall zu sehen wurde durch \lstinline|2| geteilt. Bei ungeraden Zahlen entstehen dadurch rationale Zahlen, die auf ganze Zahlen wieder zurück gecastet werden müssen
+	
+	\item Es wird nach dem Index des original Arrays gefragt
+	
+	Ein neues Array zu erstellen und darauf den Index zu ermitteln bedeutet, dass man den Index des neuen Arrays zurück gibt.
+	\item Selbst wenn es möglich sein sollte das original Array in Stücke zu teilen und dennoch die original Index beizubehalten, ist die Auswahl der Indexe falsch, denn \lstinline|currentIndex| wurde bereits geprüft. Es ist daher unsinnig, dass dieser Index noch im Subarray erscheint. Man müsste also \lstinline|currentIndex + 1| für \lstinline|currentKey < key| bzw. \lstinline|curentIndex| (\lstinline|currentIndex| selbst wird also nicht betrachtet) für \lstinline|currentKey > key| wählen.
+\end{itemize}
+\paragraph{Lösung}
+
+
+\begin{lstlisting}[caption=My Javascript Example]
+//a is sorted array
+let binary_search = function(a, key) {
+	let newA = a;
+	let currentIndex;
+	while(newA.length !== 0) {
+		currentIndex = newA.length / 2;
+		const currentKey = newA[currentIndex];
+		
+		if (currentKey === key) {
+			return currentIndex;
+		} else if (currentKey < key) {
+			newA = newA.slice(currentIndex);
+		} else {
+			newA = newA.slice(0, currentIndex + 1);
+		}
+	}
+	return -1;
+};
+\end{lstlisting}
 
 \medskip
 \begin{lstlisting}[caption=My Javascript Example]

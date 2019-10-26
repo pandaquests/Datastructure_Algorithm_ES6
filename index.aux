@@ -1,4 +1,5 @@
 \relax 
+\providecommand\zref@newlabel[2]{}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Algorithmen und Datenstrukturen in ES6+}{3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -10,7 +11,7 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}JavaScript Paradigmen}{7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Objekte und Object-Orientiertes Programmieren}{7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Object-Orientiertes Programmieren}{7}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Funktionales Programmieren}{7}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}JavaScript Konstrukte}{9}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -21,6 +22,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Scope}{9}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.5}Closures}{9}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.6}Call by Reference vs. Call by Value}{9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Truthy und falsy}{9}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Datenstrukturen}{11}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -43,36 +45,59 @@
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {5.16}Array Konstruktor}{16}\protected@file@percent }
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {5.17}Array Konstruktor}{16}\protected@file@percent }
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {5.18}Array Konstruktor}{17}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Liste}{17}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Stack}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Queue}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Dequeue}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}Priority Queue}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.7}LinkedList}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.10}Dictionary}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.11}Hashing}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.12}HashMap}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.13}MapTree}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.14}LinkedMap}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.15}Sets}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.17}Graphen}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.18}AVL Tree}{18}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Algorithmen}{19}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.19}Array Konstruktor}{17}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.20}Array Konstruktor}{17}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.21}Array Konstruktor}{17}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.22}Array Konstruktor}{18}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.23}Array Konstruktor}{18}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.24}Array Konstruktor}{18}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.25}Array Konstruktor}{18}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.26}Array Konstruktor}{19}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.27}Array Konstruktor}{19}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.28}Array Konstruktor}{19}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.29}Array Konstruktor}{19}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5.30}Array Konstruktor}{19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Liste}{20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Stack}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Queue}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Dequeue}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Priority Queue}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}LinkedList}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.10}Dictionary}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.11}Hashing}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.12}HashMap}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.13}MapTree}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.14}LinkedMap}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.15}Sets}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.17}Graphen}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.18}AVL Tree}{21}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Algorithmen}{23}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Breitensuche}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Tiefensuche}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Bubble Sort}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Selection Sort}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Shellsort}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.6}Mergesort}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.7}Quicksort}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.8}Sequential Suche}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.11}Rucksackproblem}{19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.12}Greedy Algorithm}{19}\protected@file@percent }
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {6.1}My Javascript Example}{20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Breitensuche}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Tiefensuche}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Bubble Sort}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Selection Sort}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Shellsort}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Mergesort}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.7}Quicksort}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.8}Sequential Suche}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.11}Rucksackproblem}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.12}Greedy Algorithm}{23}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}\IeC {\"u}bungen}{25}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{25}\protected@file@percent }
+\zref@newlabel{mdf@pagelabel-1}{\default{7.1}\page{25}\abspage{25}\mdf@pagevalue{25}}
+\pgfsyspdfmark {pgfid1}{7030046}{25437068}
+\@writefile{toc}{\contentsline {paragraph}{Vorgehensweise}{25}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Typische Fehler}{25}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.1}My Javascript Example}{25}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{L\IeC {\"o}sung}{26}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.2}My Javascript Example}{26}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7.3}My Javascript Example}{27}\protected@file@percent }

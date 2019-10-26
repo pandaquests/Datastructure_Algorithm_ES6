@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1.2}Nicht behandelte Themen}{3}% 
 \contentsline {chapter}{\numberline {2}Entwicklungsumgebung}{5}% 
 \contentsline {chapter}{\numberline {3}JavaScript Paradigmen}{7}% 
-\contentsline {section}{\numberline {3.1}Objekte und Object-Orientiertes Programmieren}{7}% 
+\contentsline {section}{\numberline {3.1}Object-Orientiertes Programmieren}{7}% 
 \contentsline {section}{\numberline {3.2}Funktionales Programmieren}{7}% 
 \contentsline {chapter}{\numberline {4}JavaScript Konstrukte}{9}% 
 \contentsline {section}{\numberline {4.1}Entscheidungskonstrukte}{9}% 
@@ -12,35 +12,41 @@
 \contentsline {section}{\numberline {4.4}Scope}{9}% 
 \contentsline {section}{\numberline {4.5}Closures}{9}% 
 \contentsline {section}{\numberline {4.6}Call by Reference vs. Call by Value}{9}% 
+\contentsline {section}{\numberline {4.7}Truthy und falsy}{9}% 
 \contentsline {chapter}{\numberline {5}Datenstrukturen}{11}% 
 \contentsline {section}{\numberline {5.1}Array}{11}% 
-\contentsline {section}{\numberline {5.2}Liste}{17}% 
-\contentsline {section}{\numberline {5.3}Stack}{18}% 
-\contentsline {section}{\numberline {5.4}Queue}{18}% 
-\contentsline {section}{\numberline {5.5}Dequeue}{18}% 
-\contentsline {section}{\numberline {5.6}Priority Queue}{18}% 
-\contentsline {section}{\numberline {5.7}LinkedList}{18}% 
-\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{18}% 
-\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{18}% 
-\contentsline {section}{\numberline {5.10}Dictionary}{18}% 
-\contentsline {section}{\numberline {5.11}Hashing}{18}% 
-\contentsline {section}{\numberline {5.12}HashMap}{18}% 
-\contentsline {section}{\numberline {5.13}MapTree}{18}% 
-\contentsline {section}{\numberline {5.14}LinkedMap}{18}% 
-\contentsline {section}{\numberline {5.15}Sets}{18}% 
-\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{18}% 
-\contentsline {section}{\numberline {5.17}Graphen}{18}% 
-\contentsline {section}{\numberline {5.18}AVL Tree}{18}% 
-\contentsline {chapter}{\numberline {6}Algorithmen}{19}% 
-\contentsline {section}{\numberline {6.1}Breitensuche}{19}% 
-\contentsline {section}{\numberline {6.2}Tiefensuche}{19}% 
-\contentsline {section}{\numberline {6.3}Bubble Sort}{19}% 
-\contentsline {section}{\numberline {6.4}Selection Sort}{19}% 
-\contentsline {section}{\numberline {6.5}Shellsort}{19}% 
-\contentsline {section}{\numberline {6.6}Mergesort}{19}% 
-\contentsline {section}{\numberline {6.7}Quicksort}{19}% 
-\contentsline {section}{\numberline {6.8}Sequential Suche}{19}% 
-\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{19}% 
-\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{19}% 
-\contentsline {section}{\numberline {6.11}Rucksackproblem}{19}% 
-\contentsline {section}{\numberline {6.12}Greedy Algorithm}{19}% 
+\contentsline {section}{\numberline {5.2}Liste}{20}% 
+\contentsline {section}{\numberline {5.3}Stack}{21}% 
+\contentsline {section}{\numberline {5.4}Queue}{21}% 
+\contentsline {section}{\numberline {5.5}Dequeue}{21}% 
+\contentsline {section}{\numberline {5.6}Priority Queue}{21}% 
+\contentsline {section}{\numberline {5.7}LinkedList}{21}% 
+\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{21}% 
+\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{21}% 
+\contentsline {section}{\numberline {5.10}Dictionary}{21}% 
+\contentsline {section}{\numberline {5.11}Hashing}{21}% 
+\contentsline {section}{\numberline {5.12}HashMap}{21}% 
+\contentsline {section}{\numberline {5.13}MapTree}{21}% 
+\contentsline {section}{\numberline {5.14}LinkedMap}{21}% 
+\contentsline {section}{\numberline {5.15}Sets}{21}% 
+\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{21}% 
+\contentsline {section}{\numberline {5.17}Graphen}{21}% 
+\contentsline {section}{\numberline {5.18}AVL Tree}{21}% 
+\contentsline {chapter}{\numberline {6}Algorithmen}{23}% 
+\contentsline {section}{\numberline {6.1}Breitensuche}{23}% 
+\contentsline {section}{\numberline {6.2}Tiefensuche}{23}% 
+\contentsline {section}{\numberline {6.3}Bubble Sort}{23}% 
+\contentsline {section}{\numberline {6.4}Selection Sort}{23}% 
+\contentsline {section}{\numberline {6.5}Shellsort}{23}% 
+\contentsline {section}{\numberline {6.6}Mergesort}{23}% 
+\contentsline {section}{\numberline {6.7}Quicksort}{23}% 
+\contentsline {section}{\numberline {6.8}Sequential Suche}{23}% 
+\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{23}% 
+\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{23}% 
+\contentsline {section}{\numberline {6.11}Rucksackproblem}{23}% 
+\contentsline {section}{\numberline {6.12}Greedy Algorithm}{23}% 
+\contentsline {chapter}{\numberline {7}\IeC {\"u}bungen}{25}% 
+\contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{25}% 
+\contentsline {paragraph}{Vorgehensweise}{25}% 
+\contentsline {paragraph}{Typische Fehler}{25}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{26}% 
