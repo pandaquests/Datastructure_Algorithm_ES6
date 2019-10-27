@@ -1,4 +1,4 @@
-const binarySearch = require('./binarySearchSol.js');
+const binarySearch = require('./binarySearch.js');
 
 let array_for_binary_search = [10, 20, 47, 59, 63, 75, 88, 99, 107, 120, 133, 155, 162, 176, 188, 199, 200, 210, 222];
 

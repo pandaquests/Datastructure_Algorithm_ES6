@@ -1,4 +1,7 @@
 \documentclass{book}
+
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor; % table cell color
+
 \usepackage{blindtext}
 \usepackage{scrlfile}
 % Taken from Lena Herrmann at 
@@ -450,6 +453,7 @@ Wie im vorherigen Kapitel angesprochen gibt es die Möglichkeit durch ein Array 
 \begin{lstlisting}[caption=Array Konstruktor]
 
 \end{lstlisting}
+
 Will man vorher abbrechen so kann man entweder die \lstinline|every()| oder \lstinline|some()| verwenden. Die \lstinline|every()| nimmt eine Funktion auf und überprüft sie für alle Elemente. Sobald bei der Überprüfung bei eines der Elemente \lstinline|falsy| zurück gegeben wird, bricht sie ab. Bei der \lstinline|some()| wird die Iteration abgebrochen sobald bei der Auswertung \lstinline|truthy| zurückgegeben wird.
 
 \begin{lstlisting}[caption=Array Konstruktor]
@@ -467,7 +471,7 @@ Will man nur feststellen, ob ein Element auch im Array vorhanden ist, so kann ma
 Eine Möglichkeit herauszufinden, an welcher Position das gesuchte Element sich befindet, bietet \lstinline|indexOf()|. Diese nimmmt eine Funktion auf und liefert den ersten Index des Elements, bei der die mitgegebene Funktion \lstinline|truthy| zurückliefert. \lstinline|lastIndexOf()| macht genau das Gegenteil: sie gibt den Index des zu letzt gefundenen Elements zurück. Falls keines der Elemente den Bedingungen entspricht, liefert \lstinline|indexOf()| und \lstinline|lastIndexOf()| \lstinline|-1| zurück.
 
 \begin{lstlisting}[caption=Array Konstruktor]
-
+asdf
 \end{lstlisting}
 
 Will man einen \lstinline|String|in einen Array umwandeln, so kann man wieder den Rest/Spread-Operator verwenden. Dabei wird jedes einzelne Zeichen, inklusive Leerzeichen, Komma, Sonderzeichen usw., als eigenes Element in ein neues Array gepackt und zurückgegeben.
@@ -488,6 +492,7 @@ console.log(myArray);
 \end{lstlisting}
 
 \section{Liste}
+
 Lists are convenient if the order doesn't matter or if you don't have to search for a certain item
 implement a fasfwe
 listlistSize (property) Number of elements in list
@@ -508,11 +513,964 @@ moveTo (function) Moves the current position to specified position
 
 While writing also test your impelmentation with console.assert()
 \section{Stack}
+Method Detail
+push
+public E push(E item)
+Pushes an item onto the top of this stack. This has exactly the same effect as:
+addElement(item)
+Parameters:
+item - the item to be pushed onto this stack.
+Returns:
+the item argument.
+See Also:
+Vector.addElement(E)
+pop
+public E pop()
+Removes the object at the top of this stack and returns that object as the value of this function.
+Returns:
+The object at the top of this stack (the last item of the Vector object).
+Throws:
+EmptyStackException - if this stack is empty.
+peek
+public E peek()
+Looks at the object at the top of this stack without removing it from the stack.
+Returns:
+the object at the top of this stack (the last item of the Vector object).
+Throws:
+EmptyStackException - if this stack is empty.
+empty
+public boolean empty()
+Tests if this stack is empty.
+Returns:
+true if and only if this stack contains no items; false otherwise.
+search
+public int search(Object o)
+Returns the 1-based position where an object is on this stack. If the object o occurs as an item in this stack, this method returns the distance from the top of the stack of the occurrence nearest the top of the stack; the topmost item on the stack is considered to be at distance 1. The equals method is used to compare o to the items in this stack.
+Parameters:
+o - the desired object.
+Returns:
+the 1-based position from the top of the stack where the object is located; the return value -1 indicates that the object is not on the stack.
 
 \section{Queue}
+Method Detail
+add
+boolean add(E e)
+Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+Specified by:
+add in interface Collection<E>
+Parameters:
+e - the element to add
+Returns:
+true (as specified by Collection.add(E))
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this queue
+NullPointerException - if the specified element is null and this queue does not permit null elements
+IllegalArgumentException - if some property of this element prevents it from being added to this queue
+offer
+boolean offer(E e)
+Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted queue, this method is generally preferable to add(E), which can fail to insert an element only by throwing an exception.
+Parameters:
+e - the element to add
+Returns:
+true if the element was added to this queue, else false
+Throws:
+ClassCastException - if the class of the specified element prevents it from being added to this queue
+NullPointerException - if the specified element is null and this queue does not permit null elements
+IllegalArgumentException - if some property of this element prevents it from being added to this queue
+remove
+E remove()
+Retrieves and removes the head of this queue. This method differs from poll only in that it throws an exception if this queue is empty.
+Returns:
+the head of this queue
+Throws:
+NoSuchElementException - if this queue is empty
+poll
+E poll()
+Retrieves and removes the head of this queue, or returns null if this queue is empty.
+Returns:
+the head of this queue, or null if this queue is empty
+element
+E element()
+Retrieves, but does not remove, the head of this queue. This method differs from peek only in that it throws an exception if this queue is empty.
+Returns:
+the head of this queue
+Throws:
+NoSuchElementException - if this queue is empty
+peek
+E peek()
+Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
+Returns:
+the head of this queue, or null if this queue is empty
+
 \section{Dequeue}
+Method Detail
+addFirst
+void addFirst(E e)
+Inserts the specified element at the front of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerFirst(E).
+Parameters:
+e - the element to add
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+addLast
+void addLast(E e)
+Inserts the specified element at the end of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerLast(E).
+This method is equivalent to add(E).
+
+Parameters:
+e - the element to add
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+offerFirst
+boolean offerFirst(E e)
+Inserts the specified element at the front of this deque unless it would violate capacity restrictions. When using a capacity-restricted deque, this method is generally preferable to the addFirst(E) method, which can fail to insert an element only by throwing an exception.
+Parameters:
+e - the element to add
+Returns:
+true if the element was added to this deque, else false
+Throws:
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+offerLast
+boolean offerLast(E e)
+Inserts the specified element at the end of this deque unless it would violate capacity restrictions. When using a capacity-restricted deque, this method is generally preferable to the addLast(E) method, which can fail to insert an element only by throwing an exception.
+Parameters:
+e - the element to add
+Returns:
+true if the element was added to this deque, else false
+Throws:
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+removeFirst
+E removeFirst()
+Retrieves and removes the first element of this deque. This method differs from pollFirst only in that it throws an exception if this deque is empty.
+Returns:
+the head of this deque
+Throws:
+NoSuchElementException - if this deque is empty
+removeLast
+E removeLast()
+Retrieves and removes the last element of this deque. This method differs from pollLast only in that it throws an exception if this deque is empty.
+Returns:
+the tail of this deque
+Throws:
+NoSuchElementException - if this deque is empty
+pollFirst
+E pollFirst()
+Retrieves and removes the first element of this deque, or returns null if this deque is empty.
+Returns:
+the head of this deque, or null if this deque is empty
+pollLast
+E pollLast()
+Retrieves and removes the last element of this deque, or returns null if this deque is empty.
+Returns:
+the tail of this deque, or null if this deque is empty
+getFirst
+E getFirst()
+Retrieves, but does not remove, the first element of this deque. This method differs from peekFirst only in that it throws an exception if this deque is empty.
+Returns:
+the head of this deque
+Throws:
+NoSuchElementException - if this deque is empty
+getLast
+E getLast()
+Retrieves, but does not remove, the last element of this deque. This method differs from peekLast only in that it throws an exception if this deque is empty.
+Returns:
+the tail of this deque
+Throws:
+NoSuchElementException - if this deque is empty
+peekFirst
+E peekFirst()
+Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty.
+Returns:
+the head of this deque, or null if this deque is empty
+peekLast
+E peekLast()
+Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty.
+Returns:
+the tail of this deque, or null if this deque is empty
+removeFirstOccurrence
+boolean removeFirstOccurrence(Object o)
+Removes the first occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the first element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+Parameters:
+o - element to be removed from this deque, if present
+Returns:
+true if an element was removed as a result of this call
+Throws:
+ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+removeLastOccurrence
+boolean removeLastOccurrence(Object o)
+Removes the last occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the last element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+Parameters:
+o - element to be removed from this deque, if present
+Returns:
+true if an element was removed as a result of this call
+Throws:
+ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+add
+boolean add(E e)
+Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available. When using a capacity-restricted deque, it is generally preferable to use offer.
+This method is equivalent to addLast(E).
+
+Specified by:
+add in interface Collection<E>
+Specified by:
+add in interface Queue<E>
+Parameters:
+e - the element to add
+Returns:
+true (as specified by Collection.add(E))
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+offer
+boolean offer(E e)
+Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and false if no space is currently available. When using a capacity-restricted deque, this method is generally preferable to the add(E) method, which can fail to insert an element only by throwing an exception.
+This method is equivalent to offerLast(E).
+
+Specified by:
+offer in interface Queue<E>
+Parameters:
+e - the element to add
+Returns:
+true if the element was added to this deque, else false
+Throws:
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+remove
+E remove()
+Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque). This method differs from poll only in that it throws an exception if this deque is empty.
+This method is equivalent to removeFirst().
+
+Specified by:
+remove in interface Queue<E>
+Returns:
+the head of the queue represented by this deque
+Throws:
+NoSuchElementException - if this deque is empty
+poll
+E poll()
+Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+This method is equivalent to pollFirst().
+
+Specified by:
+poll in interface Queue<E>
+Returns:
+the first element of this deque, or null if this deque is empty
+element
+E element()
+Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque). This method differs from peek only in that it throws an exception if this deque is empty.
+This method is equivalent to getFirst().
+
+Specified by:
+element in interface Queue<E>
+Returns:
+the head of the queue represented by this deque
+Throws:
+NoSuchElementException - if this deque is empty
+peek
+E peek()
+Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+This method is equivalent to peekFirst().
+
+Specified by:
+peek in interface Queue<E>
+Returns:
+the head of the queue represented by this deque, or null if this deque is empty
+push
+void push(E e)
+Pushes an element onto the stack represented by this deque (in other words, at the head of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+This method is equivalent to addFirst(E).
+
+Parameters:
+e - the element to push
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+pop
+E pop()
+Pops an element from the stack represented by this deque. In other words, removes and returns the first element of this deque.
+This method is equivalent to removeFirst().
+
+Returns:
+the element at the front of this deque (which is the top of the stack represented by this deque)
+Throws:
+NoSuchElementException - if this deque is empty
+remove
+boolean remove(Object o)
+Removes the first occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the first element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+This method is equivalent to removeFirstOccurrence(java.lang.Object).
+
+Specified by:
+remove in interface Collection<E>
+Parameters:
+o - element to be removed from this deque, if present
+Returns:
+true if an element was removed as a result of this call
+Throws:
+ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+contains
+boolean contains(Object o)
+Returns true if this deque contains the specified element. More formally, returns true if and only if this deque contains at least one element e such that (o==null ? e==null : o.equals(e)).
+Specified by:
+contains in interface Collection<E>
+Parameters:
+o - element whose presence in this deque is to be tested
+Returns:
+true if this deque contains the specified element
+Throws:
+ClassCastException - if the type of the specified element is incompatible with this deque (optional)
+NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+size
+int size()
+Returns the number of elements in this deque.
+Specified by:
+size in interface Collection<E>
+Returns:
+the number of elements in this deque
+iterator
+Iterator<E> iterator()
+Returns an iterator over the elements in this deque in proper sequence. The elements will be returned in order from first (head) to last (tail).
+Specified by:
+iterator in interface Collection<E>
+Specified by:
+iterator in interface Iterable<E>
+Returns:
+an iterator over the elements in this deque in proper sequence
+descendingIterator
+Iterator<E> descendingIterator()
+Returns an iterator over the elements in this deque in reverse sequential order. The elements will be returned in order from last (tail) to first (head).
+Returns:
+an iterator over the elements in this deque in reverse sequence
+
 \section{Priority Queue}
+Method Detail
+add
+public boolean add(E e)
+Inserts the specified element into this priority queue.
+Specified by:
+add in interface Collection<E>
+Specified by:
+add in interface Queue<E>
+Overrides:
+add in class AbstractQueue<E>
+Parameters:
+e - the element to add
+Returns:
+true (as specified by Collection.add(E))
+Throws:
+ClassCastException - if the specified element cannot be compared with elements currently in this priority queue according to the priority queue's ordering
+NullPointerException - if the specified element is null
+offer
+public boolean offer(E e)
+Inserts the specified element into this priority queue.
+Specified by:
+offer in interface Queue<E>
+Parameters:
+e - the element to add
+Returns:
+true (as specified by Queue.offer(E))
+Throws:
+ClassCastException - if the specified element cannot be compared with elements currently in this priority queue according to the priority queue's ordering
+NullPointerException - if the specified element is null
+peek
+public E peek()
+Description copied from interface: Queue
+Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
+Specified by:
+peek in interface Queue<E>
+Returns:
+the head of this queue, or null if this queue is empty
+remove
+public boolean remove(Object o)
+Removes a single instance of the specified element from this queue, if it is present. More formally, removes an element e such that o.equals(e), if this queue contains one or more such elements. Returns true if and only if this queue contained the specified element (or equivalently, if this queue changed as a result of the call).
+Specified by:
+remove in interface Collection<E>
+Overrides:
+remove in class AbstractCollection<E>
+Parameters:
+o - element to be removed from this queue, if present
+Returns:
+true if this queue changed as a result of the call
+contains
+public boolean contains(Object o)
+Returns true if this queue contains the specified element. More formally, returns true if and only if this queue contains at least one element e such that o.equals(e).
+Specified by:
+contains in interface Collection<E>
+Overrides:
+contains in class AbstractCollection<E>
+Parameters:
+o - object to be checked for containment in this queue
+Returns:
+true if this queue contains the specified element
+toArray
+public Object[] toArray()
+Returns an array containing all of the elements in this queue. The elements are in no particular order.
+The returned array will be "safe" in that no references to it are maintained by this queue. (In other words, this method must allocate a new array). The caller is thus free to modify the returned array.
+
+This method acts as bridge between array-based and collection-based APIs.
+
+Specified by:
+toArray in interface Collection<E>
+Overrides:
+toArray in class AbstractCollection<E>
+Returns:
+an array containing all of the elements in this queue
+toArray
+public <T> T[] toArray(T[] a)
+Returns an array containing all of the elements in this queue; the runtime type of the returned array is that of the specified array. The returned array elements are in no particular order. If the queue fits in the specified array, it is returned therein. Otherwise, a new array is allocated with the runtime type of the specified array and the size of this queue.
+If the queue fits in the specified array with room to spare (i.e., the array has more elements than the queue), the element in the array immediately following the end of the collection is set to null.
+
+Like the toArray() method, this method acts as bridge between array-based and collection-based APIs. Further, this method allows precise control over the runtime type of the output array, and may, under certain circumstances, be used to save allocation costs.
+
+Suppose x is a queue known to contain only strings. The following code can be used to dump the queue into a newly allocated array of String:
+
+String[] y = x.toArray(new String[0]);
+Note that toArray(new Object[0]) is identical in function to toArray().
+Specified by:
+toArray in interface Collection<E>
+Overrides:
+toArray in class AbstractCollection<E>
+Parameters:
+a - the array into which the elements of the queue are to be stored, if it is big enough; otherwise, a new array of the same runtime type is allocated for this purpose.
+Returns:
+an array containing all of the elements in this queue
+Throws:
+ArrayStoreException - if the runtime type of the specified array is not a supertype of the runtime type of every element in this queue
+NullPointerException - if the specified array is null
+iterator
+public Iterator<E> iterator()
+Returns an iterator over the elements in this queue. The iterator does not return the elements in any particular order.
+Specified by:
+iterator in interface Iterable<E>
+Specified by:
+iterator in interface Collection<E>
+Specified by:
+iterator in class AbstractCollection<E>
+Returns:
+an iterator over the elements in this queue
+size
+public int size()
+Description copied from interface: Collection
+Returns the number of elements in this collection. If this collection contains more than Integer.MAX_VALUE elements, returns Integer.MAX_VALUE.
+Specified by:
+size in interface Collection<E>
+Specified by:
+size in class AbstractCollection<E>
+Returns:
+the number of elements in this collection
+clear
+public void clear()
+Removes all of the elements from this priority queue. The queue will be empty after this call returns.
+Specified by:
+clear in interface Collection<E>
+Overrides:
+clear in class AbstractQueue<E>
+poll
+public E poll()
+Description copied from interface: Queue
+Retrieves and removes the head of this queue, or returns null if this queue is empty.
+Specified by:
+poll in interface Queue<E>
+Returns:
+the head of this queue, or null if this queue is empty
+comparator
+public Comparator<? super E> comparator()
+Returns the comparator used to order the elements in this queue, or null if this queue is sorted according to the natural ordering of its elements.
+Returns:
+the comparator used to order this queue, or null if this queue is sorted according to the natural ordering of its elements
 \section{LinkedList}
+Method Detail
+getFirst
+public E getFirst()
+Returns the first element in this list.
+Specified by:
+getFirst in interface Deque<E>
+Returns:
+the first element in this list
+Throws:
+NoSuchElementException - if this list is empty
+getLast
+public E getLast()
+Returns the last element in this list.
+Specified by:
+getLast in interface Deque<E>
+Returns:
+the last element in this list
+Throws:
+NoSuchElementException - if this list is empty
+removeFirst
+public E removeFirst()
+Removes and returns the first element from this list.
+Specified by:
+removeFirst in interface Deque<E>
+Returns:
+the first element from this list
+Throws:
+NoSuchElementException - if this list is empty
+removeLast
+public E removeLast()
+Removes and returns the last element from this list.
+Specified by:
+removeLast in interface Deque<E>
+Returns:
+the last element from this list
+Throws:
+NoSuchElementException - if this list is empty
+addFirst
+public void addFirst(E e)
+Inserts the specified element at the beginning of this list.
+Specified by:
+addFirst in interface Deque<E>
+Parameters:
+e - the element to add
+addLast
+public void addLast(E e)
+Appends the specified element to the end of this list.
+This method is equivalent to add(E).
+
+Specified by:
+addLast in interface Deque<E>
+Parameters:
+e - the element to add
+contains
+public boolean contains(Object o)
+Returns true if this list contains the specified element. More formally, returns true if and only if this list contains at least one element e such that (o==null ? e==null : o.equals(e)).
+Specified by:
+contains in interface Collection<E>
+Specified by:
+contains in interface Deque<E>
+Specified by:
+contains in interface List<E>
+Overrides:
+contains in class AbstractCollection<E>
+Parameters:
+o - element whose presence in this list is to be tested
+Returns:
+true if this list contains the specified element
+size
+public int size()
+Returns the number of elements in this list.
+Specified by:
+size in interface Collection<E>
+Specified by:
+size in interface Deque<E>
+Specified by:
+size in interface List<E>
+Specified by:
+size in class AbstractCollection<E>
+Returns:
+the number of elements in this list
+add
+public boolean add(E e)
+Appends the specified element to the end of this list.
+This method is equivalent to addLast(E).
+
+Specified by:
+add in interface Collection<E>
+Specified by:
+add in interface Deque<E>
+Specified by:
+add in interface List<E>
+Specified by:
+add in interface Queue<E>
+Overrides:
+add in class AbstractList<E>
+Parameters:
+e - element to be appended to this list
+Returns:
+true (as specified by Collection.add(E))
+remove
+public boolean remove(Object o)
+Removes the first occurrence of the specified element from this list, if it is present. If this list does not contain the element, it is unchanged. More formally, removes the element with the lowest index i such that (o==null ? get(i)==null : o.equals(get(i))) (if such an element exists). Returns true if this list contained the specified element (or equivalently, if this list changed as a result of the call).
+Specified by:
+remove in interface Collection<E>
+Specified by:
+remove in interface Deque<E>
+Specified by:
+remove in interface List<E>
+Overrides:
+remove in class AbstractCollection<E>
+Parameters:
+o - element to be removed from this list, if present
+Returns:
+true if this list contained the specified element
+addAll
+public boolean addAll(Collection<? extends E> c)
+Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator. The behavior of this operation is undefined if the specified collection is modified while the operation is in progress. (Note that this will occur if the specified collection is this list, and it's nonempty.)
+Specified by:
+addAll in interface Collection<E>
+Specified by:
+addAll in interface List<E>
+Overrides:
+addAll in class AbstractCollection<E>
+Parameters:
+c - collection containing elements to be added to this list
+Returns:
+true if this list changed as a result of the call
+Throws:
+NullPointerException - if the specified collection is null
+See Also:
+AbstractCollection.add(Object)
+addAll
+public boolean addAll(int index,
+Collection<? extends E> c)
+Inserts all of the elements in the specified collection into this list, starting at the specified position. Shifts the element currently at that position (if any) and any subsequent elements to the right (increases their indices). The new elements will appear in the list in the order that they are returned by the specified collection's iterator.
+Specified by:
+addAll in interface List<E>
+Overrides:
+addAll in class AbstractSequentialList<E>
+Parameters:
+index - index at which to insert the first element from the specified collection
+c - collection containing elements to be added to this list
+Returns:
+true if this list changed as a result of the call
+Throws:
+IndexOutOfBoundsException - if the index is out of range (index < 0 || index > size())
+NullPointerException - if the specified collection is null
+clear
+public void clear()
+Removes all of the elements from this list. The list will be empty after this call returns.
+Specified by:
+clear in interface Collection<E>
+Specified by:
+clear in interface List<E>
+Overrides:
+clear in class AbstractList<E>
+get
+public E get(int index)
+Returns the element at the specified position in this list.
+Specified by:
+get in interface List<E>
+Overrides:
+get in class AbstractSequentialList<E>
+Parameters:
+index - index of the element to return
+Returns:
+the element at the specified position in this list
+Throws:
+IndexOutOfBoundsException - if the index is out of range (index < 0 || index >= size())
+set
+public E set(int index,
+E element)
+Replaces the element at the specified position in this list with the specified element.
+Specified by:
+set in interface List<E>
+Overrides:
+set in class AbstractSequentialList<E>
+Parameters:
+index - index of the element to replace
+element - element to be stored at the specified position
+Returns:
+the element previously at the specified position
+Throws:
+IndexOutOfBoundsException - if the index is out of range (index < 0 || index >= size())
+add
+public void add(int index,
+E element)
+Inserts the specified element at the specified position in this list. Shifts the element currently at that position (if any) and any subsequent elements to the right (adds one to their indices).
+Specified by:
+add in interface List<E>
+Overrides:
+add in class AbstractSequentialList<E>
+Parameters:
+index - index at which the specified element is to be inserted
+element - element to be inserted
+Throws:
+IndexOutOfBoundsException - if the index is out of range (index < 0 || index > size())
+remove
+public E remove(int index)
+Removes the element at the specified position in this list. Shifts any subsequent elements to the left (subtracts one from their indices). Returns the element that was removed from the list.
+Specified by:
+remove in interface List<E>
+Overrides:
+remove in class AbstractSequentialList<E>
+Parameters:
+index - the index of the element to be removed
+Returns:
+the element previously at the specified position
+Throws:
+IndexOutOfBoundsException - if the index is out of range (index < 0 || index >= size())
+indexOf
+public int indexOf(Object o)
+Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element. More formally, returns the lowest index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
+Specified by:
+indexOf in interface List<E>
+Overrides:
+indexOf in class AbstractList<E>
+Parameters:
+o - element to search for
+Returns:
+the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element
+lastIndexOf
+public int lastIndexOf(Object o)
+Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element. More formally, returns the highest index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
+Specified by:
+lastIndexOf in interface List<E>
+Overrides:
+lastIndexOf in class AbstractList<E>
+Parameters:
+o - element to search for
+Returns:
+the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element
+peek
+public E peek()
+Retrieves, but does not remove, the head (first element) of this list.
+Specified by:
+peek in interface Deque<E>
+Specified by:
+peek in interface Queue<E>
+Returns:
+the head of this list, or null if this list is empty
+Since:
+1.5
+element
+public E element()
+Retrieves, but does not remove, the head (first element) of this list.
+Specified by:
+element in interface Deque<E>
+Specified by:
+element in interface Queue<E>
+Returns:
+the head of this list
+Throws:
+NoSuchElementException - if this list is empty
+Since:
+1.5
+poll
+public E poll()
+Retrieves and removes the head (first element) of this list.
+Specified by:
+poll in interface Deque<E>
+Specified by:
+poll in interface Queue<E>
+Returns:
+the head of this list, or null if this list is empty
+Since:
+1.5
+remove
+public E remove()
+Retrieves and removes the head (first element) of this list.
+Specified by:
+remove in interface Deque<E>
+Specified by:
+remove in interface Queue<E>
+Returns:
+the head of this list
+Throws:
+NoSuchElementException - if this list is empty
+Since:
+1.5
+offer
+public boolean offer(E e)
+Adds the specified element as the tail (last element) of this list.
+Specified by:
+offer in interface Deque<E>
+Specified by:
+offer in interface Queue<E>
+Parameters:
+e - the element to add
+Returns:
+true (as specified by Queue.offer(E))
+Since:
+1.5
+offerFirst
+public boolean offerFirst(E e)
+Inserts the specified element at the front of this list.
+Specified by:
+offerFirst in interface Deque<E>
+Parameters:
+e - the element to insert
+Returns:
+true (as specified by Deque.offerFirst(E))
+Since:
+1.6
+offerLast
+public boolean offerLast(E e)
+Inserts the specified element at the end of this list.
+Specified by:
+offerLast in interface Deque<E>
+Parameters:
+e - the element to insert
+Returns:
+true (as specified by Deque.offerLast(E))
+Since:
+1.6
+peekFirst
+public E peekFirst()
+Retrieves, but does not remove, the first element of this list, or returns null if this list is empty.
+Specified by:
+peekFirst in interface Deque<E>
+Returns:
+the first element of this list, or null if this list is empty
+Since:
+1.6
+peekLast
+public E peekLast()
+Retrieves, but does not remove, the last element of this list, or returns null if this list is empty.
+Specified by:
+peekLast in interface Deque<E>
+Returns:
+the last element of this list, or null if this list is empty
+Since:
+1.6
+pollFirst
+public E pollFirst()
+Retrieves and removes the first element of this list, or returns null if this list is empty.
+Specified by:
+pollFirst in interface Deque<E>
+Returns:
+the first element of this list, or null if this list is empty
+Since:
+1.6
+pollLast
+public E pollLast()
+Retrieves and removes the last element of this list, or returns null if this list is empty.
+Specified by:
+pollLast in interface Deque<E>
+Returns:
+the last element of this list, or null if this list is empty
+Since:
+1.6
+push
+public void push(E e)
+Pushes an element onto the stack represented by this list. In other words, inserts the element at the front of this list.
+This method is equivalent to addFirst(E).
+
+Specified by:
+push in interface Deque<E>
+Parameters:
+e - the element to push
+Since:
+1.6
+pop
+public E pop()
+Pops an element from the stack represented by this list. In other words, removes and returns the first element of this list.
+This method is equivalent to removeFirst().
+
+Specified by:
+pop in interface Deque<E>
+Returns:
+the element at the front of this list (which is the top of the stack represented by this list)
+Throws:
+NoSuchElementException - if this list is empty
+Since:
+1.6
+removeFirstOccurrence
+public boolean removeFirstOccurrence(Object o)
+Removes the first occurrence of the specified element in this list (when traversing the list from head to tail). If the list does not contain the element, it is unchanged.
+Specified by:
+removeFirstOccurrence in interface Deque<E>
+Parameters:
+o - element to be removed from this list, if present
+Returns:
+true if the list contained the specified element
+Since:
+1.6
+removeLastOccurrence
+public boolean removeLastOccurrence(Object o)
+Removes the last occurrence of the specified element in this list (when traversing the list from head to tail). If the list does not contain the element, it is unchanged.
+Specified by:
+removeLastOccurrence in interface Deque<E>
+Parameters:
+o - element to be removed from this list, if present
+Returns:
+true if the list contained the specified element
+Since:
+1.6
+listIterator
+public ListIterator<E> listIterator(int index)
+Returns a list-iterator of the elements in this list (in proper sequence), starting at the specified position in the list. Obeys the general contract of List.listIterator(int).
+The list-iterator is fail-fast: if the list is structurally modified at any time after the Iterator is created, in any way except through the list-iterator's own remove or add methods, the list-iterator will throw a ConcurrentModificationException. Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.
+
+Specified by:
+listIterator in interface List<E>
+Specified by:
+listIterator in class AbstractSequentialList<E>
+Parameters:
+index - index of the first element to be returned from the list-iterator (by a call to next)
+Returns:
+a ListIterator of the elements in this list (in proper sequence), starting at the specified position in the list
+Throws:
+IndexOutOfBoundsException - if the index is out of range (index < 0 || index > size())
+See Also:
+List.listIterator(int)
+descendingIterator
+public Iterator<E> descendingIterator()
+Description copied from interface: Deque
+Returns an iterator over the elements in this deque in reverse sequential order. The elements will be returned in order from last (tail) to first (head).
+Specified by:
+descendingIterator in interface Deque<E>
+Returns:
+an iterator over the elements in this deque in reverse sequence
+Since:
+1.6
+clone
+public Object clone()
+Returns a shallow copy of this LinkedList. (The elements themselves are not cloned.)
+Overrides:
+clone in class Object
+Returns:
+a shallow copy of this LinkedList instance
+See Also:
+Cloneable
+toArray
+public Object[] toArray()
+Returns an array containing all of the elements in this list in proper sequence (from first to last element).
+The returned array will be "safe" in that no references to it are maintained by this list. (In other words, this method must allocate a new array). The caller is thus free to modify the returned array.
+
+This method acts as bridge between array-based and collection-based APIs.
+
+Specified by:
+toArray in interface Collection<E>
+Specified by:
+toArray in interface List<E>
+Overrides:
+toArray in class AbstractCollection<E>
+Returns:
+an array containing all of the elements in this list in proper sequence
+See Also:
+Arrays.asList(Object[])
+toArray
+public <T> T[] toArray(T[] a)
+Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array. If the list fits in the specified array, it is returned therein. Otherwise, a new array is allocated with the runtime type of the specified array and the size of this list.
+If the list fits in the specified array with room to spare (i.e., the array has more elements than the list), the element in the array immediately following the end of the list is set to null. (This is useful in determining the length of the list only if the caller knows that the list does not contain any null elements.)
+
+Like the toArray() method, this method acts as bridge between array-based and collection-based APIs. Further, this method allows precise control over the runtime type of the output array, and may, under certain circumstances, be used to save allocation costs.
+
+Suppose x is a list known to contain only strings. The following code can be used to dump the list into a newly allocated array of String:
+
+String[] y = x.toArray(new String[0]);
+Note that toArray(new Object[0]) is identical in function to toArray().
+Specified by:
+toArray in interface Collection<E>
+Specified by:
+toArray in interface List<E>
+Overrides:
+toArray in class AbstractCollection<E>
+Parameters:
+a - the array into which the elements of the list are to be stored, if it is big enough; otherwise, a new array of the same runtime type is allocated for this purpose.
+Returns:
+an array containing the elements of the list
+Throws:
+ArrayStoreException - if the runtime type of the specified array is not a supertype of the runtime type of every element in this list
+NullPointerException - if the specified array is null
 \section{Zirkulare LinkedList}
 \section{Zweifach verknüpfte LinkedList}
 \section{Dictionary}
@@ -604,6 +1562,11 @@ let binarySearch = function(a, key) {
 	\item \lstinline|currentIndex| nicht wiederholt überprüfen
 	
 	Selbst wenn es möglich sein sollte das original Array in Stücke so zu teilen dass dennoch die original Index beizubehalten, ist die Auswahl der Indexe falsch, denn \lstinline|currentIndex| wurde bereits geprüft. Es ist daher unsinnig, dass dieser Index noch im Subarray erscheint. Man müsste also \lstinline|currentIndex + 1| für \lstinline|currentKey < key| bzw. \lstinline|curentIndex| (\lstinline|currentIndex| selbst wird also nicht betrachtet) für \lstinline|currentKey > key| wählen.
+	
+	\item Programm liefert kein Ergebnis
+	
+	Das Programm läuft in Endlosschleife und kann somit kein Ergebnis liefern.
+	
 \end{itemize}
 \paragraph{Lösung}
 Wir versuchen immer am Anfang einen "early exit" zu erreichen, damit der Code effizient bleibt. Alternativ hätte man auch \lstinline|includes()| verwenden können. Aber \lstinline|includes()| geht durch alle Array Elemente durch und hätte damit eine Laufzeit von \lstinline|O(n)|. 
@@ -618,7 +1581,7 @@ Zeit komplexität
 
 \begin{lstlisting}[caption=My Javascript Example]
 //a is sorted array
-let binary_search = function(a, key) {
+let binarySearch = function(a, key) {
 	if (a.length === 0) {
 		return -1;
 	}
@@ -644,63 +1607,59 @@ let binary_search = function(a, key) {
 
 \section{Maximum im gleitenden Fenster}
 \begin{examplei}
-	Gegeben ist ein langes Array mit ganzen Zahlen. Zudem ist noch ein Fenster mit einer Breite \lstinline|w| gegeben, das sich von Anfang bis Ende des Arrays bewegt. Finde alle Maxima, die im gleitenden Fenster auftauchen.
-	
-	Beispiel:
-	Gegeben ist folgender Array mit einer Fensterbreite von \lstinline|4|. 	
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-3 & 23 & -31 & 47 & -65 & 69 \\
-		\hline
-	\end{tabular}
-	
-	Das Fenster bewegt sich nun von links nach rechts und enthält folgende Zahlen:
+Gegeben ist ein langes Array mit ganzen Zahlen. Zudem ist noch ein Fenster mit einer Breite \lstinline|w| gegeben, das sich von Anfang bis Ende des Arrays bewegt. Finde alle Maxima, die im gleitenden Fenster auftauchen.
 
-	\begin{enumerate} 
-		\item Schritt
+Beispiel:
+Gegeben ist folgender Array mit einer Fensterbreite von \lstinline|4|. 	
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline
+3 & 23 & -31 & 47 & -65 & 69 \\
+\hline
+\end{tabular}
+Das Fenster bewegt sich nun von links nach rechts und enthält folgende Zahlen:
+\begin{enumerate}
+\item Schritt
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline
+3 & 23 & -31 & 47 \\
+\hline
+\end{tabular}
+
+Das Maximum ist \lstinline|47|
+\item Schritt
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline
+23 & -31 & 47 & -65 \\
+\hline
+\end{tabular}
+
+Das Maximum ist wieder \lstinline|47|	
+
+\item Schritt
 		
-		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-			\hline
-			3 & 23 & -31 & 47 \\
-			\hline
-		\end{tabular}
-	
-		Das Maximum ist \lstinline|47|
-		\item Schritt
-		
-		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-			\hline
-			23 & -31 & 47 & -65 \\
-			\hline
-		\end{tabular}
-	
-		Das Maximum ist wieder \lstinline|47|	
-		
-		\item Schritt
-				
-		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-			\hline
-			-31 & 47 & -65 & 69 \\
-			\hline
-		\end{tabular}
-		
-		Das Maximum ist wieder \lstinline|69|
-		
-	\end{enumerate}
-	
-	Das erwartete Ergebnis ist in diesem Beispiel 
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		47 & 47 & 69 \\
-		\hline
-	\end{tabular}
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+\hline
+-31 & 47 & -65 & 69 \\
+\hline
+\end{tabular}
+
+Das Maximum ist wieder \lstinline|69|
+\end{enumerate}
+
+Das erwartete Ergebnis ist in diesem Beispiel 
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+	\hline
+	47 & 47 & 69 \\
+	\hline
+\end{tabular}
 
 \end{examplei}
-{\bf Stichwörter:} Array, Suche, Sliding Window, Zeiger, Pointer
+{\bf Stichwörter:} Array, Suche, Sliding Window, Zeiger, Pointer, Dequeue
 
 \paragraph{Vorgehensweise}
-% Das Problem ist, das Maximum zu finden ohne erneut die Zahlen im Fenster durchzugehen.
 \begin{enumerate} 
 	\item Wir erstellen zwei Zeiger
 	
@@ -720,7 +1679,7 @@ let binary_search = function(a, key) {
 \end{enumerate}
 
 \begin{lstlisting}[caption=My Javascript Example]
-let find_max_sliding_window = function(arr, window_size) {
+const findMaxSlidingSindow = function(arr, window_size) {
 	const getMax = (startWindow, endWindow) => {
 		const max = arr
 		.slice(startWindow, endWindow + 1)
@@ -730,7 +1689,9 @@ let find_max_sliding_window = function(arr, window_size) {
 	const result = [];
 	let startWindow = 0;
 	let endWindow = window_size - 1;
+	let max = 
 	while (endWindow < arr.length) {
+		
 		getMax(startWindow++, endWindow++);    
 	}
 	return result;
@@ -738,24 +1699,220 @@ let find_max_sliding_window = function(arr, window_size) {
 \end{lstlisting}
 
 \paragraph{Typische Fehler}
+\begin{itemize} 
+	\item Kein early exit verwendet
+	
+	Man sollte immer versuchen einen early exit zu verwenden, d.h. schauen, ob anhand einer einfachen überprüfung am Anfang gleich auf das richtige Ergebnis geschlossen werden kann. Beispw. muss man nichts berechnen, wenn das Array leer ist oder die gegebene Fensterbreite größer ist als das Array.
+	
+	\item Keine geeignete Datenstruktur verwendet
+	
+	Die Aufgabe bietet es sich an ein \lstinline|Dequeue| zu verwenden. Dadurch brauchen wir auch keine zwei Zeiger.
+	
+	\item Ungünstige Laufzeit
+	
+	Durch die Hilfsfunktion zur Berechnung des Maximums werden bereits besuchte Elemente erneut besucht. Bei einer kleinen Fensterbreite ist das kein großes Problem aber angenommen es handelt sich um ein langes Array mit einer sehr großen Fensterbreite. Dies führt zu einer langsamen Laufzeit. Das ist ein erster Hinweis, dass der vorliegende Code nicht optimal ist.
+
+\end{itemize}
+
+\paragraph{Lösung}
+Die Schwierigkeit liegt darin, das Maximum zu finden ohne erneut die Zahlen im Fenster durchzugehen. Idealerweise wollen wir nur eimal durch die Zahlen im Array gehen und dabei das Maximum speichern. Nachfolgend werde ich begründen, warum eine \lstinline|Dequeue| die geeignete Datenstruktur ist.
+
+Angenommen wir haben folgendes Array und eine Fensterbreite von \lstinline|3| und benutzen dazu wir zunächst eine Variable zur Speicherung des Maximums:
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+	\hline
+	7 & 6 & 2 & 4 & 1 & 7\\
+	\hline
+\end{tabular}
+
+Wenn wir durch die einzelnen Arrays gehen und das Maximum jedesmal in der Variable speichern, würden wir folgendes Ergebnis bekommen:
+
+\begin{enumerate} 
+	\item Schritt
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		7 \\
+		\hline
+	\end{tabular} 
+
+	Erste Zahl ist 7. Dadurch ist max auch 7
+	\item Schritt
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		7 & 6 \\
+		\hline
+	\end{tabular} 
+
+	Die 6 ist kleiner als das aktuelle max und daher ist max immer noch 7
+	\item Schritt
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		7 & 6 & 2\\
+		\hline
+	\end{tabular} 
+			
+	Max bleibt nach der 2 immer noch bei 7. Dadurch haben wir die Fensterbreite erreicht. Das max ist für die erste Fensterbreite ist 7.
+	
+	\item Schritt
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		6 & 2 & 4\\
+		\hline
+	\end{tabular}  
+
+	Ab jetzt bekommen wir eine konstante Anzahl an 3 Zahlen. Die 7 ist raus. Die 4 kommt rein. Das Maximum kann nun nicht mehr 7 sein. Aber was ist es stattdessen? Es kann nicht 4 sein. Es ist 6. Aber unser Ansatz hat keine Möglichkeit zu erkennen, dass es die 6 ist. 
+\end{enumerate}
+
+Was wir daher brauchen ist also keine Variable zur Speicherung des Maximums, sondern wir müssen eine Sequenz speichern. Wie wollen die Sequenz so speichern, dass die größere Zahl immer vorne steht. Die Zahlen im \lstinline|Dequeue| werden von links nach rechts immer kleiner - die Zahlen links sind also immer größer als die Zahlen rechts. Wenn wir also das Maximum haben wollen, dann greifen wir immer auf die erste Zahl im \lstinline|Dequeue|. Falls die Zahl außerhalb des Arrays rausgeht, dann löschen wir diese Zahl von der Spitze. Damit wir leichter wissen können, welche Zahl aus dem Fenster rausgeht, speichern wir daher nicht den Wert der Zahl, sondern den Index der Zahl.
+
+Wir benutzen nachfolgend dieselbe Zahlenfolge. Diesmal habe ich noch die Indexe hinzugefügt.
+
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index: & 0 & 1 & 2 & 3 & 4 & 5\\ 
+		\hline
+		Value: & 7 & 6 & 2 & 4 & 1 & 7\\
+		\hline
+	\end{tabular}
 
 
+Wenn wir obiges Beispiel nehmen, dann würde der Ablauf wie folg aussehen:
+\begin{enumerate} 
+	\item Schritt
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index: & \cellcolor{yellow!25}0 & 1 & 2 & 3 & 4 & 5\\ 
+		\hline
+		Value: & \cellcolor{blue!25}7 & 6 & 2 & 4 & 1 & 7\\
+		\hline
+	\end{tabular}
+		
+	Erste Zahl ist 7. Weil die \lstinline|Dequeue| noch leer ist, pushen wir das erste Index sie in unsere \lstinline|Dequeue| rein	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		0 \\
+		\hline
+	\end{tabular} 
+	\item Schritt
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index: & \cellcolor{yellow!25}0 & \cellcolor{yellow!25}1 & 2 & 3 & 4 & 5\\ 
+		\hline
+		Value: & \cellcolor{blue!25}7 & \cellcolor{blue!25}6 & 2 & 4 & 1 & 7\\
+		\hline
+	\end{tabular}
+		
+	Die 6 ist kleiner (man erinnert sich: Wir wollen in der \lstinline|Dequeue| die Zahlen der kleiner nach speichern) als das aktuelle max und wir pushen sie ins \lstinline|Dequeue|: 	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		0 & 1 \\
+		\hline
+	\end{tabular} 
+	
+	\item Schritt
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index: & \cellcolor{yellow!25}0 & \cellcolor{yellow!25}1 & \cellcolor{yellow!25}2 & 3 & 4 & 5\\ 
+		\hline
+		Value: & \cellcolor{blue!25}7 & \cellcolor{blue!25}6 & \cellcolor{blue!25}2 & 4 & 1 & 7\\
+		\hline
+	\end{tabular}
+	
+	Die 2 ist kleiner als die 6. Dadurch pushen wir auch sie in unsere \lstinline|Dequeue|
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		0 & 1 & 2\\
+		\hline
+	\end{tabular}.
+
+Damit haben wir die Fensterbreite erreicht. Jetzt müssen wir aufpassen, wann eine Zahl aus dem Fenster rausrutscht. Falls diese Zahl nicht mehr im Fenster ist, müssen wir auch dessen Index rauslöschen.
+	
+	\item Schritt
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index: & 0 & \cellcolor{yellow!25}1 & \cellcolor{yellow!25}2 & \cellcolor{yellow!25}3 & 4 & 5\\ 
+		\hline
+		Value: & 7 & \cellcolor{blue!25}6 & \cellcolor{blue!25}2 & \cellcolor{blue!25}4 & 1 & 7\\
+		\hline
+	\end{tabular}
+	Die 4 ist in das Fenster reingekommen. Die 4 ist aber größer als die 2. Daher löschen wir sie (bzw. dessen Index). Wir überprüfen, ob vor der Zahl 2 noch eine Zahl ist, die kleiner ist als die 4. Dies ist nicht der Fall. Wäre es aber der Fall, so müssten wir auch diesen Index löschen. Wir müssten nämlich so lange die Indexe löschen, bis der \lstinline|Dequeue| die Struktur der Gestalt hat, dass sie absteigend ist, also vorne die großen Zahlen, hinten die kleinen. Daher löschen wir nur die Index der Zahl 2 aus der \lstinline|Dequeue| und fügen den Index der Zahl 4 hinzu: 
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		0 & 1 & 3\\
+		\hline
+	\end{tabular}.
+	
+	Es passiert an dieser Stelle aber noch mehr: Die 7 (Index Stelle 0) ist aus dem Fenster gerutscht. Das ist deshalb bemerkenswert, weil die 7 bisher das Maximum war und damit an erster Stelle unserer \lstinline|Dequeue| steht. Weil die Zahl 7 jetzt raus ist, löschen wir auch die den Index 0 aus unserem \lstinline|Dequeu|
+		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		1 & 3\\
+		\hline
+	\end{tabular}.
+	Dadurch steht der Index 1 an erster Stelle unserer \lstinline|Dequeue|. D.h. die 6 ist das Maximum an dieser Stelle.
+\end{enumerate}
+
+Ich könnte das jetzt weiter fortführen, aber ich glaube das Prinzip sollte mittlerweile klar sein.
+
+Unter der Berücksichtigung der "typischen Fehler" und den Ansatz mit der \lstinline|Dequeue|, schaut die Implementierung wie folgt aus:
+
+\begin{lstlisting}[caption=My Javascript Example]
+const findMaxSlidingWindow = function(arr, windowSize) {  
+	// early exit
+	if(arr.length == 0 || windowSize > arr.length) {
+		return;
+	}
+	let result = [];
+	let dequeue = [];
+	const dequeueIsNotEmpty = () => dequeue.length > 0;
+	const currentElementLargerThanLastDequeueElement = currentEl => currentEl >= arr[dequeue[dequeue.length - 1]]
+	
+	// setup for first step
+	for (let i = 0; i < windowSize; i++) {
+		// remove all elements that are smaller than the current element
+		while (dequeueIsNotEmpty() 
+		&& currentElementLargerThanLastDequeueElement(arr[i])) {
+			dequeue.pop();
+		}
+		
+		dequeue.push(i);
+	}
+	
+	result.push(arr[dequeue[0]])
+	
+	// remaining steps  
+	for (let i = windowSize; i < arr.length; i++) {
+		// remove all elements that are smaller than the current element
+		while (dequeueIsNotEmpty() 
+		&& currentElementLargerThanLastDequeueElement(arr[i])) {
+			dequeue.pop();
+		}
+		
+		// if number falls out from the window, we have to delete it from the dequeue
+		if (dequeueIsNotEmpty() && (dequeue[0] < i - (windowSize - 1))) {
+			dequeue.shift();
+		}
+		
+		dequeue.push(i);
+		result.push(arr[dequeue[0]]);
+	}
+	
+	return result;
+};
+\end{lstlisting}
+
+Eine alternative Lösung ist es, einen \lstinline|Heap()| zu verwenden.
 \medskip
 \begin{lstlisting}[caption=My Javascript Example]
-Name.prototype = {
-  methodName: function(params){
-    var doubleQuoteString = "some text";
-    var singleQuoteString = 'some more text';
-    // this is a comment
-    if(this.confirmed != null && typeof(this.confirmed) == Boolean && this.confirmed == true){
-      document.createElement('h3');
-      $('#system').append("This looks great");
-      return false;
-    } else {
-      throw new Error;
-    }
-  }
-}
+// test...
+
 \end{lstlisting}
-laskd flwkejf wlekjf ew sadf
+
+
 \end{document}

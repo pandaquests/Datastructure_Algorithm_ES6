@@ -50,7 +50,8 @@
 \contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{25}% 
 \contentsline {paragraph}{Vorgehensweise}{25}% 
 \contentsline {paragraph}{Typische Fehler}{25}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{26}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{27}% 
 \contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{27}% 
 \contentsline {paragraph}{Vorgehensweise}{28}% 
 \contentsline {paragraph}{Typische Fehler}{29}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{29}% 
