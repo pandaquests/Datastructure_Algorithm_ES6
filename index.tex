@@ -102,6 +102,10 @@ Dieses Buch ist noch in Bearbeitung....
 
 - I spent most of my professional life writing in JS and I think I know most about it
 
+\section{Behandelte Themen}
+- Algos und DS
+- Übungen am Ende. Versuche die Aufgaben zu machen ohne auf die Lösung zu schauen. Da ich finde, dass man von Fehlern oft viel mehr lernen kann als von richtigen Lösungen, habe ich vor der eigentlichen Lösung noch typische Fehler aufgelistet.
+
 \section{Nicht behandelte Themen}
 - Promises
 - async/await
@@ -535,7 +539,7 @@ Sortier Algorithmen und Such Algorithmen
 \section{Suchen nach Minimum und Maximum}
 \section{Rucksackproblem}
 \section{Greedy Algorithm}
-\chapter{übungen}
+\chapter{Aufgaben}
 \section{Binäres Suchen}
 \begin{examplei}
 Gegeben ist ein Array mit ganzen Zahlen. Gib den Index des gegebenen Keys. Falls kein Ergebnis gefunden wurde, gib \lstinline|-1| zurück.
@@ -553,7 +557,7 @@ Gegeben ist folgender Array, wenn der Key 47 ist, dann soll die Binäre Suche 2 
 	\end{tabular}
 
 \end{examplei}
-{\bf Stichwörter:} Array, Binary Search, Suche
+{\bf Stichwörter:} Array, Binary Search, Suche, Sliding Window, Zeiger, Pointer, Divide and Conquer, Teile und Herrsche
 \paragraph{Vorgehensweise}
 \begin{enumerate} 
 	\item Betrachte das Array von Anfang bis Ende
@@ -602,11 +606,19 @@ let binarySearch = function(a, key) {
 	Selbst wenn es möglich sein sollte das original Array in Stücke so zu teilen dass dennoch die original Index beizubehalten, ist die Auswahl der Indexe falsch, denn \lstinline|currentIndex| wurde bereits geprüft. Es ist daher unsinnig, dass dieser Index noch im Subarray erscheint. Man müsste also \lstinline|currentIndex + 1| für \lstinline|currentKey < key| bzw. \lstinline|curentIndex| (\lstinline|currentIndex| selbst wird also nicht betrachtet) für \lstinline|currentKey > key| wählen.
 \end{itemize}
 \paragraph{Lösung}
+Wir versuchen immer am Anfang einen "early exit" zu erreichen, damit der Code effizient bleibt. Alternativ hätte man auch \lstinline|includes()| verwenden können. Aber \lstinline|includes()| geht durch alle Array Elemente durch und hätte damit eine Laufzeit von \lstinline|O(n)|. 
 
+Wir erreichen einen "early exit", indem wir überprüfen, ob das Array keine Elemente enthält oder ein Element. Bei keinem Element geben wir sofort \lstinline|-1| zurück. Wenn ein Element vorhanden ist können wir gleich überprüfen, ob dieses Element dem \lstinline|key| entspricht. Falls ja, geben wir \lstinline|0| zurück, falls nicht, ist es nicht vorhanden und wir geben \lstinline|-1| zurück.
+
+Die Vorgehensweise ist ähnlich wie oben beschrieben. Wir werden aber zwei Zeiger benutzen. Dadurch bleiben die Indexe immer die der originalen Arrays.
+
+Die Laufzeit
+
+Zeit komplexität
 
 \begin{lstlisting}[caption=My Javascript Example]
 //a is sorted array
-let binarySearch = function(a, key) {
+let binary_search = function(a, key) {
 	if (a.length === 0) {
 		return -1;
 	}
@@ -630,6 +642,104 @@ let binarySearch = function(a, key) {
 };
 \end{lstlisting}
 
+\section{Maximum im gleitenden Fenster}
+\begin{examplei}
+	Gegeben ist ein langes Array mit ganzen Zahlen. Zudem ist noch ein Fenster mit einer Breite \lstinline|w| gegeben, das sich von Anfang bis Ende des Arrays bewegt. Finde alle Maxima, die im gleitenden Fenster auftauchen.
+	
+	Beispiel:
+	Gegeben ist folgender Array mit einer Fensterbreite von \lstinline|4|. 	
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+3 & 23 & -31 & 47 & -65 & 69 \\
+		\hline
+	\end{tabular}
+	
+	Das Fenster bewegt sich nun von links nach rechts und enthält folgende Zahlen:
+
+	\begin{enumerate} 
+		\item Schritt
+		
+		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+			\hline
+			3 & 23 & -31 & 47 \\
+			\hline
+		\end{tabular}
+	
+		Das Maximum ist \lstinline|47|
+		\item Schritt
+		
+		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+			\hline
+			23 & -31 & 47 & -65 \\
+			\hline
+		\end{tabular}
+	
+		Das Maximum ist wieder \lstinline|47|	
+		
+		\item Schritt
+				
+		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+			\hline
+			-31 & 47 & -65 & 69 \\
+			\hline
+		\end{tabular}
+		
+		Das Maximum ist wieder \lstinline|69|
+		
+	\end{enumerate}
+	
+	Das erwartete Ergebnis ist in diesem Beispiel 
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		47 & 47 & 69 \\
+		\hline
+	\end{tabular}
+
+\end{examplei}
+{\bf Stichwörter:} Array, Suche, Sliding Window, Zeiger, Pointer
+
+\paragraph{Vorgehensweise}
+% Das Problem ist, das Maximum zu finden ohne erneut die Zahlen im Fenster durchzugehen.
+\begin{enumerate} 
+	\item Wir erstellen zwei Zeiger
+	
+	Die Zeiger nennen wir startWindow und endWindow. startWindow wird mit \lstinline|0| und \lstinline|endWindow| wird mit \lstinline|array.length - 1| initialisiert. 
+	
+	\item Hilfsfunktion zur Berechnung des Maximums
+	
+	Wir erstellen noch eine Hilfsfunktion, die das Maximum für gegebenes \lstinline|startWindow| und \lstinline|endWindow| berechnet und in ein Resultat-Array hinzufügt.
+	
+	\item Iteration bis Arrayende
+	
+	Wir iterieren dann duch die verbleibenden Elemente und inkrementieren \lstinline|startWindow| und \lstinline|endWindow|. Dabei rufen wir jedesmal die Hilfsfunktion zur Berechnung des Maximums.
+	
+	\item Rückgabe
+	
+	Am Ende geben wir das Resultat-Array zurück
+\end{enumerate}
+
+\begin{lstlisting}[caption=My Javascript Example]
+let find_max_sliding_window = function(arr, window_size) {
+	const getMax = (startWindow, endWindow) => {
+		const max = arr
+		.slice(startWindow, endWindow + 1)
+		.reduce((max, item) => item > max ? item : max, -Infinity);
+		result.push(max);
+	}
+	const result = [];
+	let startWindow = 0;
+	let endWindow = window_size - 1;
+	while (endWindow < arr.length) {
+		getMax(startWindow++, endWindow++);    
+	}
+	return result;
+};
+\end{lstlisting}
+
+\paragraph{Typische Fehler}
+
+
 \medskip
 \begin{lstlisting}[caption=My Javascript Example]
 Name.prototype = {
@@ -647,5 +757,5 @@ Name.prototype = {
   }
 }
 \end{lstlisting}
-laskd flwkejf wlekjf ew
+laskd flwkejf wlekjf ew sadf
 \end{document}

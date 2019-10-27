@@ -1,6 +1,7 @@
 \contentsline {chapter}{\numberline {1}Algorithmen und Datenstrukturen in ES6+}{3}% 
 \contentsline {section}{\numberline {1.1}Warum in ES6+}{3}% 
-\contentsline {section}{\numberline {1.2}Nicht behandelte Themen}{3}% 
+\contentsline {section}{\numberline {1.2}Behandelte Themen}{3}% 
+\contentsline {section}{\numberline {1.3}Nicht behandelte Themen}{3}% 
 \contentsline {chapter}{\numberline {2}Entwicklungsumgebung}{5}% 
 \contentsline {chapter}{\numberline {3}JavaScript Paradigmen}{7}% 
 \contentsline {section}{\numberline {3.1}Object-Orientiertes Programmieren}{7}% 
@@ -45,8 +46,11 @@
 \contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{23}% 
 \contentsline {section}{\numberline {6.11}Rucksackproblem}{23}% 
 \contentsline {section}{\numberline {6.12}Greedy Algorithm}{23}% 
-\contentsline {chapter}{\numberline {7}\IeC {\"u}bungen}{25}% 
+\contentsline {chapter}{\numberline {7}Aufgaben}{25}% 
 \contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{25}% 
 \contentsline {paragraph}{Vorgehensweise}{25}% 
 \contentsline {paragraph}{Typische Fehler}{25}% 
 \contentsline {paragraph}{L\IeC {\"o}sung}{26}% 
+\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{27}% 
+\contentsline {paragraph}{Vorgehensweise}{28}% 
+\contentsline {paragraph}{Typische Fehler}{29}% 
