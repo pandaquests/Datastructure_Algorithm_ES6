@@ -146,6 +146,8 @@ for loop, while loop, do while loop, symbol iterator; Generator; yields, for of
 \section{Closures}
 \section{Call by Reference vs. Call by Value}
 \section{Truthy und falsy}
+\section{this}
+\section{strict/sloppy mode}
 
 \chapter{Datenstrukturen}
 \section{Array}
@@ -448,16 +450,32 @@ var clonedArray2 = [].concat(myArray);
 var clonedArray2 = Array.from(myArray);
 \end{lstlisting}
 
-Wie im vorherigen Kapitel angesprochen gibt es die Möglichkeit durch ein Array mit einer Schleife zu iterieren. Die Arrays in JS bieten eigene Funktionen zum Iterieren an. Die \lstinline|forEach()| Funktion nimmt eine Methode und geht durch alle Elemente durch und wendet auf jedes einzelene ELement die Methode an. Die Funktion kann, im Gegensatz zum \lstinline|for|, \lstinline|while|, \lstinline|do while|, usw. Schleifen nicht unterbrochen werden - außer durch das Werfen einer Ausnahme (was aber nicht empfohlen wird). Die \lstinline|forEach()| Funktion liefert kein Ergebnis zurück.
+Wie im vorherigen Kapitel angesprochen gibt es die Möglichkeit durch ein Array mit einer Schleife zu iterieren. Die Arrays in JS bieten eigene Funktionen zum Iterieren an. Die \lstinline|forEach()| Funktion nimmt eine Methode und geht durch alle Elemente durch und wendet auf jedes einzelene ELement die Methode an. Die Funktion kann, im Gegensatz zu Schleifen wie \lstinline|for|, \lstinline|while|, \lstinline|do while|, usw. nicht unterbrochen werden \footnote{außer durch das Werfen einer Ausnahme (was aber nicht empfohlen wird).}.Die \lstinline|forEach()| Funktion liefert kein Ergebnis zurück.
 
 \begin{lstlisting}[caption=Array Konstruktor]
-
+[1,2,3,4,5].forEach((currentValue, index) => {
+	console.log(`Value ${currentValue} at index ${index}`);
+});
 \end{lstlisting}
 
-Will man vorher abbrechen so kann man entweder die \lstinline|every()| oder \lstinline|some()| verwenden. Die \lstinline|every()| nimmt eine Funktion auf und überprüft sie für alle Elemente. Sobald bei der Überprüfung bei eines der Elemente \lstinline|falsy| zurück gegeben wird, bricht sie ab. Bei der \lstinline|some()| wird die Iteration abgebrochen sobald bei der Auswertung \lstinline|truthy| zurückgegeben wird.
+Will man vorher abbrechen so kann man entweder die \lstinline|every()| oder \lstinline|some()| verwenden. Die \lstinline|every()| nimmt eine Funktion auf und überprüft sie für alle Elemente. Sobald bei der Überprüfung bei eines der Elemente \lstinline|falsy| zurück gegeben wird, bricht sie ab. Bei der \lstinline|some()| wird die Iteration abgebrochen sobald bei der Auswertung \lstinline|truthy| zurückgegeben wird. Beide Funktionen geben \lstinline|true| bzw. \lstinline|false| zurück, wenn die Bedingung eingetroffen ist.
 
 \begin{lstlisting}[caption=Array Konstruktor]
+var hasLargerThanTen = [10,20,30].some(item => item > 10);
+console.log(hasLargerThanTen);
+// true
 
+var hasSmallerThanTen = [10,20,30].some(item => item < 10);
+console.log(hasSmallerThanTen);
+// false
+
+var allAreLargerThanTen = [10,20,30].every(item => item > 10);
+console.log(allAreLargerThanTen);
+// false
+
+var allAreLargerThanTen = [100,20,30].every(item => item > 10);
+console.log(allAreLargerThanTen);
+// true
 \end{lstlisting}
 
 Oft will man ein Element im Array finden. Dazu kann man wieder Schleifen benutzen oder die Built-in Funktionen verwenden. 
@@ -465,13 +483,19 @@ Oft will man ein Element im Array finden. Dazu kann man wieder Schleifen benutze
 Will man nur feststellen, ob ein Element auch im Array vorhanden ist, so kann man \lstinline|includes()| verwenden. Dieses gibt entweder \lstinline|true| oder \lstinline|false| zurück, wenn das Element im Array gefunden bzw. nicht gefunden wurde.
 
 \begin{lstlisting}[caption=Array Konstruktor]
+var hasNumberTwo = [1,2,3,4,5].includes(2);
+console.log(hasNumberTwo);
+// true
 
+var hasNumberTen = [1,2,3,4,5].includes(10);
+console.log(hasNumberTen);
+// false
 \end{lstlisting}
 
-Eine Möglichkeit herauszufinden, an welcher Position das gesuchte Element sich befindet, bietet \lstinline|indexOf()|. Diese nimmmt eine Funktion auf und liefert den ersten Index des Elements, bei der die mitgegebene Funktion \lstinline|truthy| zurückliefert. \lstinline|lastIndexOf()| macht genau das Gegenteil: sie gibt den Index des zu letzt gefundenen Elements zurück. Falls keines der Elemente den Bedingungen entspricht, liefert \lstinline|indexOf()| und \lstinline|lastIndexOf()| \lstinline|-1| zurück.
+Will man noch dazu herauszufinden, an welcher Position das gesuchte Element sich befindet, gibt es \lstinline|indexOf()|. Diese nimmmt eine Funktion auf und liefert den ersten Index des Elements, bei der die mitgegebene Funktion \lstinline|truthy| zurückliefert. \lstinline|lastIndexOf()| macht genau das Gegenteil: sie gibt den Index des zu letzt gefundenen Elements zurück. Falls keines der Elemente den Bedingungen entspricht, liefert \lstinline|indexOf()| und \lstinline|lastIndexOf()| \lstinline|-1| zurück.
 
 \begin{lstlisting}[caption=Array Konstruktor]
-asdf
+var position = ["a", "b", "c"]
 \end{lstlisting}
 
 Will man einen \lstinline|String|in einen Array umwandeln, so kann man wieder den Rest/Spread-Operator verwenden. Dabei wird jedes einzelne Zeichen, inklusive Leerzeichen, Komma, Sonderzeichen usw., als eigenes Element in ein neues Array gepackt und zurückgegeben.
@@ -492,26 +516,79 @@ console.log(myArray);
 \end{lstlisting}
 
 \section{Liste}
+Listen sind gut geeignet, wenn es nicht auf die Reihenfolge der Elemente ankommt und wenn man nicht nach einen bestimmten Element suchen muss. Nachfolgend wollen wir eine \lstinline|List|-Klasse implementieren, die folgende Eigenschaften und Funktionen hat:
 
-Lists are convenient if the order doesn't matter or if you don't have to search for a certain item
-implement a fasfwe
-listlistSize (property) Number of elements in list
-pos (property) Current position in list
-length (property) Returns the number of elements in list
-clear (function) Clears all elements from list
-toString (function) Returns string representation of list
-getElement (function) Returns element at current position
-insert (function) Inserts new element after existing element
-append (function) Adds new element to end of list
-remove (function) Removes element from list
-front (function) Sets current position to first element of list
-end (function) Sets current position to last element of list
-prev (function) Moves current position back one element
-next (function) Moves current position forward one element
-currPos (function) Returns the current position in list
-moveTo (function) Moves the current position to specified position
+\begin{itemize} 
+	\item pos (property): Current position in list
+	\item size (property): Returns the number of elements in list	
+	\item clear (function): Clears all elements from list
+	\item toString (function): Returns string representation of list
+	\item get(function): Returns element at specified index. If nothing is specified then return element at current position
+	\item indexOf (function): Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element
+	\item lastIndexOf (function): Returns the index of the last occurrence of the specified element in this list, or -1 if the list doesn't contain the specified element 
+	\item isEmpty (function): Returns true if the list contains no element
+	\item insert (function): Inserts new element after existing element
+	\item add (function): Appends new element to end of list
+	\item remove (function): Removes element at a specific position from list
+	\item front (function): Sets current position to first element of list
+	\item end (function): Sets current position to last element of list
+	\item prev (function): Moves current position back one element
+	\item next (function): Moves current position forward one element
+	\item currPos (function): Returns the current position in list
+	\item moveTo (function): Moves the current position to specified position	
+	\item sublist(function): Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive. 
+\end{itemize}
 
-While writing also test your impelmentation with console.assert()
+\paragraph{List Klasse}
+Nachfolgend werden wir die \lstinline|List| Klasse erstellen. Die gesamte Klasse kann unter meinem GitHub Repo angeschaut werden.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+class List {
+	constructor() {
+		this.store = [];
+		this.pos = 0;
+		this.size = 0;
+	}
+	clear() { /*...*/ }
+	toString() {/*...*/ }
+	get(index = this.pos) {/*...*/ }
+	indexOf () {/*...*/}
+	lastIndexOf () {/*...*/}
+	isEmpty () {/*...*/}
+	insert() {/*...*/ }
+	add() {/*...*/ }
+	remove() {/*...*/ }
+	front() {/*...*/ }
+	end() {/*...*/ }
+	prev() {/*...*/ }
+	next() {/*...*/ }
+	currPos() {/*...*/ }
+	moveTo() {/*...*/ }
+	sublist() {/*...*/}
+}
+\end{lstlisting}
+
+Die einzelenen noch leeren Funktionen werden wir nachfolgend mit Leben füllen. Die Eigenschaften können wir aber schon setzen. Bei einer Liste sind \lstinline|listSize|, \lstinline|pos|, \lstinline|length| zu Anfang selbstverständlich alle \lstinline|0|.
+
+\paragraph{clear - Löschen aller Elemente einer Liste}
+Beim Löschen muss der \lstinline|dataStore| sowie die Eigenschaft Länge und Position wieder auf den Initialzustand zurück versetzt werden.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+clear() {
+	this.store = [];
+	this.size = this.pos = 0;	
+}
+\end{lstlisting}
+
+\paragraph{toString - Gibt die Repräsentation der Liste als String zurück} Bei der toString Funktion reicht es aus, wenn wir die \lstinline|dataStore| zurückgeben.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+toString() {
+	return this.store;
+}
+\end{lstlisting}
+
+\paragraph{title}
 \section{Stack}
 Method Detail
 push
@@ -968,7 +1045,7 @@ an iterator over the elements in this queue
 size
 public int size()
 Description copied from interface: Collection
-Returns the number of elements in this collection. If this collection contains more than Integer.MAX_VALUE elements, returns Integer.MAX_VALUE.
+% Returns the number of elements in this collection. If this collection contains more than "Integer.MAX_VALUE" elements, returns "Integer.MAX_VALUE".
 Specified by:
 size in interface Collection<E>
 Specified by:

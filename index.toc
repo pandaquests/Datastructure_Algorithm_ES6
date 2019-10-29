@@ -14,44 +14,50 @@
 \contentsline {section}{\numberline {4.5}Closures}{9}% 
 \contentsline {section}{\numberline {4.6}Call by Reference vs. Call by Value}{9}% 
 \contentsline {section}{\numberline {4.7}Truthy und falsy}{9}% 
+\contentsline {section}{\numberline {4.8}this}{9}% 
+\contentsline {section}{\numberline {4.9}strict/sloppy mode}{9}% 
 \contentsline {chapter}{\numberline {5}Datenstrukturen}{11}% 
 \contentsline {section}{\numberline {5.1}Array}{11}% 
 \contentsline {section}{\numberline {5.2}Liste}{20}% 
-\contentsline {section}{\numberline {5.3}Stack}{21}% 
-\contentsline {section}{\numberline {5.4}Queue}{21}% 
-\contentsline {section}{\numberline {5.5}Dequeue}{21}% 
-\contentsline {section}{\numberline {5.6}Priority Queue}{21}% 
-\contentsline {section}{\numberline {5.7}LinkedList}{21}% 
-\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{21}% 
-\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{21}% 
-\contentsline {section}{\numberline {5.10}Dictionary}{21}% 
-\contentsline {section}{\numberline {5.11}Hashing}{21}% 
-\contentsline {section}{\numberline {5.12}HashMap}{21}% 
-\contentsline {section}{\numberline {5.13}MapTree}{21}% 
-\contentsline {section}{\numberline {5.14}LinkedMap}{21}% 
-\contentsline {section}{\numberline {5.15}Sets}{21}% 
-\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{21}% 
-\contentsline {section}{\numberline {5.17}Graphen}{21}% 
-\contentsline {section}{\numberline {5.18}AVL Tree}{21}% 
-\contentsline {chapter}{\numberline {6}Algorithmen}{23}% 
-\contentsline {section}{\numberline {6.1}Breitensuche}{23}% 
-\contentsline {section}{\numberline {6.2}Tiefensuche}{23}% 
-\contentsline {section}{\numberline {6.3}Bubble Sort}{23}% 
-\contentsline {section}{\numberline {6.4}Selection Sort}{23}% 
-\contentsline {section}{\numberline {6.5}Shellsort}{23}% 
-\contentsline {section}{\numberline {6.6}Mergesort}{23}% 
-\contentsline {section}{\numberline {6.7}Quicksort}{23}% 
-\contentsline {section}{\numberline {6.8}Sequential Suche}{23}% 
-\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{23}% 
-\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{23}% 
-\contentsline {section}{\numberline {6.11}Rucksackproblem}{23}% 
-\contentsline {section}{\numberline {6.12}Greedy Algorithm}{23}% 
-\contentsline {chapter}{\numberline {7}Aufgaben}{25}% 
-\contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{25}% 
-\contentsline {paragraph}{Vorgehensweise}{25}% 
-\contentsline {paragraph}{Typische Fehler}{25}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{27}% 
-\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{27}% 
-\contentsline {paragraph}{Vorgehensweise}{28}% 
-\contentsline {paragraph}{Typische Fehler}{29}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{29}% 
+\contentsline {paragraph}{List Klasse}{21}% 
+\contentsline {paragraph}{clear - L\IeC {\"o}schen aller Elemente einer Liste}{22}% 
+\contentsline {paragraph}{toString - Gibt die Repr\IeC {\"a}sentation der Liste als String zur\IeC {\"u}ck}{22}% 
+\contentsline {paragraph}{title}{22}% 
+\contentsline {section}{\numberline {5.3}Stack}{22}% 
+\contentsline {section}{\numberline {5.4}Queue}{23}% 
+\contentsline {section}{\numberline {5.5}Dequeue}{23}% 
+\contentsline {section}{\numberline {5.6}Priority Queue}{27}% 
+\contentsline {section}{\numberline {5.7}LinkedList}{29}% 
+\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{34}% 
+\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{34}% 
+\contentsline {section}{\numberline {5.10}Dictionary}{34}% 
+\contentsline {section}{\numberline {5.11}Hashing}{34}% 
+\contentsline {section}{\numberline {5.12}HashMap}{34}% 
+\contentsline {section}{\numberline {5.13}MapTree}{34}% 
+\contentsline {section}{\numberline {5.14}LinkedMap}{34}% 
+\contentsline {section}{\numberline {5.15}Sets}{34}% 
+\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{34}% 
+\contentsline {section}{\numberline {5.17}Graphen}{34}% 
+\contentsline {section}{\numberline {5.18}AVL Tree}{34}% 
+\contentsline {chapter}{\numberline {6}Algorithmen}{35}% 
+\contentsline {section}{\numberline {6.1}Breitensuche}{35}% 
+\contentsline {section}{\numberline {6.2}Tiefensuche}{35}% 
+\contentsline {section}{\numberline {6.3}Bubble Sort}{35}% 
+\contentsline {section}{\numberline {6.4}Selection Sort}{35}% 
+\contentsline {section}{\numberline {6.5}Shellsort}{35}% 
+\contentsline {section}{\numberline {6.6}Mergesort}{35}% 
+\contentsline {section}{\numberline {6.7}Quicksort}{35}% 
+\contentsline {section}{\numberline {6.8}Sequential Suche}{35}% 
+\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{35}% 
+\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{35}% 
+\contentsline {section}{\numberline {6.11}Rucksackproblem}{35}% 
+\contentsline {section}{\numberline {6.12}Greedy Algorithm}{35}% 
+\contentsline {chapter}{\numberline {7}Aufgaben}{37}% 
+\contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{37}% 
+\contentsline {paragraph}{Vorgehensweise}{37}% 
+\contentsline {paragraph}{Typische Fehler}{37}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{39}% 
+\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{39}% 
+\contentsline {paragraph}{Vorgehensweise}{40}% 
+\contentsline {paragraph}{Typische Fehler}{41}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{41}% 
