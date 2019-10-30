@@ -139,17 +139,24 @@ statement vs. expression
 switch
 
 \section{Wiederholungen}
-for loop, while loop, do while loop, symbol iterator; Generator; yields, for of 
+for loop, while loop, do while loop, symbol iterator; Generator; yields, for...of, for ...in
 
 \section{Funktionen}
+
 \section{Scope}
 \section{Closures}
+\section{Hoisting}
 \section{Call by Reference vs. Call by Value}
 \section{Truthy und falsy}
 \section{this}
 \section{strict/sloppy mode}
+\section{Number.EPSILON}
+Vergleich, ob Addition funktioniert
 
 \chapter{Datenstrukturen}
+Datenstrukturen lassen sich grob in drei Kategorien einteilen. 
+At a high level, there are basically three types of data structures. Stacks and Queues are array-like structures that differ only in how items are inserted and removed. Linked Lists, Trees, and Graphs are structures with nodes that keep references to other nodes. Hash Tables depend on hash functions to save and locate data.
+
 \section{Array}
 JS hat im Vergleich zu Java oder C/C++ nur sehr wenige Datenstrukturen. Eines ihrer wichtigsten Datenstrukturen ist der Array. Das Array werden wir später dazu benutzen, um alle anderen komplexeren Datenstrukturen zu implementieren. Der Unterschied zu JSs Arrays im Vergleich zu anderen Programmiersprachen ist, dass Arrays in JS keine fixe Länge haben. Durch das Hinzufügen und Entfernen von Elementen verändert sich die Array-Länge dynamisch mit. Bei der Initialisierung muss man dem Array dadurch auch keine bestimmte Länge mitgeben werden.
 
@@ -534,43 +541,43 @@ Listen sind gut geeignet, wenn es nicht auf die Reihenfolge der Elemente ankommt
 	\item end (function): Sets current position to last element of list
 	\item prev (function): Moves current position back one element
 	\item next (function): Moves current position forward one element
-	\item currPos (function): Returns the current position in list
 	\item moveTo (function): Moves the current position to specified position	
 	\item sublist(function): Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive. 
 \end{itemize}
 
 \paragraph{List Klasse}
-Nachfolgend werden wir die \lstinline|List| Klasse erstellen. Die gesamte Klasse kann unter meinem GitHub Repo angeschaut werden.
+Nachfolgend werden wir die \lstinline|List| Klasse erstellen. Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden.
+
+Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird eine leere Liste erstellt.
 
 \begin{lstlisting}[caption=Array Konstruktor]
 class List {
-	constructor() {
-		this.store = [];
+	constructor(items = []) {
+		this.store = items;
 		this.pos = 0;
-		this.size = 0;
+		this.size = items.length;
 	}
 	clear() { /*...*/ }
 	toString() {/*...*/ }
-	get(index = this.pos) {/*...*/ }
-	indexOf () {/*...*/}
+	get(index) {/*...*/ }
+	indexOf (item) {/*...*/}
 	lastIndexOf () {/*...*/}
 	isEmpty () {/*...*/}
-	insert() {/*...*/ }
+	insert(index) {/*...*/ }
 	add() {/*...*/ }
 	remove() {/*...*/ }
 	front() {/*...*/ }
 	end() {/*...*/ }
 	prev() {/*...*/ }
 	next() {/*...*/ }
-	currPos() {/*...*/ }
-	moveTo() {/*...*/ }
-	sublist() {/*...*/}
+	moveTo(index) {/*...*/ }
+	sublist(from, to) {/*...*/}
 }
 \end{lstlisting}
 
-Die einzelenen noch leeren Funktionen werden wir nachfolgend mit Leben füllen. Die Eigenschaften können wir aber schon setzen. Bei einer Liste sind \lstinline|listSize|, \lstinline|pos|, \lstinline|length| zu Anfang selbstverständlich alle \lstinline|0|.
+Die einzelenen noch leeren Funktionen werden wir nachfolgend mit Leben füllen. Die Eigenschaften können wir aber schon setzen. Bei einer Liste sind \lstinline|listSize|, \lstinline|pos|, \lstinline|size| zu Anfang selbstverständlich alle \lstinline|0|.
 
-\paragraph{clear - Löschen aller Elemente einer Liste}
+\paragraph{clear() - Löschen aller Elemente einer Liste}
 Beim Löschen muss der \lstinline|dataStore| sowie die Eigenschaft Länge und Position wieder auf den Initialzustand zurück versetzt werden.
 
 \begin{lstlisting}[caption=Array Konstruktor]
@@ -580,7 +587,7 @@ clear() {
 }
 \end{lstlisting}
 
-\paragraph{toString - Gibt die Repräsentation der Liste als String zurück} Bei der toString Funktion reicht es aus, wenn wir die \lstinline|dataStore| zurückgeben.
+\paragraph{toString() - Gibt die Repräsentation der Liste als String zurück} Bei der toString Funktion reicht es aus, wenn wir die \lstinline|dataStore| zurückgeben.
 
 \begin{lstlisting}[caption=Array Konstruktor]
 toString() {
@@ -588,8 +595,107 @@ toString() {
 }
 \end{lstlisting}
 
-\paragraph{title}
+\paragraph{get(index) - Ein Element an einem bestimmten Index bekommen}
+Diese Funktion bekommt einen Defaultwert. Falls der User nur \lstinline|get()| aufruft, bekommt er das Element bei der \lstinline|index = pos| ist. Gibt er eine Zahl ein, z.B. \lstinline|get(2)| bekommt er das Element ber der Index dieser Zahl entspricht.
+\begin{lstlisting}[caption=Array Konstruktor]
+get(index = this.pos) {
+	return this.store[index];
+}
+\end{lstlisting}
+
+\paragraph{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt} Diese Funktion kann nur auf primitive Typen, wie \lstinline|String|, \lstinline|Number|, \lstinline|Boolean|, usw. angewandt werden. Wir verwenden dazu die native \lstinline|indexOf()| Funktion von JS.
+\begin{lstlisting}[caption=Array Konstruktor]
+indexOf(item) {
+	return this.store.indexOf(item);
+}
+\end{lstlisting}
+
+\paragraph{lastIndexOf(item) - Gibt den Index wo das gesuchte Element zuletzt vorkommt} Auch diese Funktion kann nur auf primitive Typen, wie \lstinline|String|, \lstinline|Number|, \lstinline|Boolean|, usw. angewandt werden. Wir verwenden dazu die native \mbox{\lstinline|indexOf()|} Funktion von JS.
+\begin{lstlisting}[caption=Array Konstruktor]
+indexOf(item) {
+	return this.store.lastIndexOf(item);
+}
+\end{lstlisting}
+
+\paragraph{isEmpty() - Liefert true, wenn die Liste leer ist} 
+\begin{lstlisting}[caption=Array Konstruktor]
+isEmpty() {
+	return this.store.length === 0;
+}
+\end{lstlisting}
+Hier vergleichen wir die Größe des Arrays mit der Zahl 0. Alternativ hätten wir auch \lstinline|return Boolean(this.store.length)| schreiben können. Jedoch finde ich die obige Version deklarativer. Dies ist manchmal viel wichtiger als kurzer oder prägnanter Code, weil wir den Code nicht für die Maschine schreiben, sondern für andere Entwickler.
+
+\paragraph{insert(el, index) - Fügt ein Element an einer bestimmten Stelle ein} 
+\begin{lstlisting}[caption=Array Konstruktor]
+insert(el, index) {
+	this.store.splice(index, 0, el);
+}
+\end{lstlisting}
+
+\paragraph{add(el) - Fügt ein Element am Ende der Liste}
+\begin{lstlisting}[caption=Array Konstruktor]
+add(el) {
+	this.store.push(el);
+}
+\end{lstlisting}
+\paragraph{remove(index) - Entfernt ein Element an einer bestimmten Stelle}
+\begin{lstlisting}[caption=Array Konstruktor]
+remove(index) {
+	this.store.splice(index, 1);
+}
+\end{lstlisting}
+\paragraph{front() - Setzt die Position am Listenanfang}
+\begin{lstlisting}[caption=Array Konstruktor]
+remove(index) {
+	this.pos = 0;
+}
+\end{lstlisting}
+\paragraph{end() - Setzt die Position am Listenende}
+\begin{lstlisting}[caption=Array Konstruktor]
+end() {
+	this.pos = this.store.length - 1;
+}
+\end{lstlisting}
+
+\paragraph{prev() - Setzt die Position um eins nach vorne}
+\begin{lstlisting}[caption=Array Konstruktor]
+prev() {
+	if (this.pos === 0) {
+		return 0;
+	}
+	return --this.pos;
+}
+\end{lstlisting}
+\paragraph{next() - Setzt die Position um eins nach hinten}
+\begin{lstlisting}[caption=Array Konstruktor]
+next() {
+	if (this.pos === this.store.length - 1) {
+		return this.pos;
+	}
+	return ++this.pos;
+}
+\end{lstlisting}
+\paragraph{moveTo(index) - Setzt die Position an einer bestimmten Stelle}
+\begin{lstlisting}[caption=Array Konstruktor]
+moveTo(index) {
+	if (this.pos === this.store.length - 1 
+		|| this.pos === 0) {
+		return;
+	}
+	this.pos = index;
+}
+\end{lstlisting}
+\paragraph{sublist(from, to) - Erstellt eine Liste von (inklusive) einer bestimmten Stelle bis (exklusiv) eine bestimmten Stelle ohne das original Array zu ändern} Die Funktion \lstinline|slice()| bietet sich dafür besonders gut an, da sie genau eine subliste nach genau den genannten Parametern erstellt und dabei das original Array nicht verändert.
+\begin{lstlisting}[caption=Array Konstruktor]
+sublist(from, to) {
+	return this.store.slice(from, to);
+}
+
+\end{lstlisting}
 \section{Stack}
+- LIFO
+- Viele Funktonen sind ähnlich wie in der List. Ich werde nur die Funktonen beschreiben, die ich bisher noch nicht implementiert habe. Für die komplette IMplementierung siehe mein Repo inklusive Test
+
 Method Detail
 push
 public E push(E item)
@@ -1616,7 +1722,7 @@ let binarySearch = function(a, key) {
 		if (currentKey === key) {
 			return currentIndex;
 		} else if (currentKey < key) {
-			newA = newA.slice(currentIndex);
+			newA = newA.(currentIndex);
 		} else {
 			newA = newA.slice(0, currentIndex + 1);
 		}
