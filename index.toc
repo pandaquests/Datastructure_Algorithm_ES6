@@ -1,77 +1,80 @@
-\contentsline {chapter}{\numberline {1}Algorithmen und Datenstrukturen in ES6+}{3}% 
-\contentsline {section}{\numberline {1.1}Warum in ES6+}{3}% 
-\contentsline {section}{\numberline {1.2}Behandelte Themen}{3}% 
-\contentsline {section}{\numberline {1.3}Nicht behandelte Themen}{3}% 
-\contentsline {chapter}{\numberline {2}Entwicklungsumgebung}{5}% 
-\contentsline {chapter}{\numberline {3}JavaScript Paradigmen}{7}% 
-\contentsline {section}{\numberline {3.1}Object-Orientiertes Programmieren}{7}% 
-\contentsline {section}{\numberline {3.2}Funktionales Programmieren}{7}% 
-\contentsline {chapter}{\numberline {4}JavaScript Konstrukte}{9}% 
-\contentsline {section}{\numberline {4.1}Entscheidungskonstrukte}{9}% 
-\contentsline {section}{\numberline {4.2}Wiederholungen}{9}% 
-\contentsline {section}{\numberline {4.3}Funktionen}{10}% 
-\contentsline {section}{\numberline {4.4}Scope}{10}% 
-\contentsline {section}{\numberline {4.5}Closures}{10}% 
-\contentsline {section}{\numberline {4.6}Hoisting}{10}% 
-\contentsline {section}{\numberline {4.7}Call by Reference vs. Call by Value}{10}% 
-\contentsline {section}{\numberline {4.8}Truthy und falsy}{10}% 
-\contentsline {section}{\numberline {4.9}this}{10}% 
-\contentsline {section}{\numberline {4.10}strict/sloppy mode}{10}% 
-\contentsline {section}{\numberline {4.11}Number.EPSILON}{10}% 
-\contentsline {chapter}{\numberline {5}Datenstrukturen}{11}% 
-\contentsline {section}{\numberline {5.1}Array}{11}% 
-\contentsline {section}{\numberline {5.2}Liste}{20}% 
-\contentsline {paragraph}{List Klasse}{21}% 
-\contentsline {paragraph}{clear() - L\IeC {\"o}schen aller Elemente einer Liste}{22}% 
-\contentsline {paragraph}{toString() - Gibt die Repr\IeC {\"a}sentation der Liste als String zur\IeC {\"u}ck}{22}% 
-\contentsline {paragraph}{get(index) - Ein Element an einem bestimmten Index bekommen}{22}% 
-\contentsline {paragraph}{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt}{22}% 
-\contentsline {paragraph}{lastIndexOf(item) - Gibt den Index wo das gesuchte Element zuletzt vorkommt}{23}% 
-\contentsline {paragraph}{isEmpty() - Liefert true, wenn die Liste leer ist}{23}% 
-\contentsline {paragraph}{insert(el, index) - F\IeC {\"u}gt ein Element an einer bestimmten Stelle ein}{23}% 
-\contentsline {paragraph}{add(el) - F\IeC {\"u}gt ein Element am Ende der Liste}{23}% 
-\contentsline {paragraph}{remove(index) - Entfernt ein Element an einer bestimmten Stelle}{23}% 
-\contentsline {paragraph}{front() - Setzt die Position am Listenanfang}{24}% 
-\contentsline {paragraph}{end() - Setzt die Position am Listenende}{24}% 
-\contentsline {paragraph}{prev() - Setzt die Position um eins nach vorne}{24}% 
-\contentsline {paragraph}{next() - Setzt die Position um eins nach hinten}{24}% 
-\contentsline {paragraph}{moveTo(index) - Setzt die Position an einer bestimmten Stelle}{24}% 
-\contentsline {paragraph}{sublist(from, to) - Erstellt eine Liste von (inklusive) einer bestimmten Stelle bis (exklusiv) eine bestimmten Stelle ohne das original Array zu \IeC {\"a}ndern}{25}% 
-\contentsline {section}{\numberline {5.3}Stack}{25}% 
-\contentsline {section}{\numberline {5.4}Queue}{25}% 
-\contentsline {section}{\numberline {5.5}Dequeue}{26}% 
-\contentsline {section}{\numberline {5.6}Priority Queue}{30}% 
-\contentsline {section}{\numberline {5.7}LinkedList}{32}% 
-\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{37}% 
-\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{37}% 
-\contentsline {section}{\numberline {5.10}Dictionary}{37}% 
-\contentsline {section}{\numberline {5.11}Hashing}{37}% 
-\contentsline {section}{\numberline {5.12}HashMap}{37}% 
-\contentsline {section}{\numberline {5.13}MapTree}{37}% 
-\contentsline {section}{\numberline {5.14}LinkedMap}{37}% 
-\contentsline {section}{\numberline {5.15}Sets}{37}% 
-\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{37}% 
-\contentsline {section}{\numberline {5.17}Graphen}{37}% 
-\contentsline {section}{\numberline {5.18}AVL Tree}{37}% 
-\contentsline {chapter}{\numberline {6}Algorithmen}{39}% 
-\contentsline {section}{\numberline {6.1}Breitensuche}{39}% 
-\contentsline {section}{\numberline {6.2}Tiefensuche}{39}% 
-\contentsline {section}{\numberline {6.3}Bubble Sort}{39}% 
-\contentsline {section}{\numberline {6.4}Selection Sort}{39}% 
-\contentsline {section}{\numberline {6.5}Shellsort}{39}% 
-\contentsline {section}{\numberline {6.6}Mergesort}{39}% 
-\contentsline {section}{\numberline {6.7}Quicksort}{39}% 
-\contentsline {section}{\numberline {6.8}Sequential Suche}{39}% 
-\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{39}% 
-\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{39}% 
-\contentsline {section}{\numberline {6.11}Rucksackproblem}{39}% 
-\contentsline {section}{\numberline {6.12}Greedy Algorithm}{39}% 
-\contentsline {chapter}{\numberline {7}Aufgaben}{41}% 
-\contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{41}% 
-\contentsline {paragraph}{Vorgehensweise}{41}% 
-\contentsline {paragraph}{Typische Fehler}{41}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{43}% 
-\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{43}% 
-\contentsline {paragraph}{Vorgehensweise}{44}% 
-\contentsline {paragraph}{Typische Fehler}{45}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{45}% 
+\contentsline {chapter}{\numberline {1}Algorithmen und Datenstrukturen in ES6+}{3}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Warum in ES6+}{3}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Behandelte Themen}{3}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Nicht behandelte Themen}{3}{section.1.3}% 
+\contentsline {chapter}{\numberline {2}Entwicklungsumgebung}{5}{chapter.2}% 
+\contentsline {chapter}{\numberline {3}JavaScript Paradigmen}{7}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Object-Orientiertes Programmieren}{7}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Funktionales Programmieren}{7}{section.3.2}% 
+\contentsline {chapter}{\numberline {4}JavaScript Konstrukte}{9}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Entscheidungskonstrukte}{9}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Wiederholungen}{9}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Funktionen}{10}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Scope}{10}{section.4.4}% 
+\contentsline {section}{\numberline {4.5}Closures}{10}{section.4.5}% 
+\contentsline {section}{\numberline {4.6}Hoisting}{10}{section.4.6}% 
+\contentsline {section}{\numberline {4.7}Call by Reference vs. Call by Value}{10}{section.4.7}% 
+\contentsline {section}{\numberline {4.8}Truthy und falsy}{10}{section.4.8}% 
+\contentsline {section}{\numberline {4.9}this}{10}{section.4.9}% 
+\contentsline {section}{\numberline {4.10}strict/sloppy mode}{10}{section.4.10}% 
+\contentsline {section}{\numberline {4.11}Number.EPSILON}{10}{section.4.11}% 
+\contentsline {chapter}{\numberline {5}Datenstrukturen}{11}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Array}{11}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Liste}{20}{section.5.2}% 
+\contentsline {paragraph}{List Klasse}{21}{section*.2}% 
+\contentsline {paragraph}{clear() - L\IeC {\"o}schen aller Elemente einer Liste}{22}{section*.3}% 
+\contentsline {paragraph}{toString() - Gibt die Repr\IeC {\"a}sentation der Liste als String zur\IeC {\"u}ck}{22}{section*.4}% 
+\contentsline {paragraph}{get(index) - Ein Element an einem bestimmten Index bekommen}{23}{section*.5}% 
+\contentsline {paragraph}{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt}{23}{section*.6}% 
+\contentsline {paragraph}{lastIndexOf(item) - Gibt den Index wo das gesuchte Element zuletzt vorkommt}{23}{section*.7}% 
+\contentsline {paragraph}{isEmpty() - Liefert true, wenn die Liste leer ist}{23}{section*.8}% 
+\contentsline {paragraph}{insert(el, index) - F\IeC {\"u}gt ein Element an einer bestimmten Stelle ein}{23}{section*.9}% 
+\contentsline {paragraph}{add(el) - F\IeC {\"u}gt ein Element am Ende der Liste}{24}{section*.10}% 
+\contentsline {paragraph}{remove(index) - Entfernt ein Element an einer bestimmten Stelle}{24}{section*.11}% 
+\contentsline {paragraph}{front() - Setzt die Position am Listenanfang}{24}{section*.12}% 
+\contentsline {paragraph}{end() - Setzt die Position am Listenende}{24}{section*.13}% 
+\contentsline {paragraph}{prev() - Setzt die Position um eins nach vorne}{24}{section*.14}% 
+\contentsline {paragraph}{next() - Setzt die Position um eins nach hinten}{24}{section*.15}% 
+\contentsline {paragraph}{moveTo(index) - Setzt die Position an einer bestimmten Stelle}{25}{section*.16}% 
+\contentsline {paragraph}{sublist(from, to) - Erstellt eine Liste von (inklusive) einer bestimmten Stelle bis (exklusiv) eine bestimmten Stelle ohne das original Array zu \IeC {\"a}ndern}{25}{section*.17}% 
+\contentsline {section}{\numberline {5.3}Stack}{25}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}Queue}{26}{section.5.4}% 
+\contentsline {section}{\numberline {5.5}Dequeue}{27}{section.5.5}% 
+\contentsline {section}{\numberline {5.6}Priority Queue}{32}{section.5.6}% 
+\contentsline {section}{\numberline {5.7}LinkedList}{33}{section.5.7}% 
+\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{39}{section.5.8}% 
+\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{39}{section.5.9}% 
+\contentsline {section}{\numberline {5.10}Dictionary}{39}{section.5.10}% 
+\contentsline {section}{\numberline {5.11}Hashing}{39}{section.5.11}% 
+\contentsline {section}{\numberline {5.12}HashMap}{39}{section.5.12}% 
+\contentsline {section}{\numberline {5.13}MapTree}{39}{section.5.13}% 
+\contentsline {section}{\numberline {5.14}LinkedMap}{39}{section.5.14}% 
+\contentsline {section}{\numberline {5.15}Sets}{39}{section.5.15}% 
+\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{39}{section.5.16}% 
+\contentsline {section}{\numberline {5.17}Graphen}{39}{section.5.17}% 
+\contentsline {section}{\numberline {5.18}AVL Tree}{39}{section.5.18}% 
+\contentsline {chapter}{\numberline {6}Algorithmen}{41}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Breitensuche}{41}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Tiefensuche}{41}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Bubble Sort}{41}{section.6.3}% 
+\contentsline {section}{\numberline {6.4}Selection Sort}{41}{section.6.4}% 
+\contentsline {section}{\numberline {6.5}Shellsort}{41}{section.6.5}% 
+\contentsline {section}{\numberline {6.6}Mergesort}{41}{section.6.6}% 
+\contentsline {section}{\numberline {6.7}Quicksort}{41}{section.6.7}% 
+\contentsline {section}{\numberline {6.8}Sequential Suche}{41}{section.6.8}% 
+\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{41}{section.6.9}% 
+\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{41}{section.6.10}% 
+\contentsline {section}{\numberline {6.11}Rucksackproblem}{41}{section.6.11}% 
+\contentsline {section}{\numberline {6.12}Greedy Algorithm}{41}{section.6.12}% 
+\contentsline {chapter}{\numberline {7}Aufgaben}{43}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{43}{section.7.1}% 
+\contentsline {paragraph}{Vorgehensweise}{43}{section*.18}% 
+\contentsline {paragraph}{Typische Fehler}{43}{section*.19}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{45}{section*.20}% 
+\contentsline {paragraph}{Vorgehensweise}{46}{section*.21}% 
+\contentsline {paragraph}{Typische Fehler}{46}{section*.22}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{48}{section*.23}% 
+\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{48}{section.7.2}% 
+\contentsline {paragraph}{Vorgehensweise}{49}{section*.24}% 
+\contentsline {paragraph}{Typische Fehler}{50}{section*.25}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{50}{section*.26}% 

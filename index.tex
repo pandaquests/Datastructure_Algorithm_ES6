@@ -46,6 +46,7 @@
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage[most]{tcolorbox}
 \usepackage{lipsum}% just to generate text for the example
+\usepackage{hyperref}
 
 \newmdtheoremenv[
 hidealllines=true,
@@ -154,8 +155,19 @@ for loop, while loop, do while loop, symbol iterator; Generator; yields, for...o
 Vergleich, ob Addition funktioniert
 
 \chapter{Datenstrukturen}
-Datenstrukturen lassen sich grob in drei Kategorien einteilen. 
-At a high level, there are basically three types of data structures. Stacks and Queues are array-like structures that differ only in how items are inserted and removed. Linked Lists, Trees, and Graphs are structures with nodes that keep references to other nodes. Hash Tables depend on hash functions to save and locate data.
+Datenstrukturen lassen sich grob in drei Kategorien einteilen:
+\begin{enumerate} 
+	\item Array ähnliche Strukturen
+	
+	Dazu gehören Stacks und Queues. Diese Strukturen unterscheiden sich nur darin wie die Elemente eingefügt und entfernt werden.
+	\item Strukturen mit Knoten-Referenzen
+	
+	Strukturen, die eine Referenz zu einen Knoten haben sind LinkedList, Bäume und Graphen
+	
+	\item Hash Tabellen
+	Hash Tabellen sind von Hash Funktionen abhängig, um Daten zu speichern und zu finden.
+	
+\end{enumerate}
 
 \section{Array}
 JS hat im Vergleich zu Java oder C/C++ nur sehr wenige Datenstrukturen. Eines ihrer wichtigsten Datenstrukturen ist der Array. Das Array werden wir später dazu benutzen, um alle anderen komplexeren Datenstrukturen zu implementieren. Der Unterschied zu JSs Arrays im Vergleich zu anderen Programmiersprachen ist, dass Arrays in JS keine fixe Länge haben. Durch das Hinzufügen und Entfernen von Elementen verändert sich die Array-Länge dynamisch mit. Bei der Initialisierung muss man dem Array dadurch auch keine bestimmte Länge mitgeben werden.
@@ -546,7 +558,9 @@ Listen sind gut geeignet, wenn es nicht auf die Reihenfolge der Elemente ankommt
 \end{itemize}
 
 \paragraph{List Klasse}
-Nachfolgend werden wir die \lstinline|List| Klasse erstellen. Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden.
+Nachfolgend werden wir die \lstinline|List| Klasse erstellen. Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden. Die ganze Klasse findet ihr hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/datastructures/List.js}
+
+Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/test/datastructures/List.test.js}
 
 Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird eine leere Liste erstellt.
 
@@ -576,6 +590,8 @@ class List {
 \end{lstlisting}
 
 Die einzelenen noch leeren Funktionen werden wir nachfolgend mit Leben füllen. Die Eigenschaften können wir aber schon setzen. Bei einer Liste sind \lstinline|listSize|, \lstinline|pos|, \lstinline|size| zu Anfang selbstverständlich alle \lstinline|0|.
+
+Erklären, was man mit der Position macht..... als Iterable..
 
 \paragraph{clear() - Löschen aller Elemente einer Liste}
 Beim Löschen muss der \lstinline|dataStore| sowie die Eigenschaft Länge und Position wieder auf den Initialzustand zurück versetzt werden.
@@ -693,10 +709,18 @@ sublist(from, to) {
 
 \end{lstlisting}
 \section{Stack}
-- LIFO
-- Viele Funktonen sind ähnlich wie in der List. Ich werde nur die Funktonen beschreiben, die ich bisher noch nicht implementiert habe. Für die komplette IMplementierung siehe mein Repo inklusive Test
+Ein Stack ist wie ein Stapel von Papier. Man legt ein Blatt Papier oben auf den Stapel auf und wenn man eins wegnehmen will, dann kann man dieses nur von oben entfernen. Dieses Prinzip nennt sich "Last-in-first-out" (LIFO). Viele Funktionen des \lstinline|Stacks| werden genauso implementiert wie bei der \lstinline|List|. Daher werde ich hier nur die Funktonen beschreiben, die ich bisher noch nicht implementiert habe. Für die komplette Implementierung siehe mein Repo inklusive Test.
 
-Method Detail
+Der Funktionsumfang eines \lstinline|Stack|, schaut folgendermaßen aus:
+
+\begin{itemize} 
+	\item push(item): Current position in list
+	\item pop (property): Returns the number of elements in list	
+	\item peek (function): Clears all elements from list
+	\item empty (function): Returns string representation of list
+	\item search(el)
+\end{itemize}
+
 push
 public E push(E item)
 Pushes an item onto the top of this stack. This has exactly the same effect as:
@@ -735,313 +759,349 @@ Returns:
 the 1-based position from the top of the stack where the object is located; the return value -1 indicates that the object is not on the stack.
 
 \section{Queue}
-Method Detail
-add
-boolean add(E e)
-Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
-Specified by:
-add in interface Collection<E>
-Parameters:
-e - the element to add
-Returns:
-true (as specified by Collection.add(E))
-Throws:
-IllegalStateException - if the element cannot be added at this time due to capacity restrictions
-ClassCastException - if the class of the specified element prevents it from being added to this queue
-NullPointerException - if the specified element is null and this queue does not permit null elements
-IllegalArgumentException - if some property of this element prevents it from being added to this queue
-offer
-boolean offer(E e)
-Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted queue, this method is generally preferable to add(E), which can fail to insert an element only by throwing an exception.
-Parameters:
-e - the element to add
-Returns:
-true if the element was added to this queue, else false
-Throws:
-ClassCastException - if the class of the specified element prevents it from being added to this queue
-NullPointerException - if the specified element is null and this queue does not permit null elements
-IllegalArgumentException - if some property of this element prevents it from being added to this queue
-remove
-E remove()
-Retrieves and removes the head of this queue. This method differs from poll only in that it throws an exception if this queue is empty.
-Returns:
-the head of this queue
-Throws:
-NoSuchElementException - if this queue is empty
-poll
-E poll()
-Retrieves and removes the head of this queue, or returns null if this queue is empty.
-Returns:
-the head of this queue, or null if this queue is empty
-element
-E element()
-Retrieves, but does not remove, the head of this queue. This method differs from peek only in that it throws an exception if this queue is empty.
-Returns:
-the head of this queue
-Throws:
-NoSuchElementException - if this queue is empty
-peek
-E peek()
-Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
-Returns:
-the head of this queue, or null if this queue is empty
+\begin{itemize} 
+	\item add
+	boolean add(E e)
+	Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+	Specified by:
+	add in interface Collection<E>
+	Parameters:
+	e - the element to add
+	Returns:
+	true (as specified by Collection.add(E))
+	Throws:
+	IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+	ClassCastException - if the class of the specified element prevents it from being added to this queue
+	NullPointerException - if the specified element is null and this queue does not permit null elements
+	IllegalArgumentException - if some property of this element prevents it from being added to this queue
+	
+	\item offer
+	boolean offer(E e)
+	Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted queue, this method is generally preferable to add(E), which can fail to insert an element only by throwing an exception.
+	Parameters:
+	e - the element to add
+	Returns:
+	true if the element was added to this queue, else false
+	Throws:
+	ClassCastException - if the class of the specified element prevents it from being added to this queue
+	NullPointerException - if the specified element is null and this queue does not permit null elements
+	IllegalArgumentException - if some property of this element prevents it from being added to this queue
+	
+	\item remove
+	E remove()
+	Retrieves and removes the head of this queue. This method differs from poll only in that it throws an exception if this queue is empty.
+	Returns:
+	the head of this queue
+	Throws:
+	NoSuchElementException - if this queue is empty
+	
+	\item poll
+	E poll()
+	Retrieves and removes the head of this queue, or returns null if this queue is empty.
+	Returns:
+	the head of this queue, or null if this queue is empty
+	element
+	E element()
+	Retrieves, but does not remove, the head of this queue. This method differs from peek only in that it throws an exception if this queue is empty.
+	Returns:
+	the head of this queue
+	Throws:
+	NoSuchElementException - if this queue is empty
+	
+	\item addFirst
+	void addFirst(E e)
+	Inserts the specified element at the front of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerFirst(E).
+	Parameters:
+	e - the element to add
+	Throws:
+	IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+	ClassCastException - if the class of the specified element prevents it from being added to this deque
+	NullPointerException - if the specified element is null and this deque does not permit null elements
+	IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+	
+	\item peek
+	E peek()
+	Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
+	Returns:
+	the head of this queue, or null if this queue is empty
+	
+\end{itemize}
 
+Method Detail
 \section{Dequeue}
+
+
+\begin{itemize} 
+	\item addLast
+	void addLast(E e)
+	Inserts the specified element at the end of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerLast(E).
+	This method is equivalent to add(E).
+	
+	Parameters:
+	e - the element to add
+	Throws:
+	IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+	ClassCastException - if the class of the specified element prevents it from being added to this deque
+	NullPointerException - if the specified element is null and this deque does not permit null elements
+	IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+	
+	\item offerFirst
+	boolean offerFirst(E e)
+	Inserts the specified element at the front of this deque unless it would violate capacity restrictions. When using a capacity-restricted deque, this method is generally preferable to the addFirst(E) method, which can fail to insert an element only by throwing an exception.
+	Parameters:
+	e - the element to add
+	Returns:
+	true if the element was added to this deque, else false
+	Throws:
+	ClassCastException - if the class of the specified element prevents it from being added to this deque
+	NullPointerException - if the specified element is null and this deque does not permit null elements
+	IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+	
+	\item offerLast
+	boolean offerLast(E e)
+	Inserts the specified element at the end of this deque unless it would violate capacity restrictions. When using a capacity-restricted deque, this method is generally preferable to the addLast(E) method, which can fail to insert an element only by throwing an exception.
+	Parameters:
+	e - the element to add
+	Returns:
+	true if the element was added to this deque, else false
+	Throws:
+	ClassCastException - if the class of the specified element prevents it from being added to this deque
+	NullPointerException - if the specified element is null and this deque does not permit null elements
+	IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+	
+	\item removeFirst
+	E removeFirst()
+	Retrieves and removes the first element of this deque. This method differs from pollFirst only in that it throws an exception if this deque is empty.
+	Returns:
+	the head of this deque
+	Throws:
+	NoSuchElementException - if this deque is empty
+	
+	\item removeLast
+	E removeLast()
+	Retrieves and removes the last element of this deque. This method differs from pollLast only in that it throws an exception if this deque is empty.
+	Returns:
+	the tail of this deque
+	Throws:
+	NoSuchElementException - if this deque is empty
+	pollFirst
+	E pollFirst()
+	Retrieves and removes the first element of this deque, or returns null if this deque is empty.
+	Returns:
+	the head of this deque, or null if this deque is empty
+	
+	\item pollLast
+	E pollLast()
+	Retrieves and removes the last element of this deque, or returns null if this deque is empty.
+	Returns:
+	the tail of this deque, or null if this deque is empty
+	
+	\item getFirst
+	E getFirst()
+	Retrieves, but does not remove, the first element of this deque. This method differs from peekFirst only in that it throws an exception if this deque is empty.
+	Returns:
+	the head of this deque
+	Throws:
+	NoSuchElementException - if this deque is empty
+	
+	\item getLast
+	E getLast()
+	Retrieves, but does not remove, the last element of this deque. This method differs from peekLast only in that it throws an exception if this deque is empty.
+	Returns:
+	the tail of this deque
+	Throws:
+	NoSuchElementException - if this deque is empty
+	
+	\item peekFirst
+	E peekFirst()
+	Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty.
+	Returns:
+	the head of this deque, or null if this deque is empty
+	
+	\item peekLast
+	E peekLast()
+	Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty.
+	Returns:
+	the tail of this deque, or null if this deque is empty
+	
+	\item removeFirstOccurrence
+	boolean removeFirstOccurrence(Object o)
+	Removes the first occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the first element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+	Parameters:
+	o - element to be removed from this deque, if present
+	Returns:
+	true if an element was removed as a result of this call
+	Throws:
+	ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+	NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+	
+	\item removeLastOccurrence
+	boolean removeLastOccurrence(Object o)
+	Removes the last occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the last element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+	Parameters:
+	o - element to be removed from this deque, if present
+	Returns:
+	true if an element was removed as a result of this call
+	Throws:
+	ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+	NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+	
+	\item add
+	boolean add(E e)
+	Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available. When using a capacity-restricted deque, it is generally preferable to use offer.
+	This method is equivalent to addLast(E).
+	
+	Specified by:
+	add in interface Collection<E>
+	Specified by:
+	add in interface Queue<E>
+	Parameters:
+	e - the element to add
+	Returns:
+	true (as specified by Collection.add(E))
+	Throws:
+	IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+	ClassCastException - if the class of the specified element prevents it from being added to this deque
+	NullPointerException - if the specified element is null and this deque does not permit null elements
+	IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+	
+	\item offer
+	boolean offer(E e)
+	Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and false if no space is currently available. When using a capacity-restricted deque, this method is generally preferable to the add(E) method, which can fail to insert an element only by throwing an exception.
+	This method is equivalent to offerLast(E).
+	
+	Specified by:
+	offer in interface Queue<E>
+	Parameters:
+	e - the element to add
+	Returns:
+	true if the element was added to this deque, else false
+	Throws:
+	ClassCastException - if the class of the specified element prevents it from being added to this deque
+	NullPointerException - if the specified element is null and this deque does not permit null elements
+	IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+	
+	\item remove
+	E remove()
+	Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque). This method differs from poll only in that it throws an exception if this deque is empty.
+	This method is equivalent to removeFirst().
+	
+	Specified by:
+	remove in interface Queue<E>
+	Returns:
+	the head of the queue represented by this deque
+	Throws:
+	NoSuchElementException - if this deque is empty
+	
+	\item poll
+	E poll()
+	Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+	This method is equivalent to pollFirst().
+	
+	Specified by:
+	poll in interface Queue<E>
+	Returns:
+	the first element of this deque, or null if this deque is empty
+	element
+	E element()
+	Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque). This method differs from peek only in that it throws an exception if this deque is empty.
+	This method is equivalent to getFirst().
+	
+	Specified by:
+	element in interface Queue<E>
+	Returns:
+	the head of the queue represented by this deque
+	Throws:
+	NoSuchElementException - if this deque is empty
+	
+	\item peek
+	E peek()
+	Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+	This method is equivalent to peekFirst().
+	
+	Specified by:
+	peek in interface Queue<E>
+	Returns:
+	the head of the queue represented by this deque, or null if this deque is empty
+	
+	\item push
+	void push(E e)
+	Pushes an element onto the stack represented by this deque (in other words, at the head of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+	This method is equivalent to addFirst(E).
+	
+	Parameters:
+	e - the element to push
+	Throws:
+	IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+	ClassCastException - if the class of the specified element prevents it from being added to this deque
+	NullPointerException - if the specified element is null and this deque does not permit null elements
+	IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+	
+	\item pop
+	E pop()
+	Pops an element from the stack represented by this deque. In other words, removes and returns the first element of this deque.
+	This method is equivalent to removeFirst().
+	
+	Returns:
+	the element at the front of this deque (which is the top of the stack represented by this deque)
+	Throws:
+	NoSuchElementException - if this deque is empty
+	
+	\item remove
+	boolean remove(Object o)
+	Removes the first occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the first element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+	This method is equivalent to removeFirstOccurrence(java.lang.Object).
+	
+	Specified by:
+	remove in interface Collection<E>
+	Parameters:
+	o - element to be removed from this deque, if present
+	Returns:
+	true if an element was removed as a result of this call
+	Throws:
+	ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+	NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+	
+	\item contains
+	boolean contains(Object o)
+	Returns true if this deque contains the specified element. More formally, returns true if and only if this deque contains at least one element e such that (o==null ? e==null : o.equals(e)).
+	Specified by:
+	contains in interface Collection<E>
+	Parameters:
+	o - element whose presence in this deque is to be tested
+	Returns:
+	true if this deque contains the specified element
+	Throws:
+	ClassCastException - if the type of the specified element is incompatible with this deque (optional)
+	NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+	
+	\item size
+	int size()
+	Returns the number of elements in this deque.
+	Specified by:
+	size in interface Collection<E>
+	Returns:
+	the number of elements in this deque
+	
+	\item iterator
+	Iterator<E> iterator()
+	Returns an iterator over the elements in this deque in proper sequence. The elements will be returned in order from first (head) to last (tail).
+	Specified by:
+	iterator in interface Collection<E>
+	Specified by:
+	iterator in interface Iterable<E>
+	Returns:
+	an iterator over the elements in this deque in proper sequence
+	
+	\item descendingIterator
+	Iterator<E> descendingIterator()
+	Returns an iterator over the elements in this deque in reverse sequential order. The elements will be returned in order from last (tail) to first (head).
+	Returns:
+	an iterator over the elements in this deque in reverse sequence
+	
+\end{itemize}
+
 Method Detail
-addFirst
-void addFirst(E e)
-Inserts the specified element at the front of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerFirst(E).
-Parameters:
-e - the element to add
-Throws:
-IllegalStateException - if the element cannot be added at this time due to capacity restrictions
-ClassCastException - if the class of the specified element prevents it from being added to this deque
-NullPointerException - if the specified element is null and this deque does not permit null elements
-IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
-addLast
-void addLast(E e)
-Inserts the specified element at the end of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerLast(E).
-This method is equivalent to add(E).
-
-Parameters:
-e - the element to add
-Throws:
-IllegalStateException - if the element cannot be added at this time due to capacity restrictions
-ClassCastException - if the class of the specified element prevents it from being added to this deque
-NullPointerException - if the specified element is null and this deque does not permit null elements
-IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
-offerFirst
-boolean offerFirst(E e)
-Inserts the specified element at the front of this deque unless it would violate capacity restrictions. When using a capacity-restricted deque, this method is generally preferable to the addFirst(E) method, which can fail to insert an element only by throwing an exception.
-Parameters:
-e - the element to add
-Returns:
-true if the element was added to this deque, else false
-Throws:
-ClassCastException - if the class of the specified element prevents it from being added to this deque
-NullPointerException - if the specified element is null and this deque does not permit null elements
-IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
-offerLast
-boolean offerLast(E e)
-Inserts the specified element at the end of this deque unless it would violate capacity restrictions. When using a capacity-restricted deque, this method is generally preferable to the addLast(E) method, which can fail to insert an element only by throwing an exception.
-Parameters:
-e - the element to add
-Returns:
-true if the element was added to this deque, else false
-Throws:
-ClassCastException - if the class of the specified element prevents it from being added to this deque
-NullPointerException - if the specified element is null and this deque does not permit null elements
-IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
-removeFirst
-E removeFirst()
-Retrieves and removes the first element of this deque. This method differs from pollFirst only in that it throws an exception if this deque is empty.
-Returns:
-the head of this deque
-Throws:
-NoSuchElementException - if this deque is empty
-removeLast
-E removeLast()
-Retrieves and removes the last element of this deque. This method differs from pollLast only in that it throws an exception if this deque is empty.
-Returns:
-the tail of this deque
-Throws:
-NoSuchElementException - if this deque is empty
-pollFirst
-E pollFirst()
-Retrieves and removes the first element of this deque, or returns null if this deque is empty.
-Returns:
-the head of this deque, or null if this deque is empty
-pollLast
-E pollLast()
-Retrieves and removes the last element of this deque, or returns null if this deque is empty.
-Returns:
-the tail of this deque, or null if this deque is empty
-getFirst
-E getFirst()
-Retrieves, but does not remove, the first element of this deque. This method differs from peekFirst only in that it throws an exception if this deque is empty.
-Returns:
-the head of this deque
-Throws:
-NoSuchElementException - if this deque is empty
-getLast
-E getLast()
-Retrieves, but does not remove, the last element of this deque. This method differs from peekLast only in that it throws an exception if this deque is empty.
-Returns:
-the tail of this deque
-Throws:
-NoSuchElementException - if this deque is empty
-peekFirst
-E peekFirst()
-Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty.
-Returns:
-the head of this deque, or null if this deque is empty
-peekLast
-E peekLast()
-Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty.
-Returns:
-the tail of this deque, or null if this deque is empty
-removeFirstOccurrence
-boolean removeFirstOccurrence(Object o)
-Removes the first occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the first element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
-Parameters:
-o - element to be removed from this deque, if present
-Returns:
-true if an element was removed as a result of this call
-Throws:
-ClassCastException - if the class of the specified element is incompatible with this deque (optional)
-NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
-removeLastOccurrence
-boolean removeLastOccurrence(Object o)
-Removes the last occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the last element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
-Parameters:
-o - element to be removed from this deque, if present
-Returns:
-true if an element was removed as a result of this call
-Throws:
-ClassCastException - if the class of the specified element is incompatible with this deque (optional)
-NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
-add
-boolean add(E e)
-Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available. When using a capacity-restricted deque, it is generally preferable to use offer.
-This method is equivalent to addLast(E).
-
-Specified by:
-add in interface Collection<E>
-Specified by:
-add in interface Queue<E>
-Parameters:
-e - the element to add
-Returns:
-true (as specified by Collection.add(E))
-Throws:
-IllegalStateException - if the element cannot be added at this time due to capacity restrictions
-ClassCastException - if the class of the specified element prevents it from being added to this deque
-NullPointerException - if the specified element is null and this deque does not permit null elements
-IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
-offer
-boolean offer(E e)
-Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and false if no space is currently available. When using a capacity-restricted deque, this method is generally preferable to the add(E) method, which can fail to insert an element only by throwing an exception.
-This method is equivalent to offerLast(E).
-
-Specified by:
-offer in interface Queue<E>
-Parameters:
-e - the element to add
-Returns:
-true if the element was added to this deque, else false
-Throws:
-ClassCastException - if the class of the specified element prevents it from being added to this deque
-NullPointerException - if the specified element is null and this deque does not permit null elements
-IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
-remove
-E remove()
-Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque). This method differs from poll only in that it throws an exception if this deque is empty.
-This method is equivalent to removeFirst().
-
-Specified by:
-remove in interface Queue<E>
-Returns:
-the head of the queue represented by this deque
-Throws:
-NoSuchElementException - if this deque is empty
-poll
-E poll()
-Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
-This method is equivalent to pollFirst().
-
-Specified by:
-poll in interface Queue<E>
-Returns:
-the first element of this deque, or null if this deque is empty
-element
-E element()
-Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque). This method differs from peek only in that it throws an exception if this deque is empty.
-This method is equivalent to getFirst().
-
-Specified by:
-element in interface Queue<E>
-Returns:
-the head of the queue represented by this deque
-Throws:
-NoSuchElementException - if this deque is empty
-peek
-E peek()
-Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
-This method is equivalent to peekFirst().
-
-Specified by:
-peek in interface Queue<E>
-Returns:
-the head of the queue represented by this deque, or null if this deque is empty
-push
-void push(E e)
-Pushes an element onto the stack represented by this deque (in other words, at the head of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
-This method is equivalent to addFirst(E).
-
-Parameters:
-e - the element to push
-Throws:
-IllegalStateException - if the element cannot be added at this time due to capacity restrictions
-ClassCastException - if the class of the specified element prevents it from being added to this deque
-NullPointerException - if the specified element is null and this deque does not permit null elements
-IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
-pop
-E pop()
-Pops an element from the stack represented by this deque. In other words, removes and returns the first element of this deque.
-This method is equivalent to removeFirst().
-
-Returns:
-the element at the front of this deque (which is the top of the stack represented by this deque)
-Throws:
-NoSuchElementException - if this deque is empty
-remove
-boolean remove(Object o)
-Removes the first occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the first element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
-This method is equivalent to removeFirstOccurrence(java.lang.Object).
-
-Specified by:
-remove in interface Collection<E>
-Parameters:
-o - element to be removed from this deque, if present
-Returns:
-true if an element was removed as a result of this call
-Throws:
-ClassCastException - if the class of the specified element is incompatible with this deque (optional)
-NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
-contains
-boolean contains(Object o)
-Returns true if this deque contains the specified element. More formally, returns true if and only if this deque contains at least one element e such that (o==null ? e==null : o.equals(e)).
-Specified by:
-contains in interface Collection<E>
-Parameters:
-o - element whose presence in this deque is to be tested
-Returns:
-true if this deque contains the specified element
-Throws:
-ClassCastException - if the type of the specified element is incompatible with this deque (optional)
-NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
-size
-int size()
-Returns the number of elements in this deque.
-Specified by:
-size in interface Collection<E>
-Returns:
-the number of elements in this deque
-iterator
-Iterator<E> iterator()
-Returns an iterator over the elements in this deque in proper sequence. The elements will be returned in order from first (head) to last (tail).
-Specified by:
-iterator in interface Collection<E>
-Specified by:
-iterator in interface Iterable<E>
-Returns:
-an iterator over the elements in this deque in proper sequence
-descendingIterator
-Iterator<E> descendingIterator()
-Returns an iterator over the elements in this deque in reverse sequential order. The elements will be returned in order from last (tail) to first (head).
-Returns:
-an iterator over the elements in this deque in reverse sequence
-
 \section{Priority Queue}
 Method Detail
 add
@@ -1785,6 +1845,165 @@ let binarySearch = function(a, key) {
 		}
 	}
 	return -1;
+};
+\end{lstlisting}
+
+\begin{examplei}
+	Gegeben ist ein Array mit sortierten Zahlen, die keine Duplikate enthält. Dieses Array ähnelt dem Array in der Aufgabe darüber. Der Unterschied hier ist, dass dieses Array um eine zufällige Stellenanzahl verschoben wurde. Es soll eine Zahl darin gefunden und dessen Index zurückgegeben werden. Falls sie nicht existiert, dann soll \lstinline|-1| zurück gegeben werden. Die Lösung muss schneller als lineare Laufzeit sein.
+	
+	Beispiel:
+	Wir nehmen das Beispiel aus der vorherigen Aufgabe.
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index & \cellcolor{yellow!25}0 & \cellcolor{yellow!25}1 & \cellcolor{yellow!25}2 & \cellcolor{yellow!25}3 & \cellcolor{yellow!25}4 & \cellcolor{yellow!25}5  & \cellcolor{yellow!25}6  & \cellcolor{yellow!25}7  & \cellcolor{yellow!25}8  & \cellcolor{yellow!25}9 \\ 
+		\hline
+		Key & \cellcolor{blue!25}23 & \cellcolor{blue!25}31 & \cellcolor{blue!25}47 & \cellcolor{blue!25}65 & \cellcolor{blue!25}69 & \cellcolor{blue!25}73 & \cellcolor{blue!25}75 & \cellcolor{blue!25}89 & \cellcolor{blue!25}91 & \cellcolor{blue!25}93 \\
+		\hline
+	\end{tabular}
+	
+	Dieses Array verschieben wir um drei Stellen nach rechts:
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index & \cellcolor{yellow!25}0 & \cellcolor{yellow!25}1 & \cellcolor{yellow!25}2 & \cellcolor{yellow!25}3 & \cellcolor{yellow!25}4 & \cellcolor{yellow!25}5  & \cellcolor{yellow!25}6  & \cellcolor{yellow!25}7  & \cellcolor{yellow!25}8  & \cellcolor{yellow!25}9 \\ 
+		\hline
+		Key & \cellcolor{green!25}89 & \cellcolor{green!25}91 & \cellcolor{green!25}93 & \cellcolor{blue!25}23 & \cellcolor{blue!25}31 & \cellcolor{blue!25}47 & \cellcolor{blue!25}65 & \cellcolor{blue!25}69 & \cellcolor{blue!25}73 & \cellcolor{blue!25}75 \\
+		\hline
+	\end{tabular}
+
+Hier ist die gesuchte Antwort \lstinline|5|, weil \lstinline|47| am Index \lstinline|5| ist.	
+\end{examplei}
+
+{\bf Stichwörter:} Array, Binary Search, Suche, Sliding Window, Zeiger, Pointer, Divide and Conquer, Teile und Herrsche
+\paragraph{Vorgehensweise}
+Ansätze um zuerst die Sollbruchstelle zu finden sind zu aufwändig.
+
+\begin{enumerate} 
+	\item Wir versuchen folgende Fälle zu berücksichtigen:
+	\begin{itemize} 
+		\item Element, das 
+		
+	\end{itemize}
+	Ermittelt den Wert in der Mitte des Arrays
+	
+	
+	\item Teile ihn dann in zwei Arrays auf
+	\item Suche in jeweils der zwei Subarrays nach der Zahl in Binary Search
+\end{enumerate}
+
+\paragraph{Typische Fehler}
+\begin{lstlisting}[caption=My Javascript Example]
+let binarySearchSwitched = function(arr, key) {
+	const maxIndex = arr.length - 1;
+	let startPointer = 0;
+	let endPointer = maxIndex;
+	while (startPointer <= endPointer) {
+		const currentPointer = (startPointer + endPointer) / 2 | 0;
+		const oldCurrentKey = arr[currentPointer];
+		
+		if (oldCurrentKey < key) {
+			// go to right
+			startPointer = currentPointer + 1;
+			const newCurrentPointer = (startPointer + endPointer) / 2;
+			const newCurrentKey = arr[newCurrentPointer];
+			if (newCurrentKey < oldCurrentKey) {
+				// we are on the right; newCurrentKey has to be bigger than oldCurrentKey
+				// if it is not, then we have to look at the other side
+				return searchBinay(0, currentPointer - 1);
+			}
+		} else if (oldCurrentKey > key) {
+			// go to left
+			endPointer = currentPointer - 1;
+			const newCurrentPointer = (startPointer + endPointer) / 2;
+			const newCurrentKey = arr[newCurrentPointer];
+			if (newCurrentKey > oldCurrentKey) {
+				// we are on the left; newCurrentKey has to be smaller than oldCurrentKey
+				// if it is not, then we have to look at the other side
+				return searchBinay(currentPointer + 1, maxIndex);
+			}
+		} else {
+			return currentPointer;
+		}
+	
+		// search reaches end
+		if (startPointer > maxIndex || endPointer > maxIndex) {
+			return searchBinary(0, maxIndex / 2 | 0);
+		}
+		// search reaches start
+		if (startPointer < 0 || endPointer < 0 ) {
+			return searchBinary(maxIndex / 2 | 0, maxIndex);
+		}
+	}
+
+	function searchBinary(start, end) {
+		while (start <= end) {
+			const currentPointer = (start + end) / 2 | 0;
+			const oldCurrentKey = arr[currentPointer];
+			if (oldCurrentKey < key) {
+				// go to right
+				start = currentPointer + 1;
+			} else if (oldCurrentKey > key) {
+				// go to left
+				end = currentPointer - 1;
+			} else {
+				return currentPointer;
+			}
+		}
+		return -1;
+	}
+};
+\end{lstlisting}
+
+\begin{itemize} 
+	\item Zu lang, zu kompliziert und zu spezifisch
+	
+	Die Länge des Codes ist geschuldet durch die Tatsache, dass im Code spezifisch auf mögliche Fälle (Es wird das bzw. den Ende/Anfang erreicht ohne das Element gefunden zu haben; das neue Element ist außerhalb der Kontinuität der Reihe) eingegangn wird und versucht wird diese abzufangen. 
+	
+	\item Nutzt vorhandene Informationen nicht
+	
+	Offensichtlich ist es wichtig zu wissen, wo der Schnitt sich befindet bzw. welche Elemente vor dem Schnitt sich befinden. Man hätte ausnutzen können, dass die Zahlen sortiert sind und dadurch die Elemente, die vor dem Schnitt sind damit erkennen können. Dies wird aber nicht berücksichtigt. Obiger Code liefert deshalb für folgendes Array einen Fehler:
+	
+	 \lstinline|[17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]| mit der gesuchten Zahl \lstinline|20|
+	 
+	 \item Kein early exit
+	 
+	 Es wurde nicht versucht einen early exit herbeizuführen, also eine Bedingung zu suchen bei der das Programm frühzeitig mit dem richtigen Ergebnis terminiert.
+	
+\end{itemize}
+\paragraph{Lösung}
+Die Laufzeit
+
+Zeit komplexität
+
+\begin{lstlisting}[caption=My Javascript Example]
+let binarySearchRecursive = function(arr, st, end, key) {
+	// assuming all the keys are unique.
+	if (st > end) {
+		return -1;
+	}
+	
+	let mid = st + Math.floor((end - st) / 2);
+	
+	if (arr[mid] === key) {
+		return mid;
+	}
+	
+	if (arr[st] <= arr[mid] && key <= arr[mid] && key >= arr[st]) {
+		return binary_search_recs(arr, st, mid - 1, key);
+	} else if (arr[mid] <= arr[end] && key >= arr[mid] && key <= arr[end]) {
+		return binary_search_recs(arr, mid + 1, end, key);
+	} else if (arr[end] <= arr[mid]) {
+		return binary_search_recs(arr, mid + 1, end, key);
+	} else if (arr[st] >= arr[mid]) {
+		return binary_search_recs(arr, st, mid - 1, key);
+	} 
+	
+	return -1;
+};
+
+let binarySearchSwitched = function(arr, key) {
+	return binarySearchRecursive(arr, 0, arr.length - 1, key);
 };
 \end{lstlisting}
 
