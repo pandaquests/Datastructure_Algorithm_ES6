@@ -25,12 +25,12 @@
 \contentsline {paragraph}{clear() - L\IeC {\"o}schen aller Elemente einer Liste}{23}{section*.3}% 
 \contentsline {paragraph}{toString() - Gibt die Repr\IeC {\"a}sentation der Liste als String zur\IeC {\"u}ck}{23}{section*.4}% 
 \contentsline {paragraph}{get(index) - Ein Element an einem bestimmten Index bekommen}{23}{section*.5}% 
-\contentsline {paragraph}{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt}{23}{section*.6}% 
+\contentsline {paragraph}{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt}{24}{section*.6}% 
 \contentsline {paragraph}{lastIndexOf(item) - Gibt den Index wo das gesuchte Element zuletzt vorkommt}{24}{section*.7}% 
 \contentsline {paragraph}{isEmpty() - Liefert true, wenn die Liste leer ist}{24}{section*.8}% 
 \contentsline {paragraph}{insert(el, index) - F\IeC {\"u}gt ein Element an einer bestimmten Stelle ein}{24}{section*.9}% 
 \contentsline {paragraph}{add(el) - F\IeC {\"u}gt ein Element am Ende der Liste}{24}{section*.10}% 
-\contentsline {paragraph}{remove(index) - Entfernt ein Element an einer bestimmten Stelle}{24}{section*.11}% 
+\contentsline {paragraph}{remove(index) - Entfernt ein Element an einer bestimmten Stelle}{25}{section*.11}% 
 \contentsline {paragraph}{front() - Setzt die Position am Listenanfang}{25}{section*.12}% 
 \contentsline {paragraph}{end() - Setzt die Position am Listenende}{25}{section*.13}% 
 \contentsline {paragraph}{prev() - Setzt die Position um eins nach vorne}{25}{section*.14}% 
@@ -82,13 +82,16 @@
 \contentsline {paragraph}{Vorgehensweise}{54}{section*.27}% 
 \contentsline {paragraph}{Typische Fehler}{56}{section*.28}% 
 \contentsline {paragraph}{L\IeC {\"o}sung}{56}{section*.29}% 
-\contentsline {section}{\numberline {7.4}Array rotieren}{57}{section.7.4}% 
+\contentsline {section}{\numberline {7.4}Array verschieben}{57}{section.7.4}% 
 \contentsline {paragraph}{Vorgehensweise}{58}{section*.30}% 
 \contentsline {paragraph}{Typische Fehler}{59}{section*.31}% 
-\contentsline {paragraph}{Typische Fehler}{60}{section*.32}% 
-\contentsline {paragraph}{Typische Fehler}{60}{section*.33}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{60}{section*.34}% 
-\contentsline {section}{\numberline {7.5}TEST}{63}{section.7.5}% 
-\contentsline {paragraph}{Vorgehensweise}{63}{section*.35}% 
-\contentsline {paragraph}{Typische Fehler}{63}{section*.36}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{64}{section*.37}% 
+\contentsline {paragraph}{Typische Fehler}{61}{section*.32}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{62}{section*.33}% 
+\contentsline {section}{\numberline {7.5}Niedrigster/h\IeC {\"o}chster Index}{62}{section.7.5}% 
+\contentsline {paragraph}{Vorgehensweise}{62}{section*.34}% 
+\contentsline {paragraph}{Typische Fehler}{62}{section*.35}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{63}{section*.36}% 
+\contentsline {section}{\numberline {7.6}TEST}{63}{section.7.6}% 
+\contentsline {paragraph}{Vorgehensweise}{63}{section*.37}% 
+\contentsline {paragraph}{Typische Fehler}{63}{section*.38}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{63}{section*.39}% 

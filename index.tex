@@ -472,6 +472,19 @@ console.log(newArray);
 // ["a", "b", "c", "x", "d", "e", "f"]
 \end{lstlisting}
 
+Die \lstinline|copyWithin()| Funktion kopiert einen Teil des Arrays in einer anderen Stelle desselben Arrays. Dabei wird die Länge des Arrays beibehalten. 
+
+\begin{lstlisting}[caption=Array Konstruktor]
+var myArray1 = [1,2,3,4,5,6,7,8,9];
+console.log(myArray1.copyWithin(1,3,6));
+// Copies the numbers starting at index 3 to (exclusive) 6, i.e. [4,5,6] to the index 1
+// [1,4,5,6,5,6,7,8,9]
+
+console.log(myArray1.copyWithin(1,3));
+// Copies the numbers starting at index 3 to the end, i.e. [4,5,6,7,8,9] to the index 1
+// [1,4,5,6,7,8,9,8,9]
+\end{lstlisting}
+
 Die \lstinline|slice()| Methode erstellt eine (flache) Kopie des Arrays und gibt diese Kopie als neues Array zurück. Die Methode nimmt zwei Argumente auf. Das erste Argument beschreibt ab welchem Index die Kopie erstellt wird. Das zweite optionale Argument beschreibt bis zu welchem (exklusve) Index das Array kopiert wird. Wird für das zweite Argument kein Wert gegeben, dann kopiert er bis zum Arrayende:
 
 \begin{lstlisting}[caption=Array Konstruktor]
@@ -524,7 +537,7 @@ console.log(myArray === newArrayDeep);
 // false --> it's pointing to a new memory space
 \end{lstlisting}
 
-Es muss aber hier erwähnt werden, dass der Rest/Spread Operator nur eine Ebene tief kopiert. Bei mehrdimensionalen Arrays muss man andere Methoden wählen. Unten sind Methoden aufgelistet mit der man eine tiefen Kopie, also einen Klon, erstellen kann:
+Es sei hier erwähnt, dass der Rest/Spread Operator nur eine Ebene tief kopiert. Bei mehrdimensionalen Arrays muss man andere Methoden wählen. Unten sind Methoden aufgelistet mit der man eine tiefen Kopie, also einen Klon, erstellen kann:
 
 \begin{lstlisting}[caption=Array Konstruktor]
 var myArray = ["a", "b", "c", "x"];
@@ -2565,7 +2578,7 @@ let find_least_common_number = function(a, b, c) {
 
 Aber auch diese Lösung ist nicht perfekt. Ein Nachteil ist, dass diese Lösung, im Gegensatz zum Erstversuch, weniger skalierbarer ist. Angenommen die Anforderungen ändern sich und 
 
-\section{Array rotieren}
+\section{Array verschieben}
 \begin{examplei}
 	Gegeben ist ein langes Array und eine ganze Zahl. Die Zahl steht dafür um wieviel das Array verschoben wird. Das Vorzeichen der Zahl steht für die Richtung in welcher das Array verschoben wird. Eine Zahl größer als \lstinline|0| heißt verschieben nach rechts. Ein Zahl kleiner als \lstinline|0| heißt verschieben nach links. Gesucht ist das Resultat nach dem Verschieben.
 	
@@ -2598,54 +2611,19 @@ Aber auch diese Lösung ist nicht perfekt. Ein Nachteil ist, dass diese Lösung,
 {\bf Stichwörter:} Array, Zeiger, Pointer
 
 \paragraph{Vorgehensweise}
-Wir wissen, dass, wenn \lstinline|n| positiv ist, dann verschiebt sich das Array um \lstinline|n| Stellen nach rechts. Das Element an der \lstinline|0|ten Stelle befindet sich nach dem Verschieben an der \lstinline|n|ten Stelle rechts. Die nun freien Stellen links von dem ursprünglich ersten Element, werden mit den Elementen aufgefüllt, die ganz rechts sind. Wir schneiden also vor dem \lstinline|Array.length - n|-ten Element (\lstinline|0| basierter Index) ab und hängen den rechten Teil an das Linke.
-
-Wenn \lstinline|n| negativ ist, dann verschiebt sich das Array um \lstinline|n| Stellen nach links. Die dadurch freien Stellen rechts werden mit den Elementen ganz links aufgefüllt. Das Element an der ursprünglich \lstinline|0|ten Stelle befindet sich nach dem Verschieben an der \lstinline|Array.length + n|ten \footnote{Wir addieren hier weil \lstinline|n| negativ ist} Stelle (\lstinline|0| basierter Index). Wir schneiden also vor dem \lstinline|Array.length - (Array.length + n)|-ten Element ab und hängen den linken Teil an das Rechte. 
-
-Wir können das Verschieben des Arrays also erreichen, indem wir das Array an einer bestimmten Stelle "zerschneiden" und den zerschnittenen Teil entweder links oder rechts anhängen - abhängig davon, ob die Zahl größer oder kleiner \lstinline|0| ist. 
-
-\begin{enumerate} 
-	\item Wir nutzen die \lstinline|splice()| Funktion, um das Original Array ab bestimmten Elementen zu zerteilen. \lstinline|splice()| mit einem Argument schneidet das Array an einer bestimmten Stelle und gibt den entfernten Teil als Ergebnis zurück. Z.B. \lstinline|splice(3)| bedeutet, dass wir das ursprüngliche Array vor dem \lstinline|3|-ten Element zerschneiden und den entfernten Teil als Ergebnis zurückgeben.
-	
-	Wie oben erklärt findet das Zerschneiden bei einer positiven Zahl am (inklusive) \lstinline|Array.length - n|-ten Element bis zum Ende. Wir zählen die Stellen also von rechts nach links. Wenn wir ein Minus davor setzen zählt \lstinline|splice()| von rechts nach links. Statt \lstinline|splice(Array.length - n)| können wir also auch schreiben \lstinline|splice(-1 * n)|. Bei einer negativen Zahl am (inklusive) \lstinline|Array.length - (Array.length + n)|-ten Element bis zum Ende des Arrays. Diesen Ausdruck können wir (für negative Zahlen) auch schreiben als \lstinline|-n|. In beiden Fällen können wir also \lstinline|splice(-1 * n)| schreiben.
-	\item Wir speichern den entfernten Array-Teil, um ihn später auf der anderen Seite des originalen Arrays anzuhängen.
-	\item Wir wollen die Zahlen aus dem entfernten Array-Teil nun am ursprünglichen Array anhängen. Wir nehmen die einzelnen Elemente des entfernten Array-Teils und hängen sie einzeln vorne am Ursprungsarray an. Wir können aber nicht das erste Element nehmen, sondern müssen mit dem letzten Element anfangen und uns zum ersten Element vorarbeiten. Daher drehen wir das Array mit Hilfe der \lstinline|reverse()| Funktion um und lassen dann eine \lstinline|forEach()| Funktion über das Array iterieren. 
- 
-\end{enumerate}
-
-\begin{lstlisting}[caption=My Javascript Example]
-let rotate_array = function(arr, n) {
-	const rem = arr.splice(-1 * n);
-	rem.reverse().forEach(x => arr.unshift(x));    
-  	
-	return arr;
-};
-\end{lstlisting}
-
-\paragraph{Typische Fehler}
-\begin{itemize} 
-	\item \lstinline|unshift()| ineffizient
-	
-	Die Verwendung der Funktion \lstinline|unshift()| ist ineffizient, v.a. bei langen Arrays. Denn die einzelnen Elemente müssen alle um einen Index nach hinten verschoben werden. Bei kleinen Arrays ist die Performanceeinbuße vernachlässigbar. Bei langen Arrays ist es besser die \lstinline|push()| Funktion zu verwenden.
-	
-	\item \lstinline|reverse()| unnötig
-	
-	Die Tatsache, dass man beim Array vom letzten Element anfangen muss ist in diesem Fall richtig. Jedoch ist es hier unnötig das Array mit der \lstinline|reverse()| Funktion umzukehren. Einfach und effizienter wäre es eine \lstinline|for| Schleife zu verwenden, die beim höchsten Index (also dem letzten Element) anfängt und sich dann vorarbeitet zum niedrigsten Index (also dem ersten Element).
-	
-\end{itemize}
-
-Die obige Lösung liefert das korrekte Ergebnis. Ist bei langen Arrays jedoch ineffizient.
-
-Eine anderer Ansatz
-
 \begin{enumerate} 
 	\item Wir teilen das Problem in drei Fälle: 
 	\begin{itemize} 
 		\item wenn die Zahl gleich 0 oder gleich die Arraylänge ist
-		\item wenn die Zahl kleiner 0 ist
 		\item wenn die Zahl größer 0 ist 
+		\item wenn die Zahl kleiner 0 ist
 	\end{itemize}
-	\item 
+
+	\item Wenn die Zahl gleich 0 oder gleich der Arraylänge ist, dann wissen wir, dass wir die Element nicht verschieben müssen. In diesem Fall können wir das Original Array ohne Änderung zurückgeben
+
+	\item Wenn die Zahl größer als 0 ist, dann will ich das Array nach rechts verschieben. Alle Elemente werden also um \lstinline|n| Stellen nach rechts verschoben. Am Ende der Operation sollen die \lstinline|n| letzten Elemente vorne stehen. Dazu kopiere ich mir die ersten \lstinline|Array.length - n| Elemente und hänge sie hinten an. Danach lösche ich die ersten \lstinline|Array.length - n| Elemente. Dadurch stehen die letzten \lstinline|n| Elemente vorne am Array.
+	
+	\item Wenn die Zahl kleiner als 0 ist, heißt das, dass ich die Elemente nach links verschiebe. Alle Elemente werden also um den Betrag von \lstinline|n| Stellen nach links verschoben. Wir bilden also zuerst den Betrag von \lstinline|n|. Dann hängen wir die ersten \lstinline|n|\footnote{Ab dieser Stelle kennzeichnet \lstinline|n| den Betrag von \lstinline|n|. \lstinline|n| ist also immer positiv} Elemente werden hinten angehängt. Dazu kopieren wir uns die ersten \lstinline|n| Elemente und hängen sie hinten an. Danach löschen wir die ersten \lstinline|n| Elemente wieder.
 \end{enumerate}
 
 \begin{lstlisting}[caption=My Javascript Example]
@@ -2658,17 +2636,142 @@ let rotate_array = function(arr, n) {
 		for (let i = 0; i < len - n; i++) {
 			arr.push(arr[i]);
 		}
-		arr.splice(0, n + 1);
+		arr.splice(0, len - n);
 		return arr;    
 	}
 	if (n < 0) {
-		for (let i = 0; i < Math.abs(n); i++) {
+		const absN = Math.abs(n);
+		for (let i = 0; i < absN; i++) {
 			arr.push(arr[i]);
 		}
-		arr.splice(0, Math.abs(n));
+		arr.splice(0, absN);
 		return arr;
 	}
 };
+\end{lstlisting}
+
+\paragraph{Typische Fehler}
+\begin{itemize} 
+	\item Zu lang bzw. sehr viel Wiederholungen
+	
+	Der Code ist länger als nötig. Dies liegt daran, dass bestimmte Codestellen wiederholt werden, wie z.B. \lstinline|return arr;| oder die beiden \lstinline|for| Schleifen. Auch ist die Abfrage, ob \lstinline|n === arr.length| überflüssig, denn für den Fall, dass \lstinline|n| gleich der Arraylänge ist, dann kommt es in den Fall \lstinline|(n > 0)| rein und in der \lstinline|for| Schleife steht dann
+	
+	\lstinline|(let i = 0; i < 0; i++)|. 
+	
+	Die Schleife wird also gar nicht erst ausgeführt. Weiter unten würde dann dieser Ausdruck stehen: 
+	
+	\lstinline|arr.splice(0, 0);|
+	
+	Das original Array bleibt also unberührt.
+	
+	Wenn man die \lstinline|return arr;| aus den \lstinline|if| Ausdrücken herauszieht und es ganz unten an der Funktion anhängt, kann man die ersten drei Zeilen löschen ohne dass die Ausgabe des Programms verändert wird:
+	
+	\begin{lstlisting}[caption=My Javascript Example]
+	if (n > 0) {
+		const len = arr.length;
+		for (let i = 0; i < len - n; i++) {
+			arr.push(arr[i]);
+		}
+		arr.splice(0, len - n);
+	}
+	if (n < 0) {
+		const absN = Math.abs(n);
+		for (let i = 0; i < absN; i++) {
+			arr.push(arr[i]);
+		}
+		arr.splice(0, absN);
+	}
+	return arr;
+	\end{lstlisting} 
+	
+	\item Ineffizient
+	
+	Angenommen man will will das Array um \lstinline|1| nach rechts schieben, dann muss man man \lstinline|Array.length - 1| Elemente kopieren und diese hinten anhängen und dann dieselbe Anzahl vorne löschen. Wie man sich vorstellen kann ist das bei langen Arrays ineffizient.
+	
+	\item Wenig intuitiv
+	
+	Code wird öfter gelesen als dass sie geschrieben wird. Daher ist es wichtig, dass Code für andere Entwickler leicht verständlich ist. In diesem Fall ist die Berechnung \lstinline|Array.length - n| nicht sofort verständlich.
+	 
+\end{itemize}
+
+Eine anderer Ansatz:
+
+Wir wissen, dass, wenn \lstinline|n| positiv ist, dann verschiebt sich das Array um \lstinline|n| Stellen nach rechts. Das Element an der \lstinline|0|ten Stelle befindet sich nach dem Verschieben an der \lstinline|n|ten Stelle rechts. Die nun freien Stellen links von dem ursprünglich ersten Element, werden mit den Elementen aufgefüllt, die ganz rechts sind. Wir schneiden also vor dem \lstinline|Array.length - n|-ten Element (\lstinline|0| basierter Index) ab und hängen den rechten Teil an das Linke.
+
+Wenn \lstinline|n| negativ ist, dann verschiebt sich das Array um \lstinline|n| Stellen nach links. Die dadurch freien Stellen rechts werden mit den Elementen ganz links aufgefüllt. Das Element an der ursprünglich \lstinline|0|ten Stelle befindet sich nach dem Verschieben an der \lstinline|Array.length + n|ten \footnote{Wir addieren hier weil \lstinline|n| negativ ist} Stelle (\lstinline|0| basierter Index). Wir schneiden also vor dem \lstinline|Array.length - (Array.length + n)|-ten Element ab und hängen den linken Teil an das Rechte. 
+
+Wir können das Verschieben des Arrays also erreichen, indem wir das Array an einer bestimmten Stelle "zerschneiden" und den zerschnittenen Teil entweder links oder rechts anhängen - abhängig davon, ob die Zahl größer oder kleiner \lstinline|0| ist. 
+
+\begin{enumerate} 
+	\item Wir nutzen die \lstinline|splice()| Funktion, um das Original Array ab bestimmten Elementen zu zerteilen. \lstinline|splice()| mit einem Argument schneidet das Array an einer bestimmten Stelle und gibt den entfernten Teil als Ergebnis zurück. Z.B. \lstinline|splice(3)| bedeutet, dass wir das ursprüngliche Array vor dem \lstinline|3|-ten Element zerschneiden und den entfernten Teil als Ergebnis zurückgeben.
+	
+	Wie oben erklärt findet das Zerschneiden bei einer positiven Zahl am (inklusive) \lstinline|Array.length - n|-ten Element bis zum Ende. Wir zählen die Stellen also von rechts nach links. Wenn wir ein Minus davor setzen zählt \lstinline|splice()| von rechts nach links. Statt \lstinline|splice(Array.length - n)| können wir also auch schreiben \lstinline|splice(-1 * n)|. Bei einer negativen Zahl am (inklusive) \lstinline|Array.length - (Array.length + n)|-ten Element bis zum Ende des Arrays. Diesen Ausdruck können wir (für negative Zahlen) auch schreiben als \lstinline|-n|. In beiden Fällen können wir also \lstinline|splice(-1 * n)| schreiben.
+	\item Wir speichern den entfernten Array-Teil, um ihn später auf der anderen Seite des originalen Arrays anzuhängen.
+	\item Wir wollen die Zahlen aus dem entfernten Array-Teil nun am ursprünglichen Array anhängen. Wir nehmen die einzelnen Elemente des entfernten Array-Teils und hängen sie einzeln vorne am Ursprungsarray an. Wenn wir die Elemente aber vorne am Array anhängen wollen, können wir aber nicht das erste Element nehmen, sondern müssen mit dem letzten Element anfangen und uns zum ersten Element vorarbeiten. Ansonsten würden wir die Elemente in umgekehrter Reihenfolge anhängen. Daher drehen wir das Array mit Hilfe der \lstinline|reverse()| Funktion um und lassen dann eine \lstinline|forEach()| Funktion über das Array iterieren. 
+	
+\end{enumerate}
+
+\begin{lstlisting}[caption=My Javascript Example]
+let rotate_array = function(arr, n) {
+	const rem = arr.splice(-1 * n);
+	rem.reverse().forEach(x => arr.unshift(x));    
+
+	return arr;
+};
+\end{lstlisting}
+
+\paragraph{Typische Fehler}
+\begin{itemize} 
+	\item \lstinline|unshift()| ineffizient
+	
+	Die Verwendung der Funktion \lstinline|unshift()| ist ineffizient, v.a. bei langen Arrays. Denn die einzelnen Elemente müssen alle um einen Index nach hinten verschoben werden. Bei kleinen Arrays ist die Performanceeinbuße vernachlässigbar. Bei langen Arrays ist es besser die \lstinline|push()| Funktion zu verwenden.
+	
+	\item \lstinline|reverse()| unnötig
+	
+	Die Tatsache, dass man beim Array vom letzten Element anfangen muss ist in diesem Fall richtig, da wir die Elemente von vorne anhängen (mit Hilfe von \lstinline|unshift()|). Würden wir von hinten anhängen und eine Schleife benutzen, die vom ersten bis zum letzen Index läuft, bräuchten wir das Array nicht umzudrehen. Jedoch ist es hier unnötig das Array mit der \lstinline|reverse()| Funktion umzukehren. Man kann auch die Schleife von hinten anfangen lassen. Einfach und effizienter wäre es eine \lstinline|for| Schleife zu verwenden, die beim höchsten Index (also dem letzten Element) anfängt und sich dann vorarbeitet zum niedrigsten Index (also dem ersten Element).
+	
+\end{itemize}
+
+Die obige Lösung liefert das korrekte Ergebnis. Ist bei langen Arrays jedoch ineffizient.
+
+\paragraph{Lösung} Durch die korrekte Verwendung der \lstinline|splice()| Funktion und von ES6+ Syntax, den Rest/Spread Operator, können wir das Verschieben des Arrays intuitiv veranschaulichen.
+
+\begin{lstlisting}[caption=My Javascript Example]
+let rotate_array = function(arr, n) {
+	const rem = arr.splice(-1 * n);
+	return [...rem, ...arr];
+};
+\end{lstlisting}
+
+\section{Niedrigster/höchster Index}
+\begin{examplei}
+	Gegeben ist ein sortiertes Array von ganzen Zahlen. Gib den niedrigsten und höchsten Index einer Zahl zurück. Falls die Zahl nicht existiert, dann gib \lstinline|-1| zurück. Das Array kann beliebig lang sein und eine beliebige Anzahl an Duplikaten enthalten.
+	
+	Beispiel:
+	Gegeben ist folgendes Array\footnote{Die farbliche Markierung ist nur zur Verdeutlichung wo der niedrigste und höchste Index anfängt bzw. aufhört.} und eine Zahl \lstinline|3|. 	
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		Index & 0 & 1 & \cellcolor{yellow!25}2 & \cellcolor{yellow!25}3 & \cellcolor{yellow!25}4 & \cellcolor{yellow!25}5 & \cellcolor{yellow!25}6 & \cellcolor{yellow!25}7 & 8 & 9 & 10\\
+		\hline
+		Value & 1 & 1 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & 11 & 13 & 17\\
+		\hline
+	\end{tabular}
+
+	Der niedrigste Index ist \lstinline|2| und der höchste Index ist \lstinline|7|
+\end{examplei}
+{\bf Stichwörter:} Array, Zeiger, Pointer
+
+\paragraph{Vorgehensweise}
+\begin{enumerate} 
+	\item Wir erstellen zwei Zeiger. Einen
+	\item Iterieren, bis wir das erste Mal die Zahl sehen
+	\item Iterieren so lange, bis wir das letzte Mal die Zahl sehen
+	\item Rückgabe des Wertes
+\end{enumerate}
+
+\begin{lstlisting}[caption=My Javascript Example]
+
 \end{lstlisting}
 
 \paragraph{Typische Fehler}
@@ -2677,194 +2780,12 @@ let rotate_array = function(arr, n) {
 \end{itemize}
 
 \paragraph{Lösung}
-Die Schwierigkeit liegt darin, das Maximum zu finden ohne erneut die Zahlen im Fenster durchzugehen. Idealerweise wollen wir nur eimal durch die Zahlen im Array gehen und dabei das Maximum speichern. Nachfolgend werde ich begründen, warum eine \lstinline|Dequeue| die geeignete Datenstruktur ist.
-
-Angenommen wir haben folgendes Array und eine Fensterbreite von \lstinline|3| und benutzen dazu wir zunächst eine Variable zur Speicherung des Maximums:
+text....
 
 \begin{lstlisting}[caption=My Javascript Example]
-let rotate_array = function(arr, n) {
-	const rem = arr.splice(-1 * n);
-	arr.reverse();
-	rem.reverse().forEach(x => arr.push(x));
-	arr.reverse();
-};
+
 \end{lstlisting}
 
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-	\hline
-	7 & 6 & 2 & 4 & 1 & 7\\
-	\hline
-\end{tabular}
-
-Wenn wir durch die einzelnen Arrays gehen und das Maximum jedesmal in der Variable speichern, würden wir folgendes Ergebnis bekommen:
-
-\begin{enumerate} 
-	\item Schritt
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		7 \\
-		\hline
-	\end{tabular} 
-	
-	Erste Zahl ist 7. Dadurch ist max auch 7
-	\item Schritt
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		7 & 6 \\
-		\hline
-	\end{tabular} 
-	
-	Die 6 ist kleiner als das aktuelle max und daher ist max immer noch 7
-	\item Schritt
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		7 & 6 & 2\\
-		\hline
-	\end{tabular} 
-	
-	Max bleibt nach der 2 immer noch bei 7. Dadurch haben wir die Fensterbreite erreicht. Das max ist für die erste Fensterbreite ist 7.
-	
-	\item Schritt
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		6 & 2 & 4\\
-		\hline
-	\end{tabular}  
-	
-	Ab jetzt bekommen wir eine konstante Anzahl an 3 Zahlen. Die 7 ist raus. Die 4 kommt rein. Das Maximum kann nun nicht mehr 7 sein. Aber was ist es stattdessen? Es kann nicht 4 sein. Es ist 6. Aber unser Ansatz hat keine Möglichkeit zu erkennen, dass es die 6 ist. 
-\end{enumerate}
-
-Was wir daher brauchen ist also keine Variable zur Speicherung des Maximums, sondern wir müssen eine Sequenz speichern. Wie wollen die Sequenz so speichern, dass die größere Zahl immer vorne steht. Die Zahlen im \lstinline|Dequeue| werden von links nach rechts immer kleiner - die Zahlen links sind also immer größer als die Zahlen rechts. Wenn wir also das Maximum haben wollen, dann greifen wir immer auf die erste Zahl im \lstinline|Dequeue|. Falls die Zahl außerhalb des Arrays rausgeht, dann löschen wir diese Zahl von der Spitze. Damit wir leichter wissen können, welche Zahl aus dem Fenster rausgeht, speichern wir daher nicht den Wert der Zahl, sondern den Index der Zahl.
-
-Wir benutzen nachfolgend dieselbe Zahlenfolge. Diesmal habe ich noch die Indexe hinzugefügt.
-
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-	\hline
-	Index: & 0 & 1 & 2 & 3 & 4 & 5\\ 
-	\hline
-	Value: & 7 & 6 & 2 & 4 & 1 & 7\\
-	\hline
-\end{tabular}
-
-
-Wenn wir obiges Beispiel nehmen, dann würde der Ablauf wie folg aussehen:
-\begin{enumerate} 
-	\item Schritt
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		Index: & \cellcolor{yellow!25}0 & 1 & 2 & 3 & 4 & 5\\ 
-		\hline
-		Value: & \cellcolor{blue!25}7 & 6 & 2 & 4 & 1 & 7\\
-		\hline
-	\end{tabular}
-	
-	Erste Zahl ist 7. Weil die \lstinline|Dequeue| noch leer ist, pushen wir das erste Index sie in unsere \lstinline|Dequeue| rein	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		0 \\
-		\hline
-	\end{tabular} 
-	\item Schritt
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		Index: & \cellcolor{yellow!25}0 & \cellcolor{yellow!25}1 & 2 & 3 & 4 & 5\\ 
-		\hline
-		Value: & \cellcolor{blue!25}7 & \cellcolor{blue!25}6 & 2 & 4 & 1 & 7\\
-		\hline
-	\end{tabular}
-	
-	Die 6 ist kleiner (man erinnert sich: Wir wollen in der \lstinline|Dequeue| die Zahlen der kleiner nach speichern) als das aktuelle max und wir pushen sie ins \lstinline|Dequeue|: 	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		0 & 1 \\
-		\hline
-	\end{tabular} 
-	
-	\item Schritt
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		Index: & \cellcolor{yellow!25}0 & \cellcolor{yellow!25}1 & \cellcolor{yellow!25}2 & 3 & 4 & 5\\ 
-		\hline
-		Value: & \cellcolor{blue!25}7 & \cellcolor{blue!25}6 & \cellcolor{blue!25}2 & 4 & 1 & 7\\
-		\hline
-	\end{tabular}
-	
-	Die 2 ist kleiner als die 6. Dadurch pushen wir auch sie in unsere \lstinline|Dequeue|
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		0 & 1 & 2\\
-		\hline
-	\end{tabular}.
-	
-	Damit haben wir die Fensterbreite erreicht. Jetzt müssen wir aufpassen, wann eine Zahl aus dem Fenster rausrutscht. Falls diese Zahl nicht mehr im Fenster ist, müssen wir auch dessen Index rauslöschen.
-	
-	\item Schritt
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		Index: & 0 & \cellcolor{yellow!25}1 & \cellcolor{yellow!25}2 & \cellcolor{yellow!25}3 & 4 & 5\\ 
-		\hline
-		Value: & 7 & \cellcolor{blue!25}6 & \cellcolor{blue!25}2 & \cellcolor{blue!25}4 & 1 & 7\\
-		\hline
-	\end{tabular}
-	Die 4 ist in das Fenster reingekommen. Die 4 ist aber größer als die 2. Daher löschen wir sie (bzw. dessen Index). Wir überprüfen, ob vor der Zahl 2 noch eine Zahl ist, die kleiner ist als die 4. Dies ist nicht der Fall. Wäre es aber der Fall, so müssten wir auch diesen Index löschen. Wir müssten nämlich so lange die Indexe löschen, bis der \lstinline|Dequeue| die Struktur der Gestalt hat, dass sie absteigend ist, also vorne die großen Zahlen, hinten die kleinen. Daher löschen wir nur die Index der Zahl 2 aus der \lstinline|Dequeue| und fügen den Index der Zahl 4 hinzu: 
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		0 & 1 & 3\\
-		\hline
-	\end{tabular}.
-	
-	Es passiert an dieser Stelle aber noch mehr: Die 7 (Index Stelle 0) ist aus dem Fenster gerutscht. Das ist deshalb bemerkenswert, weil die 7 bisher das Maximum war und damit an erster Stelle unserer \lstinline|Dequeue| steht. Weil die Zahl 7 jetzt raus ist, löschen wir auch die den Index 0 aus unserem \lstinline|Dequeu|
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		1 & 3\\
-		\hline
-	\end{tabular}.
-	Dadurch steht der Index 1 an erster Stelle unserer \lstinline|Dequeue|. D.h. die 6 ist das Maximum an dieser Stelle.
-\end{enumerate}
-
-Ich könnte das jetzt weiter fortführen, aber ich glaube das Prinzip sollte mittlerweile klar sein.
-
-Unter der Berücksichtigung der "typischen Fehler" und den Ansatz mit der \lstinline|Dequeue|, schaut die Implementierung wie folgt aus: 
-
-\begin{lstlisting}[caption=My Javascript Example]
-let rotate_array = function(arr, n) {
-	let len = arr.length;
-	
-	// Let's normalize rotations
-	// if n > array size or n is negative.
-	n = n % len;
-	if (n < 0) {
-		// calculate the positive rotations needed.
-		n = n + len;
-	}
-	
-	let temp = [];
-	
-	// copy last N elements of array into temp
-	for (let i = 0; i < n; i++) {
-		temp[i] = arr[len - n + i];
-	}
-	
-	// shift original array
-	for (let i = len - 1; i >= n; i--) {
-		arr[i] = arr[i - n];
-	}
-	
-	// copy temp into original array
-	for (let i = 0; i < n; i++) {
-		arr[i] = temp[i];
-	}
-};
-\end{lstlisting}
-
-Eine alternative Lösung ist es, einen \lstinline|Heap()| zu verwenden.
 %==========================
 \section{TEST}
 \begin{examplei}
