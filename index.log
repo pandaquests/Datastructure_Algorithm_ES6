@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.24)  2 NOV 2019 23:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.24)  10 NOV 2019 10:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1091,16 +1091,12 @@ Kapitel 3.
 
 ]
 Kapitel 4.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
-[10]
-Kapitel 5.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 177.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 149.
+[9] [10]
+Kapitel 5.
 
-Overfull \hbox (8.99147pt too wide) in paragraph at lines 181--182
+Overfull \hbox (8.99147pt too wide) in paragraph at lines 218--219
 \OT1/cmr/m/n/10 Beim Ar-ray Lit-eral wird nur eine eck-ige Klam-mer [][][][] be
 n^^?otigt. Beide M^^?oglichkeiten
  []
@@ -1108,139 +1104,183 @@ n^^?otigt. Beide M^^?oglichkeiten
 [11
 
 ]
-Overfull \hbox (20.50055pt too wide) in paragraph at lines 188--189
+Overfull \hbox (20.50055pt too wide) in paragraph at lines 225--226
 []\OT1/cmr/m/n/10 Die L^^?ange eines Ar-rays wird als Zahl (hier: 3) in den Kon
 -struk-tur reingeschrieben.
  []
 
 
-Overfull \hbox (10.60146pt too wide) in paragraph at lines 217--219
+Overfull \hbox (10.60146pt too wide) in paragraph at lines 254--256
 []\OT1/cmr/m/n/10 JS bi-eten viele Funk-tio-nen zur Ma-nip-u-la-tio-nen von Ar-
 rays an. Zum Hinzuf^^?ugen
  []
 
 
-Overfull \hbox (13.3806pt too wide) in paragraph at lines 217--219
+Overfull \hbox (13.3806pt too wide) in paragraph at lines 254--256
 \OT1/cmr/m/n/10 am Ende wird [][][][][][][][] be-nutzt. Um ein El-e-ment am An-
 fang des Ar-rays hinzuzuf^^?ugen,
  []
 
-[12] [13] [14]
-Overfull \hbox (9.79753pt too wide) in paragraph at lines 338--339
+[12] [13] [14] [15]
+Overfull \hbox (9.79753pt too wide) in paragraph at lines 403--404
 \OT1/cmr/m/n/10 Teil des sp^^?ater zur^^?uckgegebenen Ar-rays. Die ihr ^^?uberg
 ebene Meth-ode [][][][]
  []
 
-[15]
-Overfull \hbox (2.82564pt too wide) in paragraph at lines 357--358
+
+Overfull \hbox (2.82564pt too wide) in paragraph at lines 422--423
 []\OT1/cmr/m/n/10 Die [][][][][][][][] Funk-tion geht im Ar-ray von links nach 
 rechts. Mit der [][]
  []
 
 [16] [17]
-Overfull \hbox (1.13936pt too wide) in paragraph at lines 441--442
+Overfull \hbox (1.13936pt too wide) in paragraph at lines 506--507
 []\OT1/cmr/m/n/10 Eine weit-ere M^^?oglichkeit den Ar-ray zu kopieren ist mit H
 ilfe des Rest/Spread-
  []
 
-[18] [19]
-Overfull \hbox (3.88943pt too wide) in paragraph at lines 538--539
+[18] [19] [20]
+Overfull \hbox (3.88943pt too wide) in paragraph at lines 603--604
 \OT1/cmr/m/n/10 Listen sind gut geeignet, wenn es nicht auf die Rei-hen-folge d
 er El-e-mente ankommt
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 541.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 606.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 541.
- [20]
-Overfull \hbox (32.9967pt too wide) in paragraph at lines 561--562
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 606.
+ [21]
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 626--627
 \OT1/cmtt/m/n/10 pandaquests / Datastructure _ Algorithm _ ES6 / blob / master 
 / code / datastructures /
  []
 
 
-Overfull \hbox (40.02582pt too wide) in paragraph at lines 563--564
+Overfull \hbox (40.02582pt too wide) in paragraph at lines 628--629
 []\OT1/cmr/m/n/10 Der Test zu der Klasse ist hier: []$\OT1/cmtt/m/n/10 https : 
 / / github . com / pandaquests / Datastructure _
  []
 
-[21] [22] [23] [24] [25] [26] [27]
-Overfull \hbox (5.25055pt too wide) in paragraph at lines 927--937
+[22] [23] [24] [25] [26] [27] [28]
+Overfull \hbox (5.25055pt too wide) in paragraph at lines 992--1002
 []\OT1/cmr/m/n/10 removeFirstOccurrence boolean re-move-FirstOc-cur-rence(Objec
 t o) Re-moves
  []
 
-[28]
-Overfull \hbox (1.30609pt too wide) in paragraph at lines 938--948
+
+Overfull \hbox (1.30609pt too wide) in paragraph at lines 1003--1013
 []\OT1/cmr/m/n/10 removeLastOccurrence boolean re-move-Las-tOc-cur-rence(Object
  o) Re-moves
  []
 
-[29] [30] [31] [32] [33] [34] [35] [36] [37]
+[29] [30] [31] [32] [33] [34] [35] [36] [37] [38]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [38]
-[39] [40
-
-]
+ [39]
+[40]
 Kapitel 6.
-[41] [42
+[41
+
+] [42
 
 ]
 Kapitel 7.
-Package mdframed Info: mdframed works in twoside mode on input line 1745.
+Package mdframed Info: mdframed works in twoside mode on input line 1810.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1745.
+(mdframed)              on input line 1810.
 [43]
-Overfull \hbox (1.50066pt too wide) in paragraph at lines 1811--1812
+Overfull \hbox (1.50066pt too wide) in paragraph at lines 1876--1877
 []\OT1/cmr/m/n/10 Das Pro-gramm l^^?auft in End-loss-chleife und kann somit kei
 n Ergeb-nis liefern. 
  []
 
 [44]
-Package mdframed Info: mdframed works in twoside mode on input line 1851.
+Package mdframed Info: mdframed works in twoside mode on input line 1916.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1851.
+(mdframed)              on input line 1916.
  [45]
-Overfull \hbox (1.27104pt too wide) in paragraph at lines 1878--1879
+Overfull \hbox (1.27104pt too wide) in paragraph at lines 1943--1944
 []\OT1/cmr/bx/n/10 Stichw^^?orter: \OT1/cmr/m/n/10 Ar-ray, Bi-nary Search, Such
 e, Slid-ing Win-dow, Zeiger, Pointer,
  []
 
 [46]
-Overfull \hbox (0.53111pt too wide) in paragraph at lines 1967--1968
+Overfull \hbox (0.53111pt too wide) in paragraph at lines 2032--2033
 [][][][][] \OT1/cmr/m/n/10 mit der gesuchten Zahl
  []
 
-[47]
-Package mdframed Info: mdframed works in twoside mode on input line 2011.
+[47] [48]
+Package mdframed Info: mdframed works in twoside mode on input line 2116.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2011.
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 2061.
- [48] [49] [50] [51] [52] [53]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2320.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2320.
+(mdframed)              on input line 2116.
+ [49] [50] [51] [52] [53]
+Package mdframed Info: mdframed works in twoside mode on input line 2420.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2420.
+ [54]
+Overfull \hbox (1.61166pt too wide) in paragraph at lines 2457--2458
+\OT1/cmr/m/n/10 dann wird dieser Wert so-fort zur^^?uckgegeben, denn damit wurd
+e ein gemein-
+ []
+
+
+Overfull \hbox (21.8062pt too wide) in paragraph at lines 2459--2460
+[]\OT1/cmr/m/n/10 Falls die ^^?au^^Yere Schleife kom-plett durch-laufen wird un
+d kein ^^?ubereinstimmendes
+ []
+
+
+Overfull \hbox (9.55421pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/10 7.3.  DIE KLEINSTE GEMEINSAME ZAHL IN VERSCHIEDENEN ARRAYS \OT
+1/cmr/m/n/10 55
+ []
+
+[55] [56]
+Package mdframed Info: mdframed works in twoside mode on input line 2569.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2569.
+ [57]
+Package mdframed Info: Not enough space on this page on input line 2597.
+
+Overfull \hbox (0.50055pt too wide) in paragraph at lines 2603--2604
+\OT1/cmr/m/n/10 Die dadurch freien Stellen rechts wer-den mit den El-e-menten g
+anz links aufgef^^?ullt.
+ []
+
+[58]
+Overfull \hbox (5.00053pt too wide) in paragraph at lines 2612--2613
+[]\OT1/cmr/m/n/10 Wir wollen die Zahlen aus dem ent-fer-n-ten Array-Teil nun am
+ ur-spr^^?unglichen
+ []
+
+[59] [60] [61] [62]
+Package mdframed Info: mdframed works in twoside mode on input line 2877.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2877.
+ [63] [64]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2926.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2926.
  (./index.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2320.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2320.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2926.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2926.
 
 Package rerunfilecheck Info: File `index.out' has not changed.
-(rerunfilecheck)             Checksum: 1754C77680BFD7E3507AFD98EA32871B;3312.
+(rerunfilecheck)             Checksum: 9AC29772069A3FB829F77F9BC8B73A0F;3523.
  ) 
 Here is how much of TeX's memory you used:
- 34133 strings out of 492615
- 680907 string characters out of 6131390
- 977543 words of memory out of 5000000
- 36907 multiletter control sequences out of 15000+600000
+ 34452 strings out of 492615
+ 685595 string characters out of 6131390
+ 982543 words of memory out of 5000000
+ 36947 multiletter control sequences out of 15000+600000
  538745 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  78i,10n,105p,836b,1868s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1256,10 +1296,10 @@ sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pf
 b>
-Output written on index.pdf (53 pages, 303408 bytes).
+Output written on index.pdf (64 pages, 345215 bytes).
 PDF statistics:
- 1342 PDF objects out of 1440 (max. 8388607)
- 1238 compressed objects within 13 object streams
- 696 named destinations out of 1000 (max. 500000)
- 597 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1729 PDF objects out of 2073 (max. 8388607)
+ 1610 compressed objects within 17 object streams
+ 975 named destinations out of 1000 (max. 500000)
+ 621 words of extra memory for PDF output out of 10000 (max. 10000000)
 
