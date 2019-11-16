@@ -72,26 +72,25 @@
 \contentsline {paragraph}{Typische Fehler}{43}{section*.19}% 
 \contentsline {paragraph}{L\IeC {\"o}sung}{45}{section*.20}% 
 \contentsline {paragraph}{Vorgehensweise}{46}{section*.21}% 
-\contentsline {paragraph}{Typische Fehler}{46}{section*.22}% 
+\contentsline {paragraph}{Typische Fehler}{47}{section*.22}% 
 \contentsline {paragraph}{L\IeC {\"o}sung}{48}{section*.23}% 
-\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{49}{section.7.2}% 
 \contentsline {paragraph}{Vorgehensweise}{50}{section*.24}% 
-\contentsline {paragraph}{Typische Fehler}{50}{section*.25}% 
+\contentsline {paragraph}{Typische Fehler}{51}{section*.25}% 
 \contentsline {paragraph}{L\IeC {\"o}sung}{51}{section*.26}% 
-\contentsline {section}{\numberline {7.3}Die kleinste gemeinsame Zahl in verschiedenen Arrays}{54}{section.7.3}% 
-\contentsline {paragraph}{Vorgehensweise}{54}{section*.27}% 
-\contentsline {paragraph}{Typische Fehler}{56}{section*.28}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{56}{section*.29}% 
-\contentsline {section}{\numberline {7.4}Array verschieben}{57}{section.7.4}% 
-\contentsline {paragraph}{Vorgehensweise}{58}{section*.30}% 
+\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{52}{section.7.2}% 
+\contentsline {paragraph}{Vorgehensweise}{52}{section*.27}% 
+\contentsline {paragraph}{Typische Fehler}{53}{section*.28}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{54}{section*.29}% 
+\contentsline {section}{\numberline {7.3}Die kleinste gemeinsame Zahl in verschiedenen Arrays}{57}{section.7.3}% 
+\contentsline {paragraph}{Vorgehensweise}{57}{section*.30}% 
 \contentsline {paragraph}{Typische Fehler}{59}{section*.31}% 
-\contentsline {paragraph}{Typische Fehler}{61}{section*.32}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{62}{section*.33}% 
-\contentsline {section}{\numberline {7.5}Niedrigster/h\IeC {\"o}chster Index}{62}{section.7.5}% 
-\contentsline {paragraph}{Vorgehensweise}{62}{section*.34}% 
-\contentsline {paragraph}{Typische Fehler}{62}{section*.35}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{63}{section*.36}% 
-\contentsline {section}{\numberline {7.6}TEST}{63}{section.7.6}% 
-\contentsline {paragraph}{Vorgehensweise}{63}{section*.37}% 
-\contentsline {paragraph}{Typische Fehler}{63}{section*.38}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{63}{section*.39}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{59}{section*.32}% 
+\contentsline {section}{\numberline {7.4}Array verschieben}{60}{section.7.4}% 
+\contentsline {paragraph}{Vorgehensweise}{62}{section*.33}% 
+\contentsline {paragraph}{Typische Fehler}{63}{section*.34}% 
+\contentsline {paragraph}{Typische Fehler}{65}{section*.35}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{65}{section*.36}% 
+\contentsline {section}{\numberline {7.5}TEST}{66}{section.7.5}% 
+\contentsline {paragraph}{Vorgehensweise}{66}{section*.37}% 
+\contentsline {paragraph}{Typische Fehler}{66}{section*.38}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{66}{section*.39}% 

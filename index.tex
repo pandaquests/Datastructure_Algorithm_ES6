@@ -1958,19 +1958,17 @@ Hier ist die gesuchte Antwort \lstinline|5|, weil \lstinline|47| am Index \lstin
 Ansätze um zuerst die Sollbruchstelle zu finden sind zu aufwändig.
 
 \begin{enumerate} 
-	\item Wir versuchen folgende Fälle zu berücksichtigen:
-	\begin{itemize} 
-		\item Element, das 
-		
-	\end{itemize}
-	Ermittelt den Wert in der Mitte des Arrays
-	
-	
+	\item Wir betrachten die Fälle, dass das Array
+	\begin{enumerate}
+		\item bis zum Anfang nicht gefunden wurde
+		\item bis zum Ende nicht gefunden wurde
+		\item außerhalb der Kontinuität liegt
+	\end{enumerate}
+	\item Ermittelt den Wert in der Mitte des Arrays
 	\item Teile ihn dann in zwei Arrays auf
 	\item Suche in jeweils der zwei Subarrays nach der Zahl in Binary Search
 \end{enumerate}
 
-\paragraph{Typische Fehler}
 \begin{lstlisting}[caption=My Javascript Example]
 let binarySearchSwitched = function(arr, key) {
 	const maxIndex = arr.length - 1;
@@ -2033,6 +2031,7 @@ let binarySearchSwitched = function(arr, key) {
 };
 \end{lstlisting}
 
+\paragraph{Typische Fehler}
 \begin{itemize} 
 	\item Zu lang, zu kompliziert und zu spezifisch
 	
@@ -2048,6 +2047,12 @@ let binarySearchSwitched = function(arr, key) {
 	
 \end{itemize}
 \paragraph{Lösung} Auf die Lösung zu kommen ist nicht sofort ersichtlich. Aber die Lösung zu dieser Aufgabe ist an sich recht einfach, wenn man sich folgende Dinge vergegenwärtigt:
+
+\begin{itemize} 
+	\item Teilt man das Array in der Mitte, so ist mindestens eines der Hälfte immer sortiert.
+	
+	\item Weil das Array sortiert ist, können wir vergleichen vergleichen, ob die Zahl in einen bestimmten Abschnitt liegt oder nicht, indem wir einen Arrayabschnitt nehmen und das erste und das letzte Element aus dem Teilarray mit der Zahl vergleichen.
+\end{itemize}
 
 Die Laufzeit
 
@@ -2125,6 +2130,128 @@ let binarySearchSwitched = function(arr, key) {
 \end{lstlisting}
 
 JS ist jedoch schlecht für Rekursion ausgelegt, wie ich es in einen der vorherigen Kapitel beschrieben habe.
+
+\begin{examplei}
+	Gegeben ist ein sortiertes Array von ganzen Zahlen. Gib den niedrigsten und höchsten Index einer Zahl zurück mit jeweils einer eigenen Funktion. Falls die Zahl nicht existiert, dann gib \lstinline|-1| zurück. Das Array kann beliebig lang sein und eine beliebige Anzahl an Duplikaten enthalten.
+	
+	Beispiel:
+	Gegeben ist folgendes Array\footnote{Die farbliche Markierung ist nur zur Verdeutlichung wo der niedrigste und höchste Index anfängt bzw. aufhört.} und eine Zahl \lstinline|3|. 	
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		\cellcolor{gray!25}Index & 0 & 1 & \cellcolor{red!25}2 & \cellcolor{yellow!25}3 & \cellcolor{yellow!25}4 & \cellcolor{yellow!25}5 & \cellcolor{yellow!25}6 & \cellcolor{red!25}7 & 8 & 9 & 10\\
+		\hline
+		\cellcolor{gray!25}Value & 1 & 1 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & 11 & 13 & 17\\
+		\hline
+	\end{tabular}
+	
+	Der niedrigste Index ist \lstinline|2| und der höchste Index ist \lstinline|7|
+\end{examplei}
+{\bf Stichwörter:} Array, Zeiger, Pointer, Suchen, Binary search
+
+\paragraph{Vorgehensweise}
+Für die Funktion zur Berechnung des niedrigsten Index:
+\begin{enumerate} 
+	\item Wir iterieren mit einer Schleife, bis wir das erste Mal auf die Zahl im Array treffen und geben den Index dann zurück
+	\item Falls es keine Übereinstimmung gibt, dann geben wir \lstinline|-1| zurück
+\end{enumerate}
+
+Für die Funktion zur Berechnung des höchsten Index:
+
+\begin{enumerate} 
+	\item Wir ermitteln den niedrigsten Index anhand der Funktion oben. Falls keins existiert geben wir \lstinline|-1| zurück, denn wenn es keinen niedrigsten Index existiert, existiert auch kein höchsten Index. 
+	\item Wir verwenden auch hier eine Schleife. Die Schleife startet beim niedrigsten Index, die wir oben ermittelt haben. 
+	\item Wir iterieren solange bis wir entweder das Arrayende erreicht haben oder bis wir auf eine Zahl treffen, die ungleich der gegebenen Zahl ist. Der Rückgabewert ist der aktuelle Index dekrementiert um \lstinline|1|, weil der Index um \lstinline|1| höher ist als der gesuchte Index
+\end{enumerate}
+
+\begin{lstlisting}[caption=My Javascript Example]
+let find_low_index = function(arr, key) {
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] === key) {
+			return i;
+		}
+	}
+	return -1;
+};
+
+let find_high_index = function(arr, key) {
+	let lowIndex = find_low_index(arr, key);
+	if (lowIndex === -1) {
+		return -1;
+	}
+	let highIndex = lowIndex;
+	for (highIndex = lowIndex; highIndex < arr.length; highIndex++) {
+		if (arr[highIndex] !== key) {
+			return --highIndex;
+		}
+	}
+	return --highIndex;
+};
+\end{lstlisting}
+
+\paragraph{Typische Fehler}
+\begin{itemize} 
+	\item Schlechte Laufzeit
+	
+	Wie oben erwähnt, kann der Array sehr lang sein. Die Laufzeit ist hier linear. Weil das Array sortiert ist, wäre ein Binary Search effizienter
+	
+\end{itemize}
+
+\paragraph{Lösung}
+Bei großen Datenmengen, die sortiert sind, ist es sinnvoll zu überprüfen, ob wir den Binary Search Ansatz verwenden können.
+
+Zur Ermittlung des niedrigsten Index:
+\begin{enumerate}
+	\item Wir nehmen ein Element von der Mitte des Arrays und vergleichen es mit der gegebenen Zahl. Ist es kleiner, betrachten wir den rechten Arrayteil. Ist es größer oder gleich der gegebenen Zahl, betrachten wir den linken Arrayteil.
+	\item Vom betrachteten Arrayteil nehmen wir wieder ein Element von der Mitte und vergleichen es mit der gegbenen Zahl und verfahren 
+	\item Diese Schritte wiederholen wir solange, bis am Ende wir nur ein Element haben, dass der Zahl entspricht oder wir gar kein Element mehr finden. Im ersten Fall geben wir den Index zurück. Im zweiten Fall geben wir \lstinline|-1| zurück.
+\end{enumerate}
+
+\begin{lstlisting}[caption=My Javascript Example]
+let find_low_index = function(arr, key) {
+	let startIndex = 0;
+	let endIndex = arr.length - 1;
+
+	while (startIndex <= endIndex) {
+		const midIndex = (startIndex + endIndex) / 2 | 0;
+		console.log(midIndex);
+		const currentValue = arr[midIndex];
+		if (currentValue < key) {
+			startIndex = midIndex + 1;
+		} else {
+			endIndex = midIndex - 1;
+		}
+	}
+
+	return endIndex;
+};
+
+let find_high_index = function(arr, key) {
+	let lowIndex = find_low_index(arr, key);
+	if (lowIndex === -1) {
+		return -1;
+	}
+
+	let startIndex = lowIndex;
+	let endIndex = arr.length - 1;
+
+	while (startIndex <= endIndex) {
+		const midIndex = (startIndex + endIndex) / 2 | 0;
+		console.log(midIndex);
+		const currentValue = arr[midIndex];
+		if (currentValue === key) {
+			startIndex = midIndex + 1;
+		} else {
+			endIndex = midIndex - 1;
+		}
+	}
+	if (arr[endIndex] === key) {
+		return endIndex;
+	}
+	return endIndex - 1;
+};
+\end{lstlisting}
+
 \section{Maximum im gleitenden Fenster}
 \begin{examplei}
 Gegeben ist ein langes Array mit ganzen Zahlen. Zudem ist noch ein Fenster mit einer Breite \lstinline|w| gegeben, das sich von Anfang bis Ende des Arrays bewegt. Finde alle Maxima, die im gleitenden Fenster auftauchen.
@@ -2736,54 +2863,13 @@ Die obige Lösung liefert das korrekte Ergebnis. Ist bei langen Arrays jedoch in
 
 \paragraph{Lösung} Durch die korrekte Verwendung der \lstinline|splice()| Funktion und von ES6+ Syntax, den Rest/Spread Operator, können wir das Verschieben des Arrays intuitiv veranschaulichen.
 
+Wir zerschneiden es an der \lstinline|n|-ten Stelle von hinten. Und vertauschen den ausgeschnittenen Teil mit den Rest des ursprünglichen Arrays.
+
 \begin{lstlisting}[caption=My Javascript Example]
 let rotate_array = function(arr, n) {
 	const rem = arr.splice(-1 * n);
 	return [...rem, ...arr];
 };
-\end{lstlisting}
-
-\section{Niedrigster/höchster Index}
-\begin{examplei}
-	Gegeben ist ein sortiertes Array von ganzen Zahlen. Gib den niedrigsten und höchsten Index einer Zahl zurück. Falls die Zahl nicht existiert, dann gib \lstinline|-1| zurück. Das Array kann beliebig lang sein und eine beliebige Anzahl an Duplikaten enthalten.
-	
-	Beispiel:
-	Gegeben ist folgendes Array\footnote{Die farbliche Markierung ist nur zur Verdeutlichung wo der niedrigste und höchste Index anfängt bzw. aufhört.} und eine Zahl \lstinline|3|. 	
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		Index & 0 & 1 & \cellcolor{yellow!25}2 & \cellcolor{yellow!25}3 & \cellcolor{yellow!25}4 & \cellcolor{yellow!25}5 & \cellcolor{yellow!25}6 & \cellcolor{yellow!25}7 & 8 & 9 & 10\\
-		\hline
-		Value & 1 & 1 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & \cellcolor{blue!25}3 & 11 & 13 & 17\\
-		\hline
-	\end{tabular}
-
-	Der niedrigste Index ist \lstinline|2| und der höchste Index ist \lstinline|7|
-\end{examplei}
-{\bf Stichwörter:} Array, Zeiger, Pointer
-
-\paragraph{Vorgehensweise}
-\begin{enumerate} 
-	\item Wir erstellen zwei Zeiger. Einen
-	\item Iterieren, bis wir das erste Mal die Zahl sehen
-	\item Iterieren so lange, bis wir das letzte Mal die Zahl sehen
-	\item Rückgabe des Wertes
-\end{enumerate}
-
-\begin{lstlisting}[caption=My Javascript Example]
-
-\end{lstlisting}
-
-\paragraph{Typische Fehler}
-\begin{itemize} 
-	\item 
-\end{itemize}
-
-\paragraph{Lösung}
-text....
-
-\begin{lstlisting}[caption=My Javascript Example]
-
 \end{lstlisting}
 
 %==========================
