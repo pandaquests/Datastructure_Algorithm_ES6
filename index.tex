@@ -2149,7 +2149,8 @@ JS ist jedoch schlecht für Rekursion ausgelegt, wie ich es in einen der vorheri
 \end{examplei}
 {\bf Stichwörter:} Array, Zeiger, Pointer, Suchen, Binary search
 
-\paragraph{Vorgehensweise}
+\paragraph{Vorgehensweise} Zur Lösung dieser Aufgabe werden zwei Funktionen verwendet.
+
 Für die Funktion zur Berechnung des niedrigsten Index:
 \begin{enumerate} 
 	\item Wir iterieren mit einer Schleife, bis wir das erste Mal auf die Zahl im Array treffen und geben den Index dann zurück
@@ -2197,10 +2198,16 @@ let find_high_index = function(arr, key) {
 	
 \end{itemize}
 
-\paragraph{Lösung}
-Bei großen Datenmengen, die sortiert sind, ist es sinnvoll zu überprüfen, ob wir den Binary Search Ansatz verwenden können.
+Bei großen Datenmengen, die sortiert sind, ist es der Binary Search Ansatz sinnvoll zu verwenden.
 
 Zur Ermittlung des niedrigsten Index:
+\begin{enumerate}
+	\item Wir nehmen ein Element von der Mitte des Arrays und vergleichen es mit der gegebenen Zahl. Ist es kleiner, betrachten wir den rechten Arrayteil. Ist es größer oder gleich der gegebenen Zahl, betrachten wir den linken Arrayteil.
+	\item Vom betrachteten Arrayteil nehmen wir wieder ein Element von der Mitte und vergleichen es mit der gegbenen Zahl und verfahren wie im ersten Schritt.
+	\item Diese Schritte wiederholen wir solange, bis am Ende wir nur ein Element haben, dass der Zahl entspricht oder wir gar kein Element mehr finden. Im ersten Fall geben wir den Index zurück. Im zweiten Fall geben wir \lstinline|-1| zurück.
+\end{enumerate}
+
+Zur Ermittlung des höchsten Index:
 \begin{enumerate}
 	\item Wir nehmen ein Element von der Mitte des Arrays und vergleichen es mit der gegebenen Zahl. Ist es kleiner, betrachten wir den rechten Arrayteil. Ist es größer oder gleich der gegebenen Zahl, betrachten wir den linken Arrayteil.
 	\item Vom betrachteten Arrayteil nehmen wir wieder ein Element von der Mitte und vergleichen es mit der gegbenen Zahl und verfahren 
@@ -2209,21 +2216,25 @@ Zur Ermittlung des niedrigsten Index:
 
 \begin{lstlisting}[caption=My Javascript Example]
 let find_low_index = function(arr, key) {
+	if (arr.length === 0) {
+		return -1;
+	}
 	let startIndex = 0;
 	let endIndex = arr.length - 1;
 
 	while (startIndex <= endIndex) {
 		const midIndex = (startIndex + endIndex) / 2 | 0;
-		console.log(midIndex);
 		const currentValue = arr[midIndex];
 		if (currentValue < key) {
-			startIndex = midIndex + 1;
+			startIndex = midIndex;
 		} else {
-			endIndex = midIndex - 1;
+			endIndex = midIndex;
 		}
 	}
-
-	return endIndex;
+	if (arr[startIndex] === key) {
+		return startIndex;
+	}
+	return -1;
 };
 
 let find_high_index = function(arr, key) {
@@ -2234,21 +2245,90 @@ let find_high_index = function(arr, key) {
 
 	let startIndex = lowIndex;
 	let endIndex = arr.length - 1;
-
+	
 	while (startIndex <= endIndex) {
 		const midIndex = (startIndex + endIndex) / 2 | 0;
-		console.log(midIndex);
 		const currentValue = arr[midIndex];
 		if (currentValue === key) {
-			startIndex = midIndex + 1;
+			startIndex = midIndex;
 		} else {
-			endIndex = midIndex - 1;
+			endIndex = midIndex;
 		}
 	}
 	if (arr[endIndex] === key) {
 		return endIndex;
 	}
 	return endIndex - 1;
+};
+\end{lstlisting}
+
+\paragraph{Typische Fehler}
+\begin{itemize} 
+	\item Early exit unnötig
+	
+	In vorherigen Code Beispielen habe ich oft davon geredet einen early exit zu verwenden - also Code, das das Programm so schnell wie möglich beendet. In der Zeile 2 wurde so ein Pattern implementiert, das aber bei genauer Betrachtung unnötig ist:
+	
+	In der Zeile 8 sehen wir, dass die Schleife nur dann ausgeführt wird, wenn \lstinline|startIndex <= endIndex| ist. Wäre die Länge des Arrays 0, dann wäre \lstinline|startIndex| 0 und \lstinline|endIndex| wäre -1. Damit ist die Bedingung in der \lstinline|while| Schleife nicht erfüllt und wird am Ende -1 zurückgeben.
+	
+	\item Einige Werte werden mehr als nötig überprüft. 
+	
+	In den Zeilen, wo \lstinline|startIndex| und \lstinline|endIndex| mit \lstinline|midIndex| zugewiesen wird, wird damit auch \lstinline|midIndex| nochmals geprüft. Dies ist ineffizient. Stattdessen weist man \lstinline|startIndex| bzw. \lstinline|endIndex| das Element danach oder davor.
+	
+\end{itemize}
+
+
+\paragraph{Lösung}
+Mit Berücksichtigung der oben genannten Punkte, schaut unser Lösungsvorschlag wie folgt aus. Die Vorgehensweise ist identisch zu oben.
+
+\begin{lstlisting}[caption=My Javascript Example]
+
+let find_low_index = function(arr, key) {
+	let low = 0;
+	let high = arr.length - 1;
+	let mid = Math.floor(high / 2);
+
+	while (low <= high) {
+	
+		let mid_elem = arr[mid];
+	
+		if (mid_elem < key) {
+			low = mid + 1;
+		} else {
+			high = mid - 1;
+		}
+	
+		mid = low + Math.floor((high - low) / 2);
+	}
+
+	if (arr[low] === key) {
+		return low;
+	}
+
+	return -1;
+};
+
+let find_high_index = function(arr, key) {
+	let low = 0;
+	let high = arr.length - 1;
+	let mid = Math.floor(high / 2);
+
+	while (low <= high) {
+		let mid_elem = arr[mid];
+	
+		if (mid_elem <= key) {
+			low = mid + 1;
+		} else {
+			high = mid - 1;
+		}
+	
+		mid = low + Math.floor((high - low) / 2);
+	}
+
+	if (arr[high] === key) {
+		return high;
+	}
+
+	return -1;
 };
 \end{lstlisting}
 
@@ -2872,10 +2952,61 @@ let rotate_array = function(arr, n) {
 };
 \end{lstlisting}
 
-%==========================
-\section{TEST}
+\section{Verschiebe alle 0 nach links}
 \begin{examplei}
-	Text...
+	Gegeben ist ein Array. Verschiebe alle Elemente die gleich 0 sind nach links. Behalte dabei die Reihenfolge, der übrigen Zahlen bei.
+	
+	Beispiel:
+	Gegeben ist folgender Array:
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		3 & 23 & 0 & -31 & 47 & 0 & 0 &-65 & 0 & 69 \\
+		\hline
+	\end{tabular}
+
+	Nach dem Verschieben der 0 nach links, schaut das Array wie folgt aus:
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		3 & 23 & 0 & -31 & 47 & 0 & 0 &-65 & 0 & 69 \\
+		\hline
+	\end{tabular}
+	
+	\begin{enumerate}
+		\item Schritt	
+		
+		Das Maximum ist wieder \lstinline|69|
+	\end{enumerate}
+	
+\end{examplei}
+{\bf Stichwörter:} Array, Suche, Sliding Window, Zeiger, Pointer, Dequeue
+
+\paragraph{Vorgehensweise}
+\begin{enumerate} 
+	\item 
+\end{enumerate}
+
+\begin{lstlisting}[caption=My Javascript Example]
+
+\end{lstlisting}
+
+\paragraph{Typische Fehler}
+\begin{itemize} 
+	\item 
+\end{itemize}
+
+\paragraph{Lösung}
+text....
+
+\begin{lstlisting}[caption=My Javascript Example]
+
+\end{lstlisting}
+
+%==========================
+\section{Test}
+\begin{examplei}
+	Text
 	
 	Beispiel:
 	Gegeben ist folgender Array mit einer Fensterbreite von \lstinline|4|. 	

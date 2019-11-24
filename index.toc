@@ -22,37 +22,28 @@
 \contentsline {section}{\numberline {5.1}Array}{11}{section.5.1}% 
 \contentsline {section}{\numberline {5.2}Liste}{21}{section.5.2}% 
 \contentsline {paragraph}{List Klasse}{22}{section*.2}% 
-\contentsline {paragraph}{clear() - L\IeC {\"o}schen aller Elemente einer Liste}{23}{section*.3}% 
-\contentsline {paragraph}{toString() - Gibt die Repr\IeC {\"a}sentation der Liste als String zur\IeC {\"u}ck}{23}{section*.4}% 
+\contentsline {paragraph}{clear() - L\IeC {\"o}schen aller Elemente einer Liste}{22}{section*.3}% 
+\contentsline {paragraph}{toString() - Gibt die Repr\IeC {\"a}sentation der Liste als String zur\IeC {\"u}ck}{22}{section*.4}% 
 \contentsline {paragraph}{get(index) - Ein Element an einem bestimmten Index bekommen}{23}{section*.5}% 
-\contentsline {paragraph}{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt}{24}{section*.6}% 
-\contentsline {paragraph}{lastIndexOf(item) - Gibt den Index wo das gesuchte Element zuletzt vorkommt}{24}{section*.7}% 
-\contentsline {paragraph}{isEmpty() - Liefert true, wenn die Liste leer ist}{24}{section*.8}% 
-\contentsline {paragraph}{insert(el, index) - F\IeC {\"u}gt ein Element an einer bestimmten Stelle ein}{24}{section*.9}% 
-\contentsline {paragraph}{add(el) - F\IeC {\"u}gt ein Element am Ende der Liste}{24}{section*.10}% 
-\contentsline {paragraph}{remove(index) - Entfernt ein Element an einer bestimmten Stelle}{25}{section*.11}% 
-\contentsline {paragraph}{front() - Setzt die Position am Listenanfang}{25}{section*.12}% 
-\contentsline {paragraph}{end() - Setzt die Position am Listenende}{25}{section*.13}% 
-\contentsline {paragraph}{prev() - Setzt die Position um eins nach vorne}{25}{section*.14}% 
-\contentsline {paragraph}{next() - Setzt die Position um eins nach hinten}{25}{section*.15}% 
-\contentsline {paragraph}{moveTo(index) - Setzt die Position an einer bestimmten Stelle}{25}{section*.16}% 
-\contentsline {paragraph}{sublist(from, to) - Erstellt eine Liste von (inklusive) einer bestimmten Stelle bis (exklusiv) eine bestimmten Stelle ohne das original Array zu \IeC {\"a}ndern}{26}{section*.17}% 
-\contentsline {section}{\numberline {5.3}Stack}{26}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}Queue}{27}{section.5.4}% 
-\contentsline {section}{\numberline {5.5}Dequeue}{28}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}Priority Queue}{33}{section.5.6}% 
-\contentsline {section}{\numberline {5.7}LinkedList}{34}{section.5.7}% 
-\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{40}{section.5.8}% 
-\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{40}{section.5.9}% 
-\contentsline {section}{\numberline {5.10}Dictionary}{40}{section.5.10}% 
-\contentsline {section}{\numberline {5.11}Hashing}{40}{section.5.11}% 
-\contentsline {section}{\numberline {5.12}HashMap}{40}{section.5.12}% 
-\contentsline {section}{\numberline {5.13}MapTree}{40}{section.5.13}% 
-\contentsline {section}{\numberline {5.14}LinkedMap}{40}{section.5.14}% 
-\contentsline {section}{\numberline {5.15}Sets}{40}{section.5.15}% 
-\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{40}{section.5.16}% 
-\contentsline {section}{\numberline {5.17}Graphen}{40}{section.5.17}% 
-\contentsline {section}{\numberline {5.18}AVL Tree}{40}{section.5.18}% 
+\contentsline {paragraph}{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt}{23}{section*.6}% 
+\contentsline {paragraph}{lastIndexOf(item) - Gibt den Index wo das gesuchte Element zuletzt vorkommt}{23}{section*.7}% 
+\contentsline {paragraph}{sublist(from, to) - Erstellt eine Liste von (inklusive) einer bestimmten Stelle bis (exklusiv) eine bestimmten Stelle ohne das original Array zu \IeC {\"a}ndern}{25}{section*.17}% 
+\contentsline {section}{\numberline {5.3}Stack}{25}{section.5.3}% 
+\contentsline {section}{\numberline {5.4}Queue}{26}{section.5.4}% 
+\contentsline {section}{\numberline {5.5}Dequeue}{27}{section.5.5}% 
+\contentsline {section}{\numberline {5.6}Priority Queue}{32}{section.5.6}% 
+\contentsline {section}{\numberline {5.7}LinkedList}{33}{section.5.7}% 
+\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{39}{section.5.8}% 
+\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{39}{section.5.9}% 
+\contentsline {section}{\numberline {5.10}Dictionary}{39}{section.5.10}% 
+\contentsline {section}{\numberline {5.11}Hashing}{39}{section.5.11}% 
+\contentsline {section}{\numberline {5.12}HashMap}{39}{section.5.12}% 
+\contentsline {section}{\numberline {5.13}MapTree}{39}{section.5.13}% 
+\contentsline {section}{\numberline {5.14}LinkedMap}{39}{section.5.14}% 
+\contentsline {section}{\numberline {5.15}Sets}{39}{section.5.15}% 
+\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{39}{section.5.16}% 
+\contentsline {section}{\numberline {5.17}Graphen}{39}{section.5.17}% 
+\contentsline {section}{\numberline {5.18}AVL Tree}{39}{section.5.18}% 
 \contentsline {chapter}{\numberline {6}Algorithmen}{41}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Breitensuche}{41}{section.6.1}% 
 \contentsline {section}{\numberline {6.2}Tiefensuche}{41}{section.6.2}% 
@@ -69,28 +60,32 @@
 \contentsline {chapter}{\numberline {7}Aufgaben}{43}{chapter.7}% 
 \contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{43}{section.7.1}% 
 \contentsline {paragraph}{Vorgehensweise}{43}{section*.18}% 
-\contentsline {paragraph}{Typische Fehler}{43}{section*.19}% 
 \contentsline {paragraph}{L\IeC {\"o}sung}{45}{section*.20}% 
 \contentsline {paragraph}{Vorgehensweise}{46}{section*.21}% 
 \contentsline {paragraph}{Typische Fehler}{47}{section*.22}% 
 \contentsline {paragraph}{L\IeC {\"o}sung}{48}{section*.23}% 
 \contentsline {paragraph}{Vorgehensweise}{50}{section*.24}% 
 \contentsline {paragraph}{Typische Fehler}{51}{section*.25}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{51}{section*.26}% 
-\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{52}{section.7.2}% 
-\contentsline {paragraph}{Vorgehensweise}{52}{section*.27}% 
-\contentsline {paragraph}{Typische Fehler}{53}{section*.28}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{54}{section*.29}% 
-\contentsline {section}{\numberline {7.3}Die kleinste gemeinsame Zahl in verschiedenen Arrays}{57}{section.7.3}% 
-\contentsline {paragraph}{Vorgehensweise}{57}{section*.30}% 
-\contentsline {paragraph}{Typische Fehler}{59}{section*.31}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{59}{section*.32}% 
-\contentsline {section}{\numberline {7.4}Array verschieben}{60}{section.7.4}% 
-\contentsline {paragraph}{Vorgehensweise}{62}{section*.33}% 
-\contentsline {paragraph}{Typische Fehler}{63}{section*.34}% 
-\contentsline {paragraph}{Typische Fehler}{65}{section*.35}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{65}{section*.36}% 
-\contentsline {section}{\numberline {7.5}TEST}{66}{section.7.5}% 
-\contentsline {paragraph}{Vorgehensweise}{66}{section*.37}% 
-\contentsline {paragraph}{Typische Fehler}{66}{section*.38}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{66}{section*.39}% 
+\contentsline {paragraph}{Typische Fehler}{52}{section*.26}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{53}{section*.27}% 
+\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{54}{section.7.2}% 
+\contentsline {paragraph}{Vorgehensweise}{54}{section*.28}% 
+\contentsline {paragraph}{Typische Fehler}{55}{section*.29}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{55}{section*.30}% 
+\contentsline {section}{\numberline {7.3}Die kleinste gemeinsame Zahl in verschiedenen Arrays}{58}{section.7.3}% 
+\contentsline {paragraph}{Vorgehensweise}{59}{section*.31}% 
+\contentsline {paragraph}{Typische Fehler}{60}{section*.32}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{61}{section*.33}% 
+\contentsline {section}{\numberline {7.4}Array verschieben}{62}{section.7.4}% 
+\contentsline {paragraph}{Vorgehensweise}{62}{section*.34}% 
+\contentsline {paragraph}{Typische Fehler}{63}{section*.35}% 
+\contentsline {paragraph}{Typische Fehler}{65}{section*.36}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{66}{section*.37}% 
+\contentsline {section}{\numberline {7.5}Verschiebe alle 0 nach links}{66}{section.7.5}% 
+\contentsline {paragraph}{Vorgehensweise}{67}{section*.38}% 
+\contentsline {paragraph}{Typische Fehler}{67}{section*.39}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{67}{section*.40}% 
+\contentsline {section}{\numberline {7.6}Test}{67}{section.7.6}% 
+\contentsline {paragraph}{Vorgehensweise}{67}{section*.41}% 
+\contentsline {paragraph}{Typische Fehler}{67}{section*.42}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{67}{section*.43}% 
