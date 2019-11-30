@@ -3043,6 +3043,18 @@ let move_zeros_to_left = function(A) {
 };
 \end{lstlisting}
 
+
+\paragraph{Andere Lösung}
+Eine andere Lösung...
+
+\begin{lstlisting}[caption=My Javascript Example]
+const move_zeros_to_left = arr => {
+	var w = arr.length, r = w;
+	while (r-- !== 0) { arr[r] !== 0 && (arr[--w] = arr[r]) }
+	while (w-- !== 0) { arr[w] = 0 }
+}
+\end{lstlisting}
+
 %==========================
 \section{Test}
 \begin{examplei}
