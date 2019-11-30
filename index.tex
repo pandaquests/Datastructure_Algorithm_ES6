@@ -1868,7 +1868,7 @@ let binarySearch = function(a, key) {
 	return -1;
 };
 \end{lstlisting}
-
+\paragraph{Typische Fehler}
 \begin{itemize} 
 	\item Ein Array ist index basiert beginned bei 0
 	
@@ -2969,38 +2969,78 @@ let rotate_array = function(arr, n) {
 	
 	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
 		\hline
-		3 & 23 & 0 & -31 & 47 & 0 & 0 &-65 & 0 & 69 \\
+		0 & 0 & 0 & 0 & 3 & 23 & -31 & 47 & -65 & 69 \\
 		\hline
 	\end{tabular}
 	
-	\begin{enumerate}
-		\item Schritt	
-		
-		Das Maximum ist wieder \lstinline|69|
-	\end{enumerate}
 	
 \end{examplei}
 {\bf Stichwörter:} Array, Suche, Sliding Window, Zeiger, Pointer, Dequeue
 
 \paragraph{Vorgehensweise}
 \begin{enumerate} 
-	\item 
+	\item Ueberpruefen auf early exit
+	\item hat array eine 0
+	\item wenn ja, dann gehe durch alle Elemente und speichere sie in einen sepearten array
+	\item Dabei zaehle die 0
+	\item Am Ende der Schleife kombiniere die 
 \end{enumerate}
 
 \begin{lstlisting}[caption=My Javascript Example]
-
+function moveZeroToLeft(arr) {
+	if (!arr.length) {
+		return;
+	}
+	if (arr.length < 2) {
+		return arr;
+	}
+	if (arr.some(x => x === 0)) {
+		let zeroCounter = 0;
+		const res = arr.filter(el => {
+			if (el !== 0) {
+				return true;
+			}
+			zeroCounter++;
+		});
+		const leadingZeros = Array(zeroCounter).fill(0);
+		return leadingZeros.concat(res);
+	}
+	return arr;
+}
 \end{lstlisting}
 
 \paragraph{Typische Fehler}
 \begin{itemize} 
-	\item 
+	\item 	
 \end{itemize}
 
 \paragraph{Lösung}
 text....
 
 \begin{lstlisting}[caption=My Javascript Example]
+let move_zeros_to_left = function(A) {
+	if (A.length < 1) {
+		return;
+	}
 
+	let lengthA = A.length;
+	let write_index = lengthA - 1;
+	let read_index = lengthA - 1;
+
+	while (read_index >= 0) {
+		if (A[read_index] != 0) {
+			A[write_index] = A[read_index];
+			write_index--;
+		}
+	
+		read_index--;
+	}
+
+	while (write_index >= 0) {
+		A[write_index] = 0;
+		write_index--;
+	}
+};
 \end{lstlisting}
 
 %==========================
