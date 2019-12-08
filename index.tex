@@ -2977,9 +2977,10 @@ let rotate_array = function(arr, n) {
 \end{examplei}
 {\bf Stichwörter:} Array, Suche, Sliding Window, Zeiger, Pointer, Dequeue
 
-\paragraph{Vorgehensweise}
+\paragraph{Versuch}
+Vorgehensweise
 \begin{enumerate} 
-	\item Ueberpruefen auf early exit
+	\item Überpruefen auf early exit: 
 	\item hat array eine 0
 	\item wenn ja, dann gehe durch alle Elemente und speichere sie in einen sepearten array
 	\item Dabei zaehle die 0
@@ -3011,11 +3012,23 @@ function moveZeroToLeft(arr) {
 
 \paragraph{Typische Fehler}
 \begin{itemize} 
-	\item 	
+	\item Ineffizient
+	\item Schlechte Laufzeit
+	\item Schlechte Platzausnutzung
+	
 \end{itemize}
 
-\paragraph{Lösung}
-text....
+\paragraph{Weiterer Versuch}
+
+\begin{enumerate} 
+	\item Ueberpruefen auf early exit
+	\item hat array eine 0
+	\item wenn ja, dann gehe durch alle Elemente und speichere sie in einen sepearten array
+	\item Dabei zaehle die 0
+	\item Am Ende der Schleife kombiniere die 
+\end{enumerate}
+
+
 
 \begin{lstlisting}[caption=My Javascript Example]
 let move_zeros_to_left = function(A) {
@@ -3043,17 +3056,82 @@ let move_zeros_to_left = function(A) {
 };
 \end{lstlisting}
 
+\paragraph{Typische Fehler}
+\begin{itemize} 
+	\item Zu lang
+	\item Inkorrekte Verwendung von let
+	\item Ungleichung schlechtere Performance
+	\item Unnötige Variable
+	
+	
+\end{itemize}
 
-\paragraph{Andere Lösung}
-Eine andere Lösung...
+
+\paragraph{Lösung}
+\begin{enumerate} 
+	\item Erstelle zwei Zeiger
+	
+\end{enumerate}
 
 \begin{lstlisting}[caption=My Javascript Example]
 const move_zeros_to_left = arr => {
-	var w = arr.length, r = w;
+	var w = arr.length; 
+	var r = w;
+
 	while (r-- !== 0) { arr[r] !== 0 && (arr[--w] = arr[r]) }
 	while (w-- !== 0) { arr[w] = 0 }
 }
 \end{lstlisting}
+
+\section{Finde profitabelsten Verkauf}
+\begin{examplei}
+	Gegeben ist 
+	
+	Beispiel:
+	Gegeben ist folgender Array mit einer Fensterbreite von \lstinline|4|. 	
+	
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+		\hline
+		3 & 23 & -31 & 47 & -65 & 69 \\
+		\hline
+	\end{tabular}
+	Das Fenster bewegt sich nun von links nach rechts und enthält folgende Zahlen:
+	\begin{enumerate}
+		\item Schritt	
+		
+		Das Maximum ist wieder \lstinline|69|
+	\end{enumerate}
+	
+\end{examplei}
+{\bf Stichwörter:} Array, Suche, Sliding Window, Zeiger, Pointer, Dequeue
+
+\paragraph{Vorgehensweise}
+\begin{enumerate} 
+	\item 
+\end{enumerate}
+
+\begin{lstlisting}[caption=My Javascript Example]
+
+\end{lstlisting}
+
+\paragraph{Typische Fehler}
+\begin{itemize} 
+	\item 
+\end{itemize}
+
+\paragraph{Lösung}
+text....
+
+\begin{lstlisting}[caption=My Javascript Example]
+
+\end{lstlisting}
+
+Eine alternative Lösung ist es, einen \lstinline|Heap()| zu verwenden.
+\begin{lstlisting}[caption=My Javascript Example]
+// test...
+
+\end{lstlisting}
+
 
 %==========================
 \section{Test}

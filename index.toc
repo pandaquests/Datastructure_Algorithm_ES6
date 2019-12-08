@@ -83,11 +83,16 @@
 \contentsline {paragraph}{Typische Fehler}{65}{section*.37}% 
 \contentsline {paragraph}{L\IeC {\"o}sung}{66}{section*.38}% 
 \contentsline {section}{\numberline {7.5}Verschiebe alle 0 nach links}{66}{section.7.5}% 
-\contentsline {paragraph}{Vorgehensweise}{66}{section*.39}% 
+\contentsline {paragraph}{Versuch}{66}{section*.39}% 
 \contentsline {paragraph}{Typische Fehler}{67}{section*.40}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{67}{section*.41}% 
-\contentsline {paragraph}{Andere L\IeC {\"o}sung}{68}{section*.42}% 
-\contentsline {section}{\numberline {7.6}Test}{68}{section.7.6}% 
-\contentsline {paragraph}{Vorgehensweise}{68}{section*.43}% 
-\contentsline {paragraph}{Typische Fehler}{68}{section*.44}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{68}{section*.45}% 
+\contentsline {paragraph}{Weiterer Versuch}{67}{section*.41}% 
+\contentsline {paragraph}{Typische Fehler}{68}{section*.42}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{68}{section*.43}% 
+\contentsline {section}{\numberline {7.6}Finde profitabelsten Verkauf}{68}{section.7.6}% 
+\contentsline {paragraph}{Vorgehensweise}{68}{section*.44}% 
+\contentsline {paragraph}{Typische Fehler}{68}{section*.45}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{69}{section*.46}% 
+\contentsline {section}{\numberline {7.7}Test}{69}{section.7.7}% 
+\contentsline {paragraph}{Vorgehensweise}{69}{section*.47}% 
+\contentsline {paragraph}{Typische Fehler}{69}{section*.48}% 
+\contentsline {paragraph}{L\IeC {\"o}sung}{69}{section*.49}% 
