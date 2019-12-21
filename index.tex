@@ -107,12 +107,11 @@ Dieses Buch ist noch in Bearbeitung....
 - I spent most of my professional life writing in JS and I think I know most about it
 
 \section{Behandelte Themen}
-- Algos und DS
+- Algorithmen und DS
 - Übungen am Ende. Versuche die Aufgaben zu machen ohne auf die Lösung zu schauen. Da ich finde, dass man von Fehlern oft viel mehr lernen kann als von richtigen Lösungen, habe ich vor der eigentlichen Lösung noch typische Fehler aufgelistet.
 
 \section{Nicht behandelte Themen}
-- Promises
-- async/await
+- Promises, async/await
 - webAPI
 - Browser spezifische Unterschiede
 
@@ -787,54 +786,53 @@ sublist(from, to) {
 
 \end{lstlisting}
 \section{Stack}
-Ein Stack ist wie ein Stapel von Papier. Man legt ein Blatt Papier oben auf den Stapel auf und wenn man eins wegnehmen will, dann kann man dieses nur von oben entfernen. Dieses Prinzip nennt sich "Last-in-first-out" (LIFO). Viele Funktionen des \lstinline|Stacks| werden genauso implementiert wie bei der \lstinline|List|. Daher werde ich hier nur die Funktonen beschreiben, die ich bisher noch nicht implementiert habe. Für die komplette Implementierung siehe mein Repo inklusive Test.
+Ein Stack ist wie ein Stapel von Papier. Man legt ein Blatt Papier oben auf den Stapel auf und wenn man eins wegnehmen will, dann kann man dieses nur von oben entfernen. Dieses Prinzip nennt sich "Last-in-first-out" (LIFO). 
+
+Viele Funktionen des \lstinline|Stacks| werden genauso implementiert wie bei der \lstinline|List|. Daher werde ich hier nur die Funktonen beschreiben, die ich bisher noch nicht implementiert habe. Für die komplette Implementierung siehe mein Repo inklusive Test.
 
 Der Funktionsumfang eines \lstinline|Stack|, schaut folgendermaßen aus:
 
 \begin{itemize} 
-	\item push(item): Current position in list
-	\item pop (property): Returns the number of elements in list	
-	\item peek (function): Clears all elements from list
-	\item empty (function): Returns string representation of list
-	\item search(el)
+	\item push(item): Fügt ein Element an der obersten Stelle des Stacks ein.
+	\item pop(): Entfernt das oberste Element vom Stack und gibt dieses zurück. Falls der Stack bereits leer ist, gibt er \lstinline|undefined| zurück.
+	\item peek(): Gibt den Wert zurück, der ganz oben auf dem Stack ist ohne diesen Wert vom Stack zu entfernen.
+	\item empty (function): Returns string representation of list. Wenn der Stack leer ist, wird \lstinline|undefined| zurück gegeben.
+	\item empty(): Überprüft, ob der Stack leer ist oder nicht. Er gibt \lstinline|true| zurück, dann und auch nur dann der Stack leer ist. Andernfalls gibt er \lstinline|false| zurück.
+	\item search(el): Wenn das Element im Stack vorkommt, gibt die Funktion die Entfernung von der obersten Stelle bis zum nächsten Vorkommen des Elements zurück. Das oberste Element hat die Entfernung von 1. Wenn das Element nicht im Stack vorkommt, wird -1 zurückgegeben. 
 \end{itemize}
 
-push
-public E push(E item)
-Pushes an item onto the top of this stack. This has exactly the same effect as:
-addElement(item)
-Parameters:
-item - the item to be pushed onto this stack.
-Returns:
-the item argument.
-See Also:
-Vector.addElement(E)
-pop
-public E pop()
-Removes the object at the top of this stack and returns that object as the value of this function.
-Returns:
-The object at the top of this stack (the last item of the Vector object).
-Throws:
-EmptyStackException - if this stack is empty.
-peek
-public E peek()
-Looks at the object at the top of this stack without removing it from the stack.
-Returns:
-the object at the top of this stack (the last item of the Vector object).
-Throws:
-EmptyStackException - if this stack is empty.
-empty
-public boolean empty()
-Tests if this stack is empty.
-Returns:
-true if and only if this stack contains no items; false otherwise.
-search
-public int search(Object o)
-Returns the 1-based position where an object is on this stack. If the object o occurs as an item in this stack, this method returns the distance from the top of the stack of the occurrence nearest the top of the stack; the topmost item on the stack is considered to be at distance 1. The equals method is used to compare o to the items in this stack.
-Parameters:
-o - the desired object.
-Returns:
-the 1-based position from the top of the stack where the object is located; the return value -1 indicates that the object is not on the stack.
+\paragraph{Stack Klasse}
+Nachfolgend werden wir die \lstinline|Stack| Klasse erstellen. Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden. Die ganze Klasse findet ihr hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/datastructures/List.js}
+
+Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/test/datastructures/List.test.js}
+
+Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird eine leere Liste erstellt.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+class List {
+constructor(items = []) {
+this.store = items;
+this.pos = 0;
+this.size = items.length;
+}
+clear() { /*...*/ }
+toString() {/*...*/ }
+get(index) {/*...*/ }
+indexOf (item) {/*...*/}
+lastIndexOf () {/*...*/}
+isEmpty () {/*...*/}
+insert(index) {/*...*/ }
+add() {/*...*/ }
+remove() {/*...*/ }
+front() {/*...*/ }
+end() {/*...*/ }
+prev() {/*...*/ }
+next() {/*...*/ }
+moveTo(index) {/*...*/ }
+sublist(from, to) {/*...*/}
+}
+\end{lstlisting}
+
 
 \section{Queue}
 \begin{itemize} 
@@ -2954,26 +2952,26 @@ let rotate_array = function(arr, n) {
 
 \section{Verschiebe alle 0 nach links}
 \begin{examplei}
-	Gegeben ist ein Array. Verschiebe alle Elemente die gleich 0 sind nach links. Behalte dabei die Reihenfolge, der übrigen Zahlen bei.
-	
-	Beispiel:
-	Gegeben ist folgender Array:
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		3 & 23 & 0 & -31 & 47 & 0 & 0 &-65 & 0 & 69 \\
-		\hline
-	\end{tabular}
+Gegeben ist ein Array. Verschiebe alle Elemente die gleich 0 sind nach links. Behalte dabei die Reihenfolge, der übrigen Zahlen bei.
 
-	Nach dem Verschieben der 0 nach links, schaut das Array wie folgt aus:
-	
-	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
-		\hline
-		0 & 0 & 0 & 0 & 3 & 23 & -31 & 47 & -65 & 69 \\
-		\hline
-	\end{tabular}
-	
-	
+Beispiel:
+Gegeben ist folgender Array:
+\\
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+	\hline
+	3 & 23 & 0 & -31 & 47 & 0 & 0 &-65 & 0 & 69 \\
+	\hline
+\end{tabular}
+
+Nach dem Verschieben der 0 nach links, schaut das Array wie folgt aus:
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|} 
+	\hline
+	0 & 0 & 0 & 0 & 3 & 23 & -31 & 47 & -65 & 69 \\
+	\hline
+\end{tabular}
+
+
 \end{examplei}
 {\bf Stichwörter:} Array, Suche, Sliding Window, Zeiger, Pointer, Dequeue
 
@@ -3021,14 +3019,12 @@ function moveZeroToLeft(arr) {
 \paragraph{Weiterer Versuch}
 
 \begin{enumerate} 
-	\item Ueberpruefen auf early exit
+	\item Überpruefen auf early exit
 	\item hat array eine 0
 	\item wenn ja, dann gehe durch alle Elemente und speichere sie in einen sepearten array
-	\item Dabei zaehle die 0
+	\item Dabei zähle die 0
 	\item Am Ende der Schleife kombiniere die 
 \end{enumerate}
-
-
 
 \begin{lstlisting}[caption=My Javascript Example]
 let move_zeros_to_left = function(A) {
@@ -3085,7 +3081,7 @@ const move_zeros_to_left = arr => {
 
 \section{Finde profitabelsten Verkauf}
 \begin{examplei}
-	Gegeben ist 
+Ermitteln Sie anhand einer Liste mit Aktienkursen für n Tage den maximalen Gewinn mit einer einzelnen Kauf- / Verkaufsaktivität.
 	
 	Beispiel:
 	Gegeben ist folgender Array mit einer Fensterbreite von \lstinline|4|. 	
