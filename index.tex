@@ -783,9 +783,9 @@ moveTo(index) {
 sublist(from, to) {
 	return this.store.slice(from, to);
 }
-
 \end{lstlisting}
 \section{Stack}
+
 Ein Stack ist wie ein Stapel von Papier. Man legt ein Blatt Papier oben auf den Stapel auf und wenn man eins wegnehmen will, dann kann man dieses nur von oben entfernen. Dieses Prinzip nennt sich "Last-in-first-out" (LIFO). 
 
 Viele Funktionen des \lstinline|Stacks| werden genauso implementiert wie bei der \lstinline|List|. Daher werde ich hier nur die Funktonen beschreiben, die ich bisher noch nicht implementiert habe. Für die komplette Implementierung siehe mein Repo inklusive Test.
@@ -795,9 +795,8 @@ Der Funktionsumfang eines \lstinline|Stack|, schaut folgendermaßen aus:
 \begin{itemize} 
 	\item push(item): Fügt ein Element an der obersten Stelle des Stacks ein.
 	\item pop(): Entfernt das oberste Element vom Stack und gibt dieses zurück. Falls der Stack bereits leer ist, gibt er \lstinline|undefined| zurück.
-	\item peek(): Gibt den Wert zurück, der ganz oben auf dem Stack ist ohne diesen Wert vom Stack zu entfernen.
-	\item empty (function): Returns string representation of list. Wenn der Stack leer ist, wird \lstinline|undefined| zurück gegeben.
-	\item empty(): Überprüft, ob der Stack leer ist oder nicht. Er gibt \lstinline|true| zurück, dann und auch nur dann der Stack leer ist. Andernfalls gibt er \lstinline|false| zurück.
+	\item peek(): Gibt den Wert zurück, der ganz oben auf dem Stack ist ohne diesen Wert vom Stack zu entfernen.Wenn der Stack leer ist, wird \lstinline|undefined| zurück gegeben.
+	\item empty(): Überprüft, ob der Stack leer ist oder nicht. Er gibt \lstinline|true| zurück, dann und auch nur dann, wenn der Stack leer ist. Andernfalls gibt er \lstinline|false| zurück.
 	\item search(el): Wenn das Element im Stack vorkommt, gibt die Funktion die Entfernung von der obersten Stelle bis zum nächsten Vorkommen des Elements zurück. Das oberste Element hat die Entfernung von 1. Wenn das Element nicht im Stack vorkommt, wird -1 zurückgegeben. 
 \end{itemize}
 
@@ -809,30 +808,42 @@ Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructu
 Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird eine leere Liste erstellt.
 
 \begin{lstlisting}[caption=Array Konstruktor]
-class List {
-constructor(items = []) {
-this.store = items;
-this.pos = 0;
-this.size = items.length;
+class Stack {
+	constructor(items = []) {
+		this.store = items;
+	}
+	empty() {
+		return !this.store.length;
+	}
+	push(el) {
+		this.store.push(el);
+	}
+	pop() {
+		return this.store.pop();
+	}
+	peek() {
+		if (!this.store.length) {
+			return;
+		}
+		return this.store[this.store.length - 1];
+	}
+	search(el) {
+		for (let i = this.store.length - 1; i >= 0; i--) {
+			if (this.store[i] === el) {
+				return this.store.length - i;
+			}
+		}
+	}
 }
-clear() { /*...*/ }
-toString() {/*...*/ }
-get(index) {/*...*/ }
-indexOf (item) {/*...*/}
-lastIndexOf () {/*...*/}
-isEmpty () {/*...*/}
-insert(index) {/*...*/ }
-add() {/*...*/ }
-remove() {/*...*/ }
-front() {/*...*/ }
-end() {/*...*/ }
-prev() {/*...*/ }
-next() {/*...*/ }
-moveTo(index) {/*...*/ }
-sublist(from, to) {/*...*/}
-}
+
 \end{lstlisting}
 
+\paragraph{empty() - } Die Funktion \lstinline|slice()| bietet sich dafür besonders gut an, da sie genau eine subliste nach genau den genannten Parametern erstellt und dabei das original Array nicht verändert.
+\begin{lstlisting}[caption=Array Konstruktor]
+sublist(from, to) {
+return this.store.slice(from, to);
+}
+\end{lstlisting}
 
 \section{Queue}
 \begin{itemize} 

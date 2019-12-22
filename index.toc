@@ -1,108 +1,100 @@
-\contentsline {chapter}{\numberline {1}Algorithmen und Datenstrukturen in ES6+}{3}{chapter.1}% 
-\contentsline {section}{\numberline {1.1}Warum in ES6+}{3}{section.1.1}% 
-\contentsline {section}{\numberline {1.2}Behandelte Themen}{3}{section.1.2}% 
-\contentsline {section}{\numberline {1.3}Nicht behandelte Themen}{3}{section.1.3}% 
-\contentsline {chapter}{\numberline {2}Entwicklungsumgebung}{5}{chapter.2}% 
-\contentsline {chapter}{\numberline {3}JavaScript Paradigmen}{7}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Object-Orientiertes Programmieren}{7}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}Funktionales Programmieren}{7}{section.3.2}% 
-\contentsline {chapter}{\numberline {4}JavaScript Konstrukte}{9}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Entscheidungskonstrukte}{9}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Wiederholungen}{9}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Funktionen}{9}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Scope}{10}{section.4.4}% 
-\contentsline {section}{\numberline {4.5}Closures}{10}{section.4.5}% 
-\contentsline {section}{\numberline {4.6}Hoisting}{10}{section.4.6}% 
-\contentsline {section}{\numberline {4.7}Call by Reference vs. Call by Value}{10}{section.4.7}% 
-\contentsline {section}{\numberline {4.8}Truthy und falsy}{10}{section.4.8}% 
-\contentsline {section}{\numberline {4.9}this}{10}{section.4.9}% 
-\contentsline {section}{\numberline {4.10}strict/sloppy mode}{10}{section.4.10}% 
-\contentsline {section}{\numberline {4.11}Number.EPSILON}{10}{section.4.11}% 
-\contentsline {chapter}{\numberline {5}Datenstrukturen}{11}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Array}{11}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}Liste}{21}{section.5.2}% 
-\contentsline {paragraph}{List Klasse}{22}{section*.2}% 
-\contentsline {paragraph}{clear() - L\IeC {\"o}schen aller Elemente einer Liste}{23}{section*.3}% 
-\contentsline {paragraph}{toString() - Gibt die Repr\IeC {\"a}sentation der Liste als String zur\IeC {\"u}ck}{23}{section*.4}% 
-\contentsline {paragraph}{get(index) - Ein Element an einem bestimmten Index bekommen}{23}{section*.5}% 
-\contentsline {paragraph}{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt}{24}{section*.6}% 
-\contentsline {paragraph}{lastIndexOf(item) - Gibt den Index wo das gesuchte Element zuletzt vorkommt}{24}{section*.7}% 
-\contentsline {paragraph}{isEmpty() - Liefert true, wenn die Liste leer ist}{24}{section*.8}% 
-\contentsline {paragraph}{insert(el, index) - F\IeC {\"u}gt ein Element an einer bestimmten Stelle ein}{24}{section*.9}% 
-\contentsline {paragraph}{add(el) - F\IeC {\"u}gt ein Element am Ende der Liste}{24}{section*.10}% 
-\contentsline {paragraph}{remove(index) - Entfernt ein Element an einer bestimmten Stelle}{25}{section*.11}% 
-\contentsline {paragraph}{front() - Setzt die Position am Listenanfang}{25}{section*.12}% 
-\contentsline {paragraph}{end() - Setzt die Position am Listenende}{25}{section*.13}% 
-\contentsline {paragraph}{prev() - Setzt die Position um eins nach vorne}{25}{section*.14}% 
-\contentsline {paragraph}{next() - Setzt die Position um eins nach hinten}{25}{section*.15}% 
-\contentsline {paragraph}{moveTo(index) - Setzt die Position an einer bestimmten Stelle}{25}{section*.16}% 
-\contentsline {paragraph}{sublist(from, to) - Erstellt eine Liste von (inklusive) einer bestimmten Stelle bis (exklusiv) eine bestimmten Stelle ohne das original Array zu \IeC {\"a}ndern}{26}{section*.17}% 
-\contentsline {section}{\numberline {5.3}Stack}{26}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}Queue}{26}{section.5.4}% 
-\contentsline {section}{\numberline {5.5}Dequeue}{28}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}Priority Queue}{32}{section.5.6}% 
-\contentsline {section}{\numberline {5.7}LinkedList}{34}{section.5.7}% 
-\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{39}{section.5.8}% 
-\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{39}{section.5.9}% 
-\contentsline {section}{\numberline {5.10}Dictionary}{39}{section.5.10}% 
-\contentsline {section}{\numberline {5.11}Hashing}{39}{section.5.11}% 
-\contentsline {section}{\numberline {5.12}HashMap}{39}{section.5.12}% 
-\contentsline {section}{\numberline {5.13}MapTree}{39}{section.5.13}% 
-\contentsline {section}{\numberline {5.14}LinkedMap}{39}{section.5.14}% 
-\contentsline {section}{\numberline {5.15}Sets}{39}{section.5.15}% 
-\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{39}{section.5.16}% 
-\contentsline {section}{\numberline {5.17}Graphen}{39}{section.5.17}% 
-\contentsline {section}{\numberline {5.18}AVL Tree}{39}{section.5.18}% 
-\contentsline {chapter}{\numberline {6}Algorithmen}{41}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Breitensuche}{41}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Tiefensuche}{41}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}Bubble Sort}{41}{section.6.3}% 
-\contentsline {section}{\numberline {6.4}Selection Sort}{41}{section.6.4}% 
-\contentsline {section}{\numberline {6.5}Shellsort}{41}{section.6.5}% 
-\contentsline {section}{\numberline {6.6}Mergesort}{41}{section.6.6}% 
-\contentsline {section}{\numberline {6.7}Quicksort}{41}{section.6.7}% 
-\contentsline {section}{\numberline {6.8}Sequential Suche}{41}{section.6.8}% 
-\contentsline {section}{\numberline {6.9}Bin\IeC {\"a}res Suchen}{41}{section.6.9}% 
-\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{41}{section.6.10}% 
-\contentsline {section}{\numberline {6.11}Rucksackproblem}{41}{section.6.11}% 
-\contentsline {section}{\numberline {6.12}Greedy Algorithm}{41}{section.6.12}% 
-\contentsline {chapter}{\numberline {7}Aufgaben}{43}{chapter.7}% 
-\contentsline {section}{\numberline {7.1}Bin\IeC {\"a}res Suchen}{43}{section.7.1}% 
-\contentsline {paragraph}{Vorgehensweise}{43}{section*.18}% 
-\contentsline {paragraph}{Typische Fehler}{43}{section*.19}% 
-\contentsline {paragraph}{Typische Fehler}{44}{section*.20}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{45}{section*.21}% 
-\contentsline {paragraph}{Vorgehensweise}{46}{section*.22}% 
-\contentsline {paragraph}{Typische Fehler}{47}{section*.23}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{48}{section*.24}% 
-\contentsline {paragraph}{Vorgehensweise}{50}{section*.25}% 
-\contentsline {paragraph}{Typische Fehler}{51}{section*.26}% 
-\contentsline {paragraph}{Typische Fehler}{52}{section*.27}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{53}{section*.28}% 
-\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{54}{section.7.2}% 
-\contentsline {paragraph}{Vorgehensweise}{54}{section*.29}% 
-\contentsline {paragraph}{Typische Fehler}{55}{section*.30}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{55}{section*.31}% 
-\contentsline {section}{\numberline {7.3}Die kleinste gemeinsame Zahl in verschiedenen Arrays}{58}{section.7.3}% 
-\contentsline {paragraph}{Vorgehensweise}{60}{section*.32}% 
-\contentsline {paragraph}{Typische Fehler}{61}{section*.33}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{62}{section*.34}% 
-\contentsline {section}{\numberline {7.4}Array verschieben}{63}{section.7.4}% 
-\contentsline {paragraph}{Vorgehensweise}{63}{section*.35}% 
-\contentsline {paragraph}{Typische Fehler}{64}{section*.36}% 
-\contentsline {paragraph}{Typische Fehler}{67}{section*.37}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{67}{section*.38}% 
-\contentsline {section}{\numberline {7.5}Verschiebe alle 0 nach links}{67}{section.7.5}% 
-\contentsline {paragraph}{Versuch}{69}{section*.39}% 
-\contentsline {paragraph}{Typische Fehler}{69}{section*.40}% 
-\contentsline {paragraph}{Weiterer Versuch}{70}{section*.41}% 
-\contentsline {paragraph}{Typische Fehler}{70}{section*.42}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{71}{section*.43}% 
-\contentsline {section}{\numberline {7.6}Finde profitabelsten Verkauf}{71}{section.7.6}% 
-\contentsline {paragraph}{Vorgehensweise}{71}{section*.44}% 
-\contentsline {paragraph}{Typische Fehler}{71}{section*.45}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{71}{section*.46}% 
-\contentsline {section}{\numberline {7.7}Test}{72}{section.7.7}% 
-\contentsline {paragraph}{Vorgehensweise}{72}{section*.47}% 
-\contentsline {paragraph}{Typische Fehler}{72}{section*.48}% 
-\contentsline {paragraph}{L\IeC {\"o}sung}{72}{section*.49}% 
+\contentsline {chapter}{\numberline {1}Algorithmen und Datenstrukturen in ES6+}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Warum in ES6+}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Behandelte Themen}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Nicht behandelte Themen}{3}{section.1.3}
+\contentsline {chapter}{\numberline {2}Entwicklungsumgebung}{5}{chapter.2}
+\contentsline {chapter}{\numberline {3}JavaScript Paradigmen}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Object-Orientiertes Programmieren}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Funktionales Programmieren}{7}{section.3.2}
+\contentsline {chapter}{\numberline {4}JavaScript Konstrukte}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Entscheidungskonstrukte}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Wiederholungen}{9}{section.4.2}
+\contentsline {section}{\numberline {4.3}Funktionen}{9}{section.4.3}
+\contentsline {section}{\numberline {4.4}Scope}{10}{section.4.4}
+\contentsline {section}{\numberline {4.5}Closures}{10}{section.4.5}
+\contentsline {section}{\numberline {4.6}Hoisting}{10}{section.4.6}
+\contentsline {section}{\numberline {4.7}Call by Reference vs. Call by Value}{10}{section.4.7}
+\contentsline {section}{\numberline {4.8}Truthy und falsy}{10}{section.4.8}
+\contentsline {section}{\numberline {4.9}this}{10}{section.4.9}
+\contentsline {section}{\numberline {4.10}strict/sloppy mode}{10}{section.4.10}
+\contentsline {section}{\numberline {4.11}Number.EPSILON}{10}{section.4.11}
+\contentsline {chapter}{\numberline {5}Datenstrukturen}{11}{chapter.5}
+\contentsline {section}{\numberline {5.1}Array}{11}{section.5.1}
+\contentsline {section}{\numberline {5.2}Liste}{21}{section.5.2}
+\contentsline {paragraph}{List Klasse}{22}{section*.2}
+\contentsline {paragraph}{clear() - Löschen aller Elemente einer Liste}{22}{section*.3}
+\contentsline {paragraph}{toString() - Gibt die Repräsentation der Liste als String zurück}{22}{section*.4}
+\contentsline {paragraph}{get(index) - Ein Element an einem bestimmten Index bekommen}{23}{section*.5}
+\contentsline {paragraph}{indexOf(item) - Gibt den Index wo das gesuchte Element zuerst vorkommt}{23}{section*.6}
+\contentsline {paragraph}{lastIndexOf(item) - Gibt den Index wo das gesuchte Element zuletzt vorkommt}{23}{section*.7}
+\contentsline {paragraph}{sublist(from, to) - Erstellt eine Liste von (inklusive) einer bestimmten Stelle bis (exklusiv) eine bestimmten Stelle ohne das original Array zu ändern}{25}{section*.17}
+\contentsline {section}{\numberline {5.3}Stack}{25}{section.5.3}
+\contentsline {paragraph}{Stack Klasse}{26}{section*.18}
+\contentsline {paragraph}{sublist(from, to) - Erstellt eine Liste von (inklusive) einer bestimmten Stelle bis (exklusiv) eine bestimmten Stelle ohne das original Array zu ändern}{26}{section*.19}
+\contentsline {section}{\numberline {5.4}Queue}{27}{section.5.4}
+\contentsline {section}{\numberline {5.5}Dequeue}{28}{section.5.5}
+\contentsline {section}{\numberline {5.6}Priority Queue}{32}{section.5.6}
+\contentsline {section}{\numberline {5.7}LinkedList}{34}{section.5.7}
+\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{39}{section.5.8}
+\contentsline {section}{\numberline {5.9}Zweifach verknüpfte LinkedList}{39}{section.5.9}
+\contentsline {section}{\numberline {5.10}Dictionary}{39}{section.5.10}
+\contentsline {section}{\numberline {5.11}Hashing}{39}{section.5.11}
+\contentsline {section}{\numberline {5.12}HashMap}{39}{section.5.12}
+\contentsline {section}{\numberline {5.13}MapTree}{39}{section.5.13}
+\contentsline {section}{\numberline {5.14}LinkedMap}{39}{section.5.14}
+\contentsline {section}{\numberline {5.15}Sets}{39}{section.5.15}
+\contentsline {section}{\numberline {5.16}Binäre Bäume}{39}{section.5.16}
+\contentsline {section}{\numberline {5.17}Graphen}{39}{section.5.17}
+\contentsline {section}{\numberline {5.18}AVL Tree}{39}{section.5.18}
+\contentsline {chapter}{\numberline {6}Algorithmen}{41}{chapter.6}
+\contentsline {section}{\numberline {6.1}Breitensuche}{41}{section.6.1}
+\contentsline {section}{\numberline {6.2}Tiefensuche}{41}{section.6.2}
+\contentsline {section}{\numberline {6.3}Bubble Sort}{41}{section.6.3}
+\contentsline {section}{\numberline {6.4}Selection Sort}{41}{section.6.4}
+\contentsline {section}{\numberline {6.5}Shellsort}{41}{section.6.5}
+\contentsline {section}{\numberline {6.6}Mergesort}{41}{section.6.6}
+\contentsline {section}{\numberline {6.7}Quicksort}{41}{section.6.7}
+\contentsline {section}{\numberline {6.8}Sequential Suche}{41}{section.6.8}
+\contentsline {section}{\numberline {6.9}Binäres Suchen}{41}{section.6.9}
+\contentsline {section}{\numberline {6.10}Suchen nach Minimum und Maximum}{41}{section.6.10}
+\contentsline {section}{\numberline {6.11}Rucksackproblem}{41}{section.6.11}
+\contentsline {section}{\numberline {6.12}Greedy Algorithm}{41}{section.6.12}
+\contentsline {chapter}{\numberline {7}Aufgaben}{43}{chapter.7}
+\contentsline {section}{\numberline {7.1}Binäres Suchen}{43}{section.7.1}
+\contentsline {paragraph}{Vorgehensweise}{43}{section*.20}
+\contentsline {paragraph}{Typische Fehler}{44}{section*.22}
+\contentsline {paragraph}{Lösung}{45}{section*.23}
+\contentsline {paragraph}{Vorgehensweise}{46}{section*.24}
+\contentsline {paragraph}{Typische Fehler}{47}{section*.25}
+\contentsline {paragraph}{Lösung}{48}{section*.26}
+\contentsline {paragraph}{Vorgehensweise}{50}{section*.27}
+\contentsline {paragraph}{Typische Fehler}{50}{section*.28}
+\contentsline {paragraph}{Typische Fehler}{52}{section*.29}
+\contentsline {paragraph}{Lösung}{52}{section*.30}
+\contentsline {section}{\numberline {7.2}Maximum im gleitenden Fenster}{53}{section.7.2}
+\contentsline {paragraph}{Vorgehensweise}{55}{section*.31}
+\contentsline {paragraph}{Typische Fehler}{56}{section*.32}
+\contentsline {paragraph}{Lösung}{56}{section*.33}
+\contentsline {section}{\numberline {7.3}Die kleinste gemeinsame Zahl in verschiedenen Arrays}{59}{section.7.3}
+\contentsline {paragraph}{Vorgehensweise}{59}{section*.34}
+\contentsline {paragraph}{Typische Fehler}{61}{section*.35}
+\contentsline {paragraph}{Lösung}{61}{section*.36}
+\contentsline {section}{\numberline {7.4}Array verschieben}{63}{section.7.4}
+\contentsline {paragraph}{Vorgehensweise}{63}{section*.37}
+\contentsline {paragraph}{Typische Fehler}{64}{section*.38}
+\contentsline {paragraph}{Typische Fehler}{66}{section*.39}
+\contentsline {paragraph}{Lösung}{67}{section*.40}
+\contentsline {section}{\numberline {7.5}Verschiebe alle 0 nach links}{67}{section.7.5}
+\contentsline {paragraph}{Versuch}{67}{section*.41}
+\contentsline {paragraph}{Typische Fehler}{68}{section*.42}
+\contentsline {paragraph}{Weiterer Versuch}{68}{section*.43}
+\contentsline {paragraph}{Typische Fehler}{69}{section*.44}
+\contentsline {paragraph}{Lösung}{69}{section*.45}
+\contentsline {section}{\numberline {7.6}Finde profitabelsten Verkauf}{69}{section.7.6}
+\contentsline {paragraph}{Vorgehensweise}{69}{section*.46}
+\contentsline {paragraph}{Typische Fehler}{70}{section*.47}
+\contentsline {paragraph}{Lösung}{70}{section*.48}
+\contentsline {section}{\numberline {7.7}Test}{70}{section.7.7}
+\contentsline {paragraph}{Vorgehensweise}{70}{section*.49}
+\contentsline {paragraph}{Typische Fehler}{70}{section*.50}
+\contentsline {paragraph}{Lösung}{70}{section*.51}
