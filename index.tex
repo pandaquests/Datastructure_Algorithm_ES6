@@ -1,5 +1,7 @@
-\documentclass{book}
+\documentclass[babel]{book}
 
+\usepackage[utf8]{inputenc}
+	
 \usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor; % table cell color
 
 \usepackage{blindtext}
@@ -786,14 +788,14 @@ sublist(from, to) {
 \end{lstlisting}
 \section{Stack}
 
-Ein Stack ist wie ein Stapel von Papier. Man legt ein Blatt Papier oben auf den Stapel auf und wenn man eins wegnehmen will, dann kann man dieses nur von oben entfernen. Dieses Prinzip nennt sich "Last-in-first-out" (LIFO). 
+Ein Stack ist wie ein Stapel von Papier. Man legt ein Blatt Papier oben auf den Stapel auf und wenn man eins wegnehmen will, dann kann man dieses nur von oben entfernen. Man fügt bzw. entfernt ein Element immer von oben. Dieses Prinzip nennt sich "Last-in-first-out" (LIFO).
 
 Viele Funktionen des \lstinline|Stacks| werden genauso implementiert wie bei der \lstinline|List|. Daher werde ich hier nur die Funktonen beschreiben, die ich bisher noch nicht implementiert habe. Für die komplette Implementierung siehe mein Repo inklusive Test.
 
 Der Funktionsumfang eines \lstinline|Stack|, schaut folgendermaßen aus:
 
 \begin{itemize} 
-	\item push(item): Fügt ein Element an der obersten Stelle des Stacks ein.
+	\item push(el): Fügt ein Element an der obersten Stelle des Stacks ein.
 	\item pop(): Entfernt das oberste Element vom Stack und gibt dieses zurück. Falls der Stack bereits leer ist, gibt er \lstinline|undefined| zurück.
 	\item peek(): Gibt den Wert zurück, der ganz oben auf dem Stack ist ohne diesen Wert vom Stack zu entfernen.Wenn der Stack leer ist, wird \lstinline|undefined| zurück gegeben.
 	\item empty(): Überprüft, ob der Stack leer ist oder nicht. Er gibt \lstinline|true| zurück, dann und auch nur dann, wenn der Stack leer ist. Andernfalls gibt er \lstinline|false| zurück.
@@ -801,118 +803,90 @@ Der Funktionsumfang eines \lstinline|Stack|, schaut folgendermaßen aus:
 \end{itemize}
 
 \paragraph{Stack Klasse}
-Nachfolgend werden wir die \lstinline|Stack| Klasse erstellen. Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden. Die ganze Klasse findet ihr hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/datastructures/List.js}
+Nachfolgend werden wir die \lstinline|Stack| Klasse erstellen. Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden. Die ganze Klasse findet ihr hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/datastructures/Stack.js}
 
-Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/test/datastructures/List.test.js}
+Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/test/datastructures/Stack.test.js}
 
-Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird eine leere Liste erstellt.
+Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird ein leerer Stack erstellt.
 
 \begin{lstlisting}[caption=Array Konstruktor]
 class Stack {
 	constructor(items = []) {
 		this.store = items;
 	}
-	empty() {
-		return !this.store.length;
-	}
-	push(el) {
-		this.store.push(el);
-	}
-	pop() {
-		return this.store.pop();
-	}
-	peek() {
-		if (!this.store.length) {
-			return;
-		}
-		return this.store[this.store.length - 1];
-	}
-	search(el) {
-		for (let i = this.store.length - 1; i >= 0; i--) {
-			if (this.store[i] === el) {
-				return this.store.length - i;
-			}
-		}
-	}
+	empty() { /*...*/ }
+	push(el) { /*...*/ }
+	pop() { /*...*/ }
+	peek() { /*...*/ }
+	search(el) { /*...*/ }
 }
-
 \end{lstlisting}
 
-\paragraph{empty() - } Die Funktion \lstinline|slice()| bietet sich dafür besonders gut an, da sie genau eine subliste nach genau den genannten Parametern erstellt und dabei das original Array nicht verändert.
+\paragraph{push(el) - fügt ein Element an der obersten Stelle hinzu} Wir benutzen die native push Funktion.
 \begin{lstlisting}[caption=Array Konstruktor]
-sublist(from, to) {
-return this.store.slice(from, to);
+push(el) {
+	this.store.push(el);
+}
+\end{lstlisting}
+
+\paragraph{pop() - entfernt das oberste Element und gibt es zurück} 
+\begin{lstlisting}[caption=Array Konstruktor]
+pop() {
+	return this.store.pop();
+}
+\end{lstlisting}
+
+\paragraph{peek() - gibt das oberste Element zurück ohne es zu entfernen} 
+\begin{lstlisting}[caption=Array Konstruktor]
+peek() {
+	if (!this.store.length) {
+		return;
+	}
+	return this.store[this.store.length - 1];
+}
+\end{lstlisting}
+
+\paragraph{empty() - gibt zurück, ob der Stack leer ist oder nicht} 
+\begin{lstlisting}[caption=Array Konstruktor]
+empty() {
+	return !this.store.length;
 }
 \end{lstlisting}
 
 \section{Queue}
+Eine Queue (engl. für Warteschlange) ist eine Datenstruktur die nach dem "First-in-First-out" (FIFO) Prinzip funktioniert. Ähnlich wie bei einer Warteschlange fügt man ein Element hinten an und wird vorne entfernt.
+
 \begin{itemize} 
-	\item add
-	boolean add(E e)
-	Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
-	Specified by:
-	add in interface Collection<E>
-	Parameters:
-	e - the element to add
-	Returns:
-	true (as specified by Collection.add(E))
-	Throws:
-	IllegalStateException - if the element cannot be added at this time due to capacity restrictions
-	ClassCastException - if the class of the specified element prevents it from being added to this queue
-	NullPointerException - if the specified element is null and this queue does not permit null elements
-	IllegalArgumentException - if some property of this element prevents it from being added to this queue
-	
-	\item offer
-	boolean offer(E e)
-	Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted queue, this method is generally preferable to add(E), which can fail to insert an element only by throwing an exception.
-	Parameters:
-	e - the element to add
-	Returns:
-	true if the element was added to this queue, else false
-	Throws:
-	ClassCastException - if the class of the specified element prevents it from being added to this queue
-	NullPointerException - if the specified element is null and this queue does not permit null elements
-	IllegalArgumentException - if some property of this element prevents it from being added to this queue
-	
-	\item remove
-	E remove()
-	Retrieves and removes the head of this queue. This method differs from poll only in that it throws an exception if this queue is empty.
-	Returns:
-	the head of this queue
-	Throws:
-	NoSuchElementException - if this queue is empty
-	
-	\item poll
-	E poll()
-	Retrieves and removes the head of this queue, or returns null if this queue is empty.
-	Returns:
-	the head of this queue, or null if this queue is empty
-	element
-	E element()
-	Retrieves, but does not remove, the head of this queue. This method differs from peek only in that it throws an exception if this queue is empty.
-	Returns:
-	the head of this queue
-	Throws:
-	NoSuchElementException - if this queue is empty
-	
-	\item addFirst
-	void addFirst(E e)
-	Inserts the specified element at the front of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerFirst(E).
-	Parameters:
-	e - the element to add
-	Throws:
-	IllegalStateException - if the element cannot be added at this time due to capacity restrictions
-	ClassCastException - if the class of the specified element prevents it from being added to this deque
-	NullPointerException - if the specified element is null and this deque does not permit null elements
-	IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
-	
-	\item peek
-	E peek()
-	Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
-	Returns:
-	the head of this queue, or null if this queue is empty
-	
+	\item add(el): Fügt ein Element am Ende der Reihe ein.
+	\item poll(): Entfernt ein Element an der Spitze der Reihe und gibt es zurück. Wenn die Queue leer ist, wird \lstinline|undefined| zurückgegeben.
+	\item peek(): Gibt das erste Element an der Spitze zurück aber entfernt es nicht von der Queue.
 \end{itemize}
+
+\paragraph{Queue Klasse}
+Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden. Die ganze Klasse findet ihr hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/datastructures/Stack.js}
+
+Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/test/datastructures/Stack.test.js}
+
+Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird ein leerer Stack erstellt.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+class Queue {
+	constructor(items = []) {
+		this.store = items;
+	}
+	add(el) { /*...*/ }
+	poll() { /*...*/ }
+	peek() { /*...*/ }
+}
+\end{lstlisting}
+
+\paragraph{push(el) - fügt ein Element an der obersten Stelle hinzu} Wir benutzen die native push Funktion.
+\begin{lstlisting}[caption=Array Konstruktor]
+push(el) {
+this.store.push(el);
+}
+\end{lstlisting}
+
 
 Method Detail
 \section{Dequeue}
