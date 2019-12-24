@@ -863,11 +863,11 @@ Eine Queue (engl. für Warteschlange) ist eine Datenstruktur die nach dem "First
 \end{itemize}
 
 \paragraph{Queue Klasse}
-Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden. Die ganze Klasse findet ihr hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/datastructures/Stack.js}
+Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden. Die ganze Klasse findet ihr hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/datastructures/Queue.js}
 
-Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/test/datastructures/Stack.test.js}
+Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/test/datastructures/Queue.test.js}
 
-Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird ein leerer Stack erstellt.
+Der Konstruktor kann einen Array aufnehmen oder leer bleiben. Wenn er leer bleibt, dann wird ein leerer Queue erstellt.
 
 \begin{lstlisting}[caption=Array Konstruktor]
 class Queue {
@@ -875,20 +875,35 @@ class Queue {
 		this.store = items;
 	}
 	add(el) { /*...*/ }
-	poll() { /*...*/ }
+	remove() { /*...*/ }
 	peek() { /*...*/ }
 }
 \end{lstlisting}
 
-\paragraph{push(el) - fügt ein Element an der obersten Stelle hinzu} Wir benutzen die native push Funktion.
+\paragraph{add(el) - fügt ein Element an der obersten Stelle hinzu} Wir benutzen die native \lstinline|unshift| Funktion, die ein Element am Anfang des Arrays hinzufügt.
+
 \begin{lstlisting}[caption=Array Konstruktor]
-push(el) {
-this.store.push(el);
+add(el) {
+	this.store.unshift(el);
 }
 \end{lstlisting}
 
+\paragraph{remove() - gibt das vorderste Element zurück und entfernt es} Auch hier benutzen wir die native \lstinline|shift| Funktion, die das Gegenteil von dem macht, was die \lstinline|unshift| Funktion macht: Sie entfernt das vorderste Element und gibt gleichzeitig das entfernte Element als Ergebnis zurück.
 
-Method Detail
+\begin{lstlisting}[caption=Array Konstruktor]
+remove() {
+	return this.store.shift();
+}
+\end{lstlisting}
+
+\paragraph{peek() - gibt das vorderste Element zurück ohne es zu entfernen} Für diese Funktion greifen wir auf das erste Element zu und geben es zurück.
+
+\begin{lstlisting}[caption=Array Konstruktor]
+peek() {
+	return this.store[0];
+}
+\end{lstlisting}
+
 \section{Dequeue}
 
 
