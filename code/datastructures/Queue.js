@@ -5,6 +5,12 @@ class Queue {
 	add(el) {
 		this.store.unshift(el);
 	}
+	peek() {
+		return this.store[0];
+	}
+	remove() {
+		return this.store.shift();
+	}
 }
 
 module.exports = Queue;
