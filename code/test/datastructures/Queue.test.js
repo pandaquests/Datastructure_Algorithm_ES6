@@ -1,5 +1,3 @@
-const Stack = require('../../datastructures/Stack');
-
 const Queue = require('../../datastructures/Queue');
 
 test('Test init Queue', () => {
