@@ -36,20 +36,20 @@
 \contentsline {paragraph}{add(el) - f\IeC {\"u}gt ein Element an der obersten Stelle hinzu}{27}{section*.24}% 
 \contentsline {paragraph}{remove() - gibt das vorderste Element zur\IeC {\"u}ck und entfernt es}{28}{section*.25}% 
 \contentsline {paragraph}{peek() - gibt das vorderste Element zur\IeC {\"u}ck ohne es zu entfernen}{28}{section*.26}% 
-\contentsline {section}{\numberline {5.5}Dequeue}{28}{section.5.5}% 
-\contentsline {section}{\numberline {5.6}Priority Queue}{33}{section.5.6}% 
-\contentsline {section}{\numberline {5.7}LinkedList}{34}{section.5.7}% 
-\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{40}{section.5.8}% 
-\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{40}{section.5.9}% 
-\contentsline {section}{\numberline {5.10}Dictionary}{40}{section.5.10}% 
-\contentsline {section}{\numberline {5.11}Hashing}{40}{section.5.11}% 
-\contentsline {section}{\numberline {5.12}HashMap}{40}{section.5.12}% 
-\contentsline {section}{\numberline {5.13}MapTree}{40}{section.5.13}% 
-\contentsline {section}{\numberline {5.14}LinkedMap}{40}{section.5.14}% 
-\contentsline {section}{\numberline {5.15}Sets}{40}{section.5.15}% 
-\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{40}{section.5.16}% 
-\contentsline {section}{\numberline {5.17}Graphen}{40}{section.5.17}% 
-\contentsline {section}{\numberline {5.18}AVL Tree}{40}{section.5.18}% 
+\contentsline {section}{\numberline {5.5}Deque}{28}{section.5.5}% 
+\contentsline {section}{\numberline {5.6}Priority Queue}{32}{section.5.6}% 
+\contentsline {section}{\numberline {5.7}LinkedList}{33}{section.5.7}% 
+\contentsline {section}{\numberline {5.8}Zirkulare LinkedList}{39}{section.5.8}% 
+\contentsline {section}{\numberline {5.9}Zweifach verkn\IeC {\"u}pfte LinkedList}{39}{section.5.9}% 
+\contentsline {section}{\numberline {5.10}Dictionary}{39}{section.5.10}% 
+\contentsline {section}{\numberline {5.11}Hashing}{39}{section.5.11}% 
+\contentsline {section}{\numberline {5.12}HashMap}{39}{section.5.12}% 
+\contentsline {section}{\numberline {5.13}MapTree}{39}{section.5.13}% 
+\contentsline {section}{\numberline {5.14}LinkedMap}{39}{section.5.14}% 
+\contentsline {section}{\numberline {5.15}Sets}{39}{section.5.15}% 
+\contentsline {section}{\numberline {5.16}Bin\IeC {\"a}re B\IeC {\"a}ume}{39}{section.5.16}% 
+\contentsline {section}{\numberline {5.17}Graphen}{39}{section.5.17}% 
+\contentsline {section}{\numberline {5.18}AVL Tree}{39}{section.5.18}% 
 \contentsline {chapter}{\numberline {6}Algorithmen}{41}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Breitensuche}{41}{section.6.1}% 
 \contentsline {section}{\numberline {6.2}Tiefensuche}{41}{section.6.2}% 
