@@ -13,6 +13,17 @@ test('Test init Deque', () => {
 	myDeque.removeFirst();
 	expect(myDeque.getFirst()).toBe(1);
 });
+
+
+test('Test remove first occurrence in Deque', () => {
+	const myDeque = new Deque();
+	const arr = [11,99,22,11,33,99];
+	arr.forEach(x => myDeque.addLast(x));
+	myDeque.removeFirstOccurrence(11);
+
+});
+
+
 // ----------------------
 test('Test init Deque', () => {
 	const myQueue = new Queue();

@@ -18,6 +18,11 @@ class Deque {
 	removeLast() {
 		this.store.pop();
 	}
+	removeFirstOccorrence(el) {
+		for (let i = 0; i < this.store.length; i++) {
+			
+		}
+	}
 	getFirst() {
 		return this.store[0];
 	}
