@@ -5,7 +5,6 @@ class Deque {
 	size() {
 		return this.store.length;
 	}
-
 	addFirst(el) {
 		this.store.unshift(el);
 	}
@@ -13,31 +12,74 @@ class Deque {
 		this.store.push(el);
 	}
 	removeFirst() {
-		this.store.splice(0,1);
+		this.store.shift();
 	}
 	removeLast() {
 		this.store.pop();
 	}
-	removeFirstOccorrence(el) {
+	contains(el) {
 		for (let i = 0; i < this.store.length; i++) {
-			
+			if (el === this.store[i]) {
+				return true;
+			}
+		}
+		return false;
+	}
+	removeFirstOccurrence(el) {
+		for (let i = 0; i < this.store.length; i++) {
+			if (el === this.store[i]) {
+				this.store.splice(i, i + 1);
+				return;
+			}
 		}
 	}
-	getFirst() {
+	removeLastOccurrence(el) {
+		for(let i = this.store.length - 1; i >= 0; i--) {
+			if (el === this.store[i]) {
+				this.store.splice(i, i + 1);
+				return;
+			}	
+		}
+	}
+	peekFirst() {
 		return this.store[0];
 	}
-	getLast() {
+	peekLast() {
 		return this.store[this.store.length - 1];
 	}
-	add(el) {
-		this.store.unshift(el);
+	iterator() {
+		let nextIndex = 0;
+		return {
+			next: () => {
+				if (nextIndex < this.store.length) {
+					return {
+						value: this.store[nextIndex++],
+						done: false
+					};
+				}
+				return {
+					done: true
+				};
+			}
+		};
 	}
-	peek() {
-		return this.store[0];
+	descendingIterator() {
+		let nextIndex = this.store.length - 1;
+		return {
+			next: () => {
+				if (nextIndex >= 0) {
+					return {
+						value: this.store[nextIndex--],
+						done: false
+					};
+				}
+				return {
+					done: true
+				};
+			}
+		};
 	}
-	remove() {
-		return this.store.shift();
-	}
+
 }
 
 module.exports = Deque;

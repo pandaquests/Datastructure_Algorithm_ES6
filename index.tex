@@ -907,13 +907,17 @@ peek() {
 \section{Deque}
 Die Datenstruktur Deque ist eng mit der vorher genannten Queue "verwandt". Sie steht für "Double-ended queue". D.h. eine Queue mit doppeltem Ende. Alternativ wird sie auch als "Head-Tail Linked List" bezeichnet. 
 
+Die gesamte Klasse inklusive den Tests zu dieser Klasse kann unter meinem GitHub Repo angeschaut werden. Die ganze Klasse findet ihr hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/datastructures/Deque.js}
+
+Der Test zu der Klasse ist hier: \url{https://github.com/pandaquests/Datastructure_Algorithm_ES6/blob/master/code/test/datastructures/Deque.test.js}
+
 \begin{itemize} 
 	\item addLast(el): Fügt ein Element am Ende des Deques ein. 
 	\item addFirst(el): Fügt ein Element am Anfang des Deques ein.
 	\item removeFirst(): Entfernt das erste Element und gibt das erste Element zurück. Wenn die Deque leer ist, dann wird \lstinline|undefined| zurückgegeben.
 	\item removeLast(): Entfernt das letzte Element und gibt das letzte Element zurück. Wenn die Deque leer ist, dann wird \lstinline|undefined| zurückgegeben.
-	\item getFirst(): Gibt das erste Element zurück ohne es zu entfernen. Wenn die Deque leer ist, dann wird \lstinline|undefined| zurückgegeben.
-	\item getLast(): Gibt das letzte Element zurück ohne es zu entfernen. Wenn die Deque leer ist, dann wird \lstinline|undefined| zurückgegeben.
+	\item peekFirst(): Gibt das erste Element zurück ohne es zu entfernen. Wenn die Deque leer ist, dann wird \lstinline|undefined| zurückgegeben.
+	\item peekLast(): Gibt das letzte Element zurück ohne es zu entfernen. Wenn die Deque leer ist, dann wird \lstinline|undefined| zurückgegeben.
 	\item removeFirstOccurrence(el): Entfernt das Element, das als erstes vorkommt vom Deque. Falls das Deque das Element nicht enthält, bleibt es unverändert.
 	\item removeLastOccurrence(el):  Entfernt das Element, das als letztes vorkommt vom Deque. Falls das Deque das Element nicht enthält, bleibt es unverändert.
 	\item contains(el): Gibt \lstinline|true| zurück, wenn das gesuchte Element im Deque vorhanden ist. Anderfalls \lstinline|false|.
@@ -921,6 +925,7 @@ Die Datenstruktur Deque ist eng mit der vorher genannten Queue "verwandt". Sie s
 	\item iterator(): Gibt einen Iterator für die Elemente zurück. Die Elemente werden vom Iterator vom ersten bis zum letzten Element zurückgegeben.
 	\item descendingIterator(): Gibt einen Iterator für die Elemente zurück. Die Elemente werden vom Iterator vom letzten bis zum ersten Element zurückgegeben.
 \end{itemize}
+
 
 Method Detail
 \section{Priority Queue}
